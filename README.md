@@ -35,19 +35,28 @@ After installing all requirements open neovim and run `:PlugInstall` command.
     <td colspan="3" align="center"><b>NeoVim</b></td>
   </tr>
   <tr>
+    <td align="center"><kbd>Space</kbd> + <kbd>p</kbd></td>
+    <td>Allows just to search and open files</td>
+    <td><img width="839" alt="ctrl+p" src="https://user-images.githubusercontent.com/47348892/194586799-5b6abe22-485e-4c81-ae42-02e0e63aaf68.png">
+</td>
+  </tr>
+  <tr>
     <td align="center"><kbd>Space</kbd> + <kbd>f</kbd></td>
     <td>Allows to search and open files by text inside them. Searching area is currently opened folder.</td>
-    <td></td>
+    <td><img width="839" alt="ctrl+f" src="https://user-images.githubusercontent.com/47348892/194585995-b22c9061-cc5b-42cd-90fe-cd6bc0817466.png">
+</td>
   </tr>
   <tr>
     <td align="center"><kbd>Space</kbd> + <kbd>b</kbd></td>
     <td>Shows all buffered(<i>already opened</i>) files.</td>
-    <td></td>
+    <td><img width="839" alt="ctrl+b" src="https://user-images.githubusercontent.com/47348892/194586273-a40cc123-ab08-4900-ad9f-169c96dc4ac9.png">
+</td>
   </tr>
   <tr>
     <td align="center"><kbd>Space</kbd> + <kbd>d</kbd></td>
     <td>Shows all methods inside current file and allows to jump between them.</td>
-    <td></td>
+    <td><img width="849" alt="space+d" src="https://user-images.githubusercontent.com/47348892/194586305-879549a0-b218-412b-a1f1-e264988b09e8.png">
+</td>
   </tr>
   <tr>
     <td align="center"><kbd>Space</kbd> + <kbd>c</kbd></td>
