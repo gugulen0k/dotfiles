@@ -93,12 +93,12 @@ After installing all requirements open neovim and run `:PlugInstall` command.
   </tr>
   <tr>
     <td align="center"><kbd>Ctrl</kbd> + <kbd>a</kbd> + <kbd>|</kbd></td>
-    <td>Horizontally splits active pane</td>
+    <td>Vertically splits active pane</td>
     <td></td>
   </tr>
   <tr>
     <td align="center"><kbd>Ctrl</kbd> + <kbd>a</kbd> + <kbd>-</kbd></td>
-    <td>Vertically splits active pane</td>
+    <td>Horizontally splits active pane</td>
     <td></td>
   </tr>
   <tr>
