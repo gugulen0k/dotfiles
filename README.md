@@ -20,6 +20,29 @@
 
 After installing all requirements open neovim and run `:PlugInstall` command.
 
+### Creating symlinks(symbolic links) for configuration files
+
+> ⚠️ **Warning!**
+> If you already have your configuration files and/or `.config` folder, make sure that you copied/moved your files somewhere else from home directory, because this script will overwrite all of this files.
+
+1. To make things easier clone this repository to `Documents` folder and do not move or delete this folder otherwise nothing will work.
+2. Go inside `DotFiles` folder:
+	* run installing script (*just type this in terminal* `./install.sh`)
+	
+	>  **OR**
+	
+	* create symlinks manually for:
+		* `.config` directory - `ln -s <absolute-path-to-folder-with-config-files>/.config ~/`
+		* `.zshenv` file - `ln -s <absolute-path-to-folder-with-config-files>/.zshenv ~/.zshenv`
+		* `.zshrc` file - `ln -s <absolute-path-to-folder-with-config-files>/.zshrc ~/.zshrc`
+		* `.tmux.conf` file - `ln -s <absolute-path-to-folder-with-config-files>/.tmux.conf ~/.tmux.conf`
+	
+	> ⚠️ **Warning!**
+	>  If any of these files already exist, just add the `-f` flag in the `ln` command. It will overwrite existing files. Should look something like this: `ln -sf <path to the file/folder to be linked> <the path of the link to be created>`
+
+3. *Voila*. Your terminal is ready for work! ;)
+
+
 ### Keybindings for Tmux, Neovim
 
 <table>
@@ -36,13 +59,13 @@ After installing all requirements open neovim and run `:PlugInstall` command.
   </tr>
   <tr>
     <td align="center"><kbd>Space</kbd> + <kbd>p</kbd></td>
-    <td>Allows just to search and open files</td>
+    <td>Allows just to <i>search</i>(by file name) and <i>open</i> files inside current and nested directories</td>
     <td><img width="839" alt="ctrl+p" src="https://user-images.githubusercontent.com/47348892/194586799-5b6abe22-485e-4c81-ae42-02e0e63aaf68.png">
 </td>
   </tr>
   <tr>
     <td align="center"><kbd>Space</kbd> + <kbd>f</kbd></td>
-    <td>Allows to search and open files by text inside them. Searching area is currently opened folder.</td>
+    <td>Allows to search and open files based on their content. Searching area is currently opened folder.</td>
     <td><img width="839" alt="ctrl+f" src="https://user-images.githubusercontent.com/47348892/194585995-b22c9061-cc5b-42cd-90fe-cd6bc0817466.png">
 </td>
   </tr>
