@@ -16,15 +16,15 @@ window:
 font:
   size: 14.0
   normal:
-    family: Fantasque Sans Mono
+    family: FantasqueSansMono NF
     style: Regular
 
   bold:
-    family: Fantasque Sans Mono
+    family: FantasqueSansMono NF
     style: Bold
 
   italic:
-    family: Fantasque Sans Mono
+    family: FantasqueSansMono NF
     style: Italic
 
 items:
