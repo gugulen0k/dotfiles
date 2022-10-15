@@ -1,6 +1,7 @@
 source ~/.config/nvim/plugins.vim
-luafile ~/.config/nvim/lsp-config.lua
-luafile ~/.config/nvim/compe-config.lua
+luafile ~/.config/nvim/lua/compe-config.lua
+luafile ~/.config/nvim/lua/lsp-config.lua
+luafile ~/.config/nvim/lua/treesitter.lua
 
 " There are certain files that we would never want to edit with Vim.
 " Wildmenu will ignore files with these extensions.
@@ -36,7 +37,7 @@ set encoding=utf8
 filetype plugin indent on " Allow auto-indenting depending on file type
 syntax on
 
-let mapleader = " "
+let mapleader=" "
 set tags+=.git/tags,.git/rubytags
 set tagcase=match
 noremap ,gt :!gentags<CR>

@@ -13,10 +13,12 @@ call plug#begin()
   Plug 'neovim/nvim-lspconfig'
   Plug 'hrsh7th/nvim-compe'
   Plug 'hrsh7th/vim-vsnip'
+  Plug 'nvim-treesitter/nvim-treesitter'
 
   " Languages support
   Plug 'vim-ruby/vim-ruby'
   Plug 'kchmck/vim-coffee-script'
+  Plug 'iamcco/markdown-preview.nvim'
   Plug 'tpope/vim-rails'
   Plug 'tpope/vim-haml'
 
