@@ -1,5 +1,6 @@
 call plug#begin()
-  Plug 'dracula/vim', { 'as': 'dracula' } " Dracula theme
+  " Plug 'dracula/vim', { 'as': 'dracula' } " Dracula theme
+  Plug 'nocksock/bloop-vim'
   Plug 'christoomey/vim-tmux-navigator'   " Extension for easier navigation between tmux and vim
   Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
   Plug 'junegunn/fzf.vim'

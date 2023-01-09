@@ -6,20 +6,22 @@ luafile ~/.config/nvim/lua/treesitter.lua
 " There are certain files that we would never want to edit with Vim.
 " Wildmenu will ignore files with these extensions.
 set wildmode=list:longest " Make wildmenu behave like similar to Bash completion.
-set wildignore=*.docx,*.jpg,*.png,*.gif,*.pdf,*.pyc,*.exe,*.flv,*.img,*.xlsx 
+set wildignore=*.docx,*.jpg,*.png,*.gif,*.pdf,*.pyc,*.exe,*.flv,*.img,*.xlsx
 
 " Setting custom theme for vim
 " true colors are required for vim in terminal
 set termguicolors
-colorscheme dracula
+let g:bloop_set_background=0
+let g:bloop_use_italics=0
+colorscheme bloop
 
 set mouse=a 		    " Allow to use the mouse in the editor
 set number 		      " Shows the line numbers
 set title 		      " Show file title
-set ttyfast  		    " Speed up scrolling in Vim 
+set ttyfast  		    " Speed up scrolling in Vim
 set cursorline	  	" Highlights the current line in the editor
 set spell		        " Enable spell check
-set relativenumber  
+set relativenumber
 set tabstop=2
 set shiftwidth=2
 set expandtab
@@ -30,7 +32,6 @@ set noswapfile
 set showmatch
 set incsearch
 set hlsearch
-set termguicolors
 set clipboard=unnamedplus
 set encoding=utf8
 
@@ -57,3 +58,10 @@ nnoremap '%%', expand('%:h').'/'
 nnoremap <leader>c :CopyPath<CR>
 nnoremap <C-m> :CodeActionMenu<CR>
 
+" Navigate between the tabs
+nnoremap th  :tabfirst<CR>
+nnoremap tk  :tabnext<CR>
+nnoremap tj  :tabprev<CR>
+nnoremap tl  :tablast<CR>
+nnoremap td  :tabclose<CR>
+nnoremap tn  :tabnew<CR>

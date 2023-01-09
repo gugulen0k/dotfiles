@@ -1,5 +1,6 @@
 # If you come from bash you might have to change your $PATH.
 export PATH=$HOME/bin:/usr/local/bin:$PATH
+export PGDATA="$HOME/homebrew/var/postgresql@14"
 
 # Path to homebrew
 export PATH=$HOME/homebrew/bin:$PATH
@@ -61,3 +62,5 @@ fi
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm" 
 
+
+source /Users/chirilterzi/.docker/init-zsh.sh || true # Added by Docker Desktop
