@@ -10,7 +10,6 @@ call plug#begin()
   Plug 'ryanoasis/vim-devicons' " Icons for NerdTree
 
   " Autocompletion plugins
-  Plug 'weilbith/nvim-code-action-menu'
   Plug 'neovim/nvim-lspconfig'
   Plug 'hrsh7th/nvim-compe'
   Plug 'hrsh7th/vim-vsnip'
