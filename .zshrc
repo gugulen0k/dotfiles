@@ -16,7 +16,7 @@ PATH=$PATH:$HOME/.rvm/gems/ruby-3.0.0/bin
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-ZSH_THEME="gugulenok-dark"
+ZSH_THEME="gugulenok-light"
 
 # Uncomment the following line to enable command auto-correction.
 # ENABLE_CORRECTION="true"
@@ -27,10 +27,10 @@ ZSH_THEME="gugulenok-dark"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
-        git 
-        bundler 
-        ruby 
-        rake 
+        git
+        bundler
+        ruby
+        rake
         web-search          # Adds aliases for searching with Google, Wiki, Bing, YouTube and other popular services
         copypath            # Copies the path of given directory or file to the system clipboard.
         colored-man-pages

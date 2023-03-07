@@ -1,20 +1,20 @@
 window:
   dimensions:
     columns: 130
-    lines: 40
+    lines:   40
 
   padding:
-    x: 5
-    y: 2
+      x: 5
+      y: 2
 
-  decorations: full
-  startup_mode: Windowed
+  decorations:   full
+  startup_mode:  Windowed
   dynamic_title: true
-  history: 10000
-  multiplier: 3
+  history:       10000
+  multiplier:    3
 
 font:
-  size: 20.0
+  size: 14.0
   normal:
     family: FantasqueSansMono NF
     style: Regular
@@ -57,30 +57,30 @@ items:
         white: "#f7f7f7"
   - theme: 3024.dark
 colors:
-  name: Chalk (light)
-  author: Chris Kempson
+  # Default colors
   primary:
-    background: "#f5f5f5"
-    foreground: "#303030"
-  cursor:
-    text: "#f5f5f5"
-    cursor: "#303030"
+    background: '#16191f'
+    foreground: '#f8f8f2'
+
+  # Normal colors
   normal:
-    black: "#151515"
-    red: "#fb9fb1"
-    green: "#acc267"
-    yellow: "#ddb26f"
-    blue: "#6fc2ef"
-    magenta: "#e1a3ee"
-    cyan: "#12cfc0"
-    white: "#d0d0d0"
+    black: '#000000'
+    red: '#ff5555'
+    green: '#50fa7b'
+    yellow: '#f1fa8c'
+    blue: '#caa9fa'
+    magenta: '#ff79c6'
+    cyan: '#8be9fd'
+    white: '#bfbfbf'
+
+  # Bright colors
   bright:
-    black: "#505050"
-    red: "#fb9fb1"
-    green: "#acc267"
-    yellow: "#ddb26f"
-    blue: "#6fc2ef"
-    magenta: "#e1a3ee"
-    cyan: "#12cfc0"
-    white: "#f5f5f5"
-theme: Chalk.light
+    black: '#575b70'
+    red: '#ff6e67'
+    green: '#5af78e'
+    yellow: '#f4f99d'
+    blue: '#caa9fa'
+    magenta: '#ff92d0'
+    cyan: '#9aedfe'
+    white: '#e6e6e6'
+theme: Dracula

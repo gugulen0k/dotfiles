@@ -11,9 +11,7 @@ set wildignore=*.docx,*.jpg,*.png,*.gif,*.pdf,*.pyc,*.exe,*.flv,*.img,*.xlsx
 " Setting custom theme for vim
 " true colors are required for vim in terminal
 set termguicolors
-let g:bloop_set_background=0
-let g:bloop_use_italics=0
-colorscheme bloop
+color framer_syntax_light
 
 set mouse=a 		    " Allow to use the mouse in the editor
 set number 		      " Shows the line numbers
