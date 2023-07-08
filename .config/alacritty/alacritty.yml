@@ -7,80 +7,42 @@ window:
     x: 5
     y: 2
 
-  decorations: full
-  startup_mode: Windowed
-  dynamic_title: true
+  decorations: Full
+  startup_mode: Maximized
+  dynamic_title: false
+  dynamic_padding: true
   history: 10000
   multiplier: 3
+  draw_bold_text_with_bright_colors: true
+  custom_cursor_colors: true
 
 font:
-  size: 20.0
+  size: 16.0
   normal:
-    family: FantasqueSansMono NF
+    family: FantasqueSansMono Nerd Font
     style: Regular
 
   bold:
-    family: FantasqueSansMono NF
+    family: FantasqueSansMono Nerd Font
     style: Bold
 
   italic:
-    family: FantasqueSansMono NF
+    family: FantasqueSansMono Nerd Font
     style: Italic
 
-items:
-  - colors:
-      name: 3024 (dark)
-      author: Chris Kempson
-      primary:
-        background: "#090300"
-        foreground: "#a5a2a2"
-      cursor:
-        text: "#090300"
-        cursor: "#a5a2a2"
-      normal:
-        black: "#090300"
-        red: "#db2d20"
-        green: "#01a252"
-        yellow: "#fded02"
-        blue: "#01a0e4"
-        magenta: "#a16a94"
-        cyan: "#b5e4f4"
-        white: "#a5a2a2"
-      bright:
-        black: "#5c5855"
-        red: "#db2d20"
-        green: "#01a252"
-        yellow: "#fded02"
-        blue: "#01a0e4"
-        magenta: "#a16a94"
-        cyan: "#b5e4f4"
-        white: "#f7f7f7"
-  - theme: 3024.dark
-colors:
-  name: Chalk (light)
-  author: Chris Kempson
-  primary:
-    background: "#f5f5f5"
-    foreground: "#303030"
-  cursor:
-    text: "#f5f5f5"
-    cursor: "#303030"
-  normal:
-    black: "#151515"
-    red: "#fb9fb1"
-    green: "#acc267"
-    yellow: "#ddb26f"
-    blue: "#6fc2ef"
-    magenta: "#e1a3ee"
-    cyan: "#12cfc0"
-    white: "#d0d0d0"
-  bright:
-    black: "#505050"
-    red: "#fb9fb1"
-    green: "#acc267"
-    yellow: "#ddb26f"
-    blue: "#6fc2ef"
-    magenta: "#e1a3ee"
-    cyan: "#12cfc0"
-    white: "#f5f5f5"
-theme: Chalk.light
+# font:
+#   size: 13.5
+#   normal:
+#     family: NotoSansMono Nerd Font Mono
+#     style: Regular
+
+#   bold:
+#     family: NotoSansMono Nerd Font Mono
+#     style: Bold
+
+#   italic:
+#     family: NotoSansMono Nerd Font Mono
+#     style: Italic
+
+import:
+  - ~/.config/alacritty/rose-pine.yml
