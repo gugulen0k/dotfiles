@@ -16,33 +16,33 @@ window:
   draw_bold_text_with_bright_colors: true
   custom_cursor_colors: true
 
-font:
-  size: 16.0
-  normal:
-    family: FantasqueSansMono Nerd Font
-    style: Regular
-
-  bold:
-    family: FantasqueSansMono Nerd Font
-    style: Bold
-
-  italic:
-    family: FantasqueSansMono Nerd Font
-    style: Italic
-
 # font:
-#   size: 13.5
+#   size: 18.0
 #   normal:
-#     family: NotoSansMono Nerd Font Mono
+#     family: FantasqueSansM Nerd Font
 #     style: Regular
 
 #   bold:
-#     family: NotoSansMono Nerd Font Mono
+#     family: FantasqueSansM Nerd Font
 #     style: Bold
 
 #   italic:
-#     family: NotoSansMono Nerd Font Mono
+#     family: FantasqueSansM Nerd Font
 #     style: Italic
+
+font:
+  size: 16.0
+  normal:
+    family: NotoSansM Nerd Font
+    style: Regular
+
+  bold:
+    family: NotoSansM Nerd Font
+    style: Bold
+
+  italic:
+    family: NotoSansM Nerd Font
+    style: Italic
 
 import:
   - ~/.config/alacritty/rose-pine.yml

@@ -49,7 +49,10 @@ require('lualine').setup {
       }
     },
     lualine_x = {'filetype'},
-    lualine_y = {'progress'},
+    lualine_y = {
+      {'progress'},
+      {'searchcount'}
+    },
     lualine_z = {'mode'}
   },
   inactive_sections = {
