@@ -3,6 +3,9 @@ export ZSH="$HOME/.oh-my-zsh"
 
 ZSH_THEME="gugulenok-dark"
 
+# Path to homebrew
+export PATH=$HOME/homebrew/bin:$PATH
+
 # Which plugins would you like to load?
 # Standard plugins can be found in $ZSH/plugins/
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
@@ -47,3 +50,5 @@ fi
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 eval "$(rbenv init - zsh)"
+
+source /Users/chirilterzi/.docker/init-zsh.sh || true # Added by Docker Desktop

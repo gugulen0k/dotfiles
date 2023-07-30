@@ -1,20 +1,20 @@
 require('lualine').setup {
   options = {
-    icons_enabled = true,
-    theme = 'auto',
+    icons_enabled        = true,
+    theme                = 'auto',
     component_separators = { left = '|', right = '|'},
-    section_separators = { left = '', right = ''},
+    section_separators   = { left = '', right = ''},
     disabled_filetypes = {
       statusline = {},
-      winbar = {},
+      winbar     = {},
     },
-    ignore_focus = {},
+    ignore_focus         = {},
     always_divide_middle = true,
-    globalstatus = true,
+    globalstatus         = true,
     refresh = {
       statusline = 1000,
-      tabline = 1000,
-      winbar = 1000,
+      tabline    = 1000,
+      winbar     = 1000,
     }
   },
   sections = {
@@ -28,23 +28,23 @@ require('lualine').setup {
         },
         {
           'diagnostics',
-          sections = {'error', 'warn'},
-          symbols = {error = '', warn = ''},
-          colored = true,           -- Displays diagnostics status in color if set to true.
-          update_in_insert = false  -- Update diagnostics in insert mode.
+          sections         = {'error', 'warn'},
+          symbols          = {error = '', warn = ''},
+          colored          = true,                       -- Displays diagnostics status in color if set to true.
+          update_in_insert = false                       -- Update diagnostics in insert mode.
         }
     },
     lualine_c = {
       {
         'filename',
-        file_status = true,      -- Displays file status (readonly status, modified status)
-        newfile_status = false,  -- Display new file status (new file means no write after created)
-        path = 1,
+        file_status    = true,  -- Displays file status (readonly status, modified status)
+        newfile_status = false, -- Display new file status (new file means no write after created)
+        path           = 1,
         symbols = {
-          modified = '',      -- Text to show when the file is modified.
-          readonly = '',      -- Text to show when the file is non-modifiable or readonly.
-          unnamed = '[No Name]', -- Text to show for unnamed buffers.
-          newfile = '[New]',     -- Text to show for newly created file before first write
+          modified = '',       -- Text to show when the file is modified.
+          readonly = '',       -- Text to show when the file is non-modifiable or readonly.
+          unnamed  = '[No Name]', -- Text to show for unnamed buffers.
+          newfile  = '[New]',     -- Text to show for newly created file before first write
         }
       }
     },
@@ -63,8 +63,8 @@ require('lualine').setup {
     lualine_y = {},
     lualine_z = {}
   },
-  tabline = {},
-  winbar = {},
+  tabline         = {},
+  winbar          = {},
   inactive_winbar = {},
-  extensions = {}
+  extensions      = {}
 }
