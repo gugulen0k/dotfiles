@@ -1,7 +1,7 @@
 -- Configuration lua files
 require('user.plugins')
 require('user.treesitter')
-require('user.theme')
+require('user.tokyonight_theme')
 require('user.keymaps')
 require('user.lualine')
 require('user.nvimtree')
@@ -9,6 +9,7 @@ require('user.lspconfig')
 require('user.cmp')
 require('user.gitsigns')
 require('user.align')
+require('user.splitjoin')
 --------------------------
 
 -- Changing default vim settings

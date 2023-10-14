@@ -44,5 +44,10 @@ font:
     family: NotoSansM Nerd Font
     style: Italic
 
+key_bindings:
+  - { key: Right, mods: Alt, chars: "\x1BF" }
+  - { key: Left,  mods: Alt, chars: "\x1BB" }
+
 import:
-  - ~/.config/alacritty/rose-pine.yml
+  # - ~/.config/alacritty/rose-pine/rose-pine.yml
+  - ~/.config/alacritty/tokyonight/tokyonight_night.yml

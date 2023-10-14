@@ -1,4 +1,6 @@
 .DS_Store
 fish/
 
-/.config/alacritty/*.bak
+.config/alacritty/*.bak
+.config/nvim/plugin/
+.zshenv

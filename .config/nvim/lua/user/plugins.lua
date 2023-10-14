@@ -38,12 +38,6 @@ return packer.startup(function(use)
   use "nvim-lua/popup.nvim" -- An implementation of the Popup API from vim in Neovim
   use "nvim-lua/plenary.nvim" -- Useful lua functions used by lots of plugins
   use "christoomey/vim-tmux-navigator"
-  -- use {
-  --   "connordeckers/tmux-navigator.nvim",
-  --   config = function()
-  --     require("tmux-navigator").setup { enable = true }
-  --   end,
-  -- } -- Allows for seamless navigation between Tmux and Neovim, using the same keybinds wherever possible.
 
   -- General language plugins
   use "tpope/vim-surround"
@@ -54,6 +48,7 @@ return packer.startup(function(use)
 
   -- Cosmetical plugins (with themes)
   use({ 'rose-pine/neovim', as = 'rose-pine' })
+  use "folke/tokyonight.nvim"
   use { 'mrshmllow/document-color.nvim', config = function()
     require("document-color").setup {
       -- Default options
@@ -63,6 +58,7 @@ return packer.startup(function(use)
 }
 
   -- IDE plugins
+  use "echasnovski/mini.splitjoin"
   use "onsails/lspkind.nvim"
   use "nvim-tree/nvim-tree.lua"
   use "nvim-tree/nvim-web-devicons"
@@ -84,20 +80,6 @@ return packer.startup(function(use)
       "neovim/nvim-lspconfig",
       run = ":MasonUpdate" -- :MasonUpdate updates registry contents
   }
-  use({
-      "glepnir/lspsaga.nvim",
-      opt = true,
-      branch = "main",
-      event = "LspAttach",
-      config = function()
-        require("lspsaga").setup({})
-      end,
-      requires = {
-          {"nvim-tree/nvim-web-devicons"},
-          --Please make sure you install markdown and markdown_inline parser
-          {"nvim-treesitter/nvim-treesitter"}
-      }
-  })
   use {
     'andymass/vim-matchup',
     setup = function()
@@ -106,7 +88,6 @@ return packer.startup(function(use)
   }
   use "junegunn/fzf"
   use "junegunn/fzf.vim"
-  use "junegunn/vim-easy-align"
   use "hrsh7th/nvim-cmp"
   use "hrsh7th/cmp-nvim-lsp"
   use "hrsh7th/cmp-nvim-lsp-signature-help"
@@ -121,7 +102,6 @@ return packer.startup(function(use)
 
   -- Language support plugins
   use "vim-ruby/vim-ruby"
-  use "tpope/vim-haml"
   use "kchmck/vim-coffee-script"
 
   -- Automatically set up your configuration after cloning packer.nvim

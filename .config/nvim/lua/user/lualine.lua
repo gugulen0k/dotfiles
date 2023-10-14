@@ -29,7 +29,7 @@ require('lualine').setup {
         {
           'diagnostics',
           sections         = {'error', 'warn'},
-          symbols          = {error = '', warn = ''},
+          symbols          = {error = ' ', warn = ' '},
           colored          = true,                       -- Displays diagnostics status in color if set to true.
           update_in_insert = false                       -- Update diagnostics in insert mode.
         }

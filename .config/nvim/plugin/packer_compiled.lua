@@ -150,14 +150,6 @@ _G.packer_plugins = {
     path = "/Users/chirilterzi/.local/share/nvim/site/pack/packer/start/lspkind.nvim",
     url = "https://github.com/onsails/lspkind.nvim"
   },
-  ["lspsaga.nvim"] = {
-    config = { "\27LJ\2\n9\0\0\3\0\3\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0004\2\0\0B\0\2\1K\0\1\0\nsetup\flspsaga\frequire\0" },
-    loaded = false,
-    needs_bufread = false,
-    only_cond = false,
-    path = "/Users/chirilterzi/.local/share/nvim/site/pack/packer/opt/lspsaga.nvim",
-    url = "https://github.com/glepnir/lspsaga.nvim"
-  },
   ["lualine.nvim"] = {
     loaded = true,
     path = "/Users/chirilterzi/.local/share/nvim/site/pack/packer/start/lualine.nvim",
@@ -172,6 +164,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/chirilterzi/.local/share/nvim/site/pack/packer/start/mason.nvim",
     url = "https://github.com/williamboman/mason.nvim"
+  },
+  ["mini.splitjoin"] = {
+    loaded = true,
+    path = "/Users/chirilterzi/.local/share/nvim/site/pack/packer/start/mini.splitjoin",
+    url = "https://github.com/echasnovski/mini.splitjoin"
   },
   ["nvim-cmp"] = {
     loaded = true,
@@ -218,6 +215,11 @@ _G.packer_plugins = {
     path = "/Users/chirilterzi/.local/share/nvim/site/pack/packer/start/rose-pine",
     url = "https://github.com/rose-pine/neovim"
   },
+  ["tokyonight.nvim"] = {
+    loaded = true,
+    path = "/Users/chirilterzi/.local/share/nvim/site/pack/packer/start/tokyonight.nvim",
+    url = "https://github.com/folke/tokyonight.nvim"
+  },
   ["vim-coffee-script"] = {
     loaded = true,
     path = "/Users/chirilterzi/.local/share/nvim/site/pack/packer/start/vim-coffee-script",
@@ -228,11 +230,6 @@ _G.packer_plugins = {
     path = "/Users/chirilterzi/.local/share/nvim/site/pack/packer/start/vim-commentary",
     url = "https://github.com/tpope/vim-commentary"
   },
-  ["vim-easy-align"] = {
-    loaded = true,
-    path = "/Users/chirilterzi/.local/share/nvim/site/pack/packer/start/vim-easy-align",
-    url = "https://github.com/junegunn/vim-easy-align"
-  },
   ["vim-endwise"] = {
     loaded = true,
     path = "/Users/chirilterzi/.local/share/nvim/site/pack/packer/start/vim-endwise",
@@ -242,11 +239,6 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/chirilterzi/.local/share/nvim/site/pack/packer/start/vim-fugitive",
     url = "https://github.com/tpope/vim-fugitive"
-  },
-  ["vim-haml"] = {
-    loaded = true,
-    path = "/Users/chirilterzi/.local/share/nvim/site/pack/packer/start/vim-haml",
-    url = "https://github.com/tpope/vim-haml"
   },
   ["vim-matchup"] = {
     after_files = { "/Users/chirilterzi/.local/share/nvim/site/pack/packer/opt/vim-matchup/after/plugin/matchit.vim" },
@@ -289,13 +281,6 @@ time([[packadd for vim-matchup]], false)
 time([[Config for document-color.nvim]], true)
 try_loadstring("\27LJ\2\nS\0\0\3\0\4\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\3\0B\0\2\1K\0\1\0\1\0\1\tmode\15background\nsetup\19document-color\frequire\0", "config", "document-color.nvim")
 time([[Config for document-color.nvim]], false)
-vim.cmd [[augroup packer_load_aucmds]]
-vim.cmd [[au!]]
-  -- Event lazy-loads
-time([[Defining lazy-load event autocommands]], true)
-vim.cmd [[au LspAttach * ++once lua require("packer.load")({'lspsaga.nvim'}, { event = "LspAttach *" }, _G.packer_plugins)]]
-time([[Defining lazy-load event autocommands]], false)
-vim.cmd("augroup END")
 
 _G._packer.inside_compile = false
 if _G._packer.needs_bufread == true then
