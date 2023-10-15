@@ -47,7 +47,6 @@ alias dbuild="docker compose build"
 alias gaa="git add ."
 alias gcm="git commit -m"
 alias gs="git status"
-alias glog="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
 
 # Configuration files aliases
 alias nvimrc="nvim ~/.config/nvim/init.lua"
