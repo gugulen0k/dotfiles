@@ -39,30 +39,18 @@ return packer.startup(function(use)
   use "nvim-lua/plenary.nvim" -- Useful lua functions used by lots of plugins
   use "christoomey/vim-tmux-navigator"
 
-  -- General language plugins
-  use "tpope/vim-surround"
-  use "tpope/vim-fugitive"
-  use "tpope/vim-commentary"
-  use "tpope/vim-endwise"
-  use "tpope/vim-repeat"
-
   -- Cosmetical plugins (with themes)
   use({ 'rose-pine/neovim', as = 'rose-pine' })
   use "folke/tokyonight.nvim"
   use { 'mrshmllow/document-color.nvim', config = function()
-    require("document-color").setup {
-      -- Default options
-      mode = "background", -- "background" | "foreground" | "single"
-    }
-  end
-}
+      require("document-color").setup {
+        -- Default options
+        mode = "background", -- "background" | "foreground" | "single"
+      }
+    end
+  }
 
   -- IDE plugins
-  use "echasnovski/mini.splitjoin"
-  use "onsails/lspkind.nvim"
-  use "nvim-tree/nvim-tree.lua"
-  use "nvim-tree/nvim-web-devicons"
-  use "lukas-reineke/indent-blankline.nvim"     -- Indentation guides to all lines
   use {
     "nvim-lualine/lualine.nvim",
     requires = { "nvim-tree/nvim-web-devicons", opt = true }
@@ -81,11 +69,26 @@ return packer.startup(function(use)
       run = ":MasonUpdate" -- :MasonUpdate updates registry contents
   }
   use {
-    'andymass/vim-matchup',
+    "andymass/vim-matchup",
     setup = function()
       vim.g.matchup_matchparen_offscreen = { method = "popup" }
     end
   }
+  use {
+    "folke/trouble.nvim",
+    requires = { "nvim-tree/nvim-web-devicons", opt = true }
+  }
+  use "tpope/vim-surround"
+  use "tpope/vim-fugitive"
+  use "tpope/vim-commentary"
+  use "tpope/vim-endwise"
+  use "tpope/vim-repeat"
+  use "echasnovski/mini.splitjoin"
+  use "onsails/lspkind.nvim"
+  use "nvim-tree/nvim-tree.lua"
+  use "nvim-tree/nvim-web-devicons"
+  use "lukas-reineke/indent-blankline.nvim"     -- Indentation guides to all lines
+  use "stevearc/dressing.nvim"
   use "junegunn/fzf"
   use "junegunn/fzf.vim"
   use "hrsh7th/nvim-cmp"
@@ -97,6 +100,7 @@ return packer.startup(function(use)
   use "hrsh7th/cmp-calc"
   use "f3fora/cmp-spell"
   use "L3MON4D3/LuaSnip"
+  use "saadparwaiz1/cmp_luasnip"
   use "lewis6991/gitsigns.nvim"
   use 'Vonr/align.nvim'
 

@@ -1,19 +1,17 @@
 local cmp_status_ok, cmp = pcall(require, 'cmp')
-if not cmp_status_ok then 
+if not cmp_status_ok then
   return
 end
 
 local snip_status_ok, luasnip = pcall(require, 'luasnip')
-if not snip_status_ok then 
+if not snip_status_ok then
   return
 end
-
-local cmp = require'cmp'
 
 cmp.setup({
   snippet = {
     expand = function(args)
-      require('luasnip').lsp_expand(args.body) -- For `luasnip` users.
+      luasnip.lsp_expand(args.body) -- For `luasnip` users.
     end,
   },
 
@@ -31,11 +29,14 @@ cmp.setup({
   }),
 
   sources = cmp.config.sources({
+    { name = 'nvim_lsp_signature_help' },
     { name = 'nvim_lsp' },
-    { name = 'vsnip' },
-  },
-  {
+    { name = 'luasnip' },
+    { name = 'spell' },
     { name = 'buffer' },
+    { name = 'cmdline' },
+    { name = 'calc' },
+    { name = 'path' },
   })
 })
 
@@ -51,8 +52,7 @@ cmp.setup.cmdline({ '/', '?' }, {
 cmp.setup.cmdline(':', {
   mapping = cmp.mapping.preset.cmdline(),
   sources = cmp.config.sources({
-    { name = 'path' }
-  }, {
-    { name = 'cmdline' }
+    { name = 'path' },
+    { name = 'cmdline' },
   })
 })

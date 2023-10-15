@@ -1,12 +1,12 @@
-function map(mode, shortcut, command)
+local function map(mode, shortcut, command)
   vim.api.nvim_set_keymap(mode, shortcut, command, { noremap = true, silent = true })
 end
 
-function nmap(shortcut, command)
+local function nmap(shortcut, command)
   map('n', shortcut, command)
 end
 
-function imap(shortcut, command)
+local function imap(shortcut, command)
   map('i', shortcut, command)
 end
 
@@ -24,3 +24,4 @@ nmap('<leader>b', ':Buffers<CR>')
 ----------------------------------------
 
 nmap('<C-s>', ':w<CR>')
+nmap('Q', '<nop>')
