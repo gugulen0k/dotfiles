@@ -34,8 +34,6 @@ cmp.setup({
     { name = 'luasnip' },
     { name = 'spell' },
     { name = 'buffer' },
-    { name = 'cmdline' },
-    { name = 'calc' },
     { name = 'path' },
   })
 })

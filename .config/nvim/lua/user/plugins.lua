@@ -40,15 +40,10 @@ return packer.startup(function(use)
   use "christoomey/vim-tmux-navigator"
 
   -- Cosmetical plugins (with themes)
-  use({ 'rose-pine/neovim', as = 'rose-pine' })
   use "folke/tokyonight.nvim"
-  use { 'mrshmllow/document-color.nvim', config = function()
-      require("document-color").setup {
-        -- Default options
-        mode = "background", -- "background" | "foreground" | "single"
-      }
-    end
-  }
+  use { "rose-pine/neovim", as = "rose-pine" }
+  use { "catppuccin/nvim", as = "catppuccin" }
+  use "brenoprata10/nvim-highlight-colors"
 
   -- IDE plugins
   use {

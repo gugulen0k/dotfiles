@@ -62,9 +62,6 @@ require('mason-lspconfig').setup_handlers({
 
       opts.desc = 'Show documentation for what is under the cursor'
       keymap.set('n', 'K', vim.lsp.buf.hover, opts)
-
-      opts.desc = 'Show current buffer diagnostics'
-      keymap.set('n', '<C-l>', vim.diagnostic.open_float, opts)
     end
 
     if server == 'lua_ls' then

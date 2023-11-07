@@ -9,7 +9,7 @@ export PATH=$HOME/Applications/Postgres.app/Contents/Versions/latest/bin:$PATH
 
 export EDITOR='nvim'
 
-ZSH_THEME="gugulenok-dark"
+ZSH_THEME="gugulenok-dark-catppuccin"
 
 # Which plugins would you like to load?
 # Standard plugins can be found in $ZSH/plugins/
@@ -42,6 +42,8 @@ alias dup="docker compose up"
 alias ddown="docker compose down"
 alias dexec="docker exec -it"
 alias dbuild="docker compose build"
+alias drun="docker compose run"
+alias dps="docker compose ps"
 
 # Git aliases
 alias gaa="git add ."
