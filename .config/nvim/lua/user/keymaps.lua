@@ -17,10 +17,10 @@ map('', '<leader>q', ':NvimTreeToggle<CR>') -- Toggle filesystem (nvim-tree plug
 map('', '<leader><leader>', ':e #<CR>') -- Switching between last two files
 
 -- Fuzzy finder commands ------------------
-nmap('<C-p>', ':Files<CR>')
-nmap('<leader>f', ':Rg<CR>')
-nmap('<leader>d', ':BTags<CR>')
-nmap('<leader>b', ':Buffers<CR>')
+nmap('<C-p>', ':Files<CR>')       -- Search files
+nmap('<leader>f', ':Rg<CR>')      -- Search across files by text
+nmap('<leader>d', ':BTags<CR>')   -- Shows methods in current buffer
+nmap('<leader>b', ':Buffers<CR>') -- Search inside opened buffers
 ----------------------------------------
 
 nmap('<C-s>', ':w<CR>')

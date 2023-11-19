@@ -12,7 +12,9 @@ require('user.align')
 require('user.splitjoin')
 require('user.dressing')
 require('user.trouble')
+
 require('nvim-highlight-colors').setup {}
+require('ibl').setup()
 --------------------------
 
 -- Changing default vim settings
@@ -36,6 +38,7 @@ opt.cmdheight      = 0
 opt.swapfile       = false
 opt.wrap           = false
 opt.clipboard      = "unnamedplus"
+opt.colorcolumn    = "80"
 
 -- global settings
 glb.loaded_netrw       = 1 -- disable netrw

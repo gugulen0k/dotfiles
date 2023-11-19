@@ -82,7 +82,7 @@ return packer.startup(function(use)
   use "onsails/lspkind.nvim"
   use "nvim-tree/nvim-tree.lua"
   use "nvim-tree/nvim-web-devicons"
-  use "lukas-reineke/indent-blankline.nvim"     -- Indentation guides to all lines
+  use "lukas-reineke/indent-blankline.nvim" -- Indentation guides to all lines
   use "stevearc/dressing.nvim"
   use "junegunn/fzf"
   use "junegunn/fzf.vim"
