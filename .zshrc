@@ -45,7 +45,6 @@ alias dps="docker compose ps"
 
 # Git aliases
 alias gaa="git add ."
-alias gcm="git commit -m"
 alias gs="git status"
 
 # Configuration files aliases
