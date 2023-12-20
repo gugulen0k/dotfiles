@@ -44,6 +44,7 @@ return packer.startup(function(use)
   use { "rose-pine/neovim", as = "rose-pine" }
   use { "catppuccin/nvim", as = "catppuccin" }
   use "brenoprata10/nvim-highlight-colors"
+  use "fladson/vim-kitty"
 
   -- IDE plugins
   use {
