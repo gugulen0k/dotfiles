@@ -1,20 +1,23 @@
--- Configuration lua files
-require('user.plugins')
-require('user.treesitter')
-require('user.themes.catpuccin')
-require('user.keymaps')
-require('user.lualine')
-require('user.nvimtree')
-require('user.lspconfig')
-require('user.cmp')
-require('user.gitsigns')
-require('user.align')
-require('user.splitjoin')
-require('user.dressing')
-require('user.trouble')
+require('gugulenok.core')
+require('gugulenok.lazy')
 
-require('nvim-highlight-colors').setup {}
-require('ibl').setup()
+-- Configuration lua files
+-- require('user.plugins')
+-- require('user.treesitter')
+-- require('user.themes.catpuccin')
+-- require('user.keymaps')
+-- require('user.lualine')
+-- require('user.nvimtree')
+-- require('user.lspconfig')
+-- require('user.cmp')
+-- require('user.gitsigns')
+-- require('user.align')
+-- require('user.splitjoin')
+-- require('user.dressing')
+-- require('user.trouble')
+
+-- require('nvim-highlight-colors').setup {}
+-- require('ibl').setup()
 --------------------------
 
 -- Changing default vim settings
@@ -38,7 +41,7 @@ opt.cmdheight      = 0
 opt.swapfile       = false
 opt.wrap           = false
 opt.clipboard      = "unnamedplus"
-opt.colorcolumn    = "80"
+opt.colorcolumn    = "120"
 
 -- global settings
 glb.loaded_netrw       = 1 -- disable netrw
