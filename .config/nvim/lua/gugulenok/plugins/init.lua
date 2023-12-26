@@ -8,7 +8,6 @@ return {
   "tpope/vim-commentary",
   "tpope/vim-endwise",
   "tpope/vim-repeat",
-  "lukas-reineke/indent-blankline.nvim", -- Indentation guides to all lines
   "vim-ruby/vim-ruby",
   "kchmck/vim-coffee-script"
 }
