@@ -2,12 +2,11 @@
 export ZSH="$HOME/.oh-my-zsh"
 
 # Path to homebrew
-export PATH="/usr/local/bin:$PATH"
-export PATH="/opt/homebrew/opt/libpq/bin:$PATH"
+export PATH="$HOME/homebrew/bin:$PATH"
+export PATH="${PATH}:/Users/chirilterzi/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
 
 export EDITOR='nvim'
-
-ZSH_THEME="gugulenok-dark-catppuccin"
+export THOR_MERGE='nvim -d'
 
 # Which plugins would you like to load?
 # Standard plugins can be found in $ZSH/plugins/
@@ -29,6 +28,7 @@ plugins=(
 
 # Open tmux on startup, requires tmux plugin
 ZSH_TMUX_AUTOSTART=true
+ZSH_THEME="gugulenok-dark-catppuccin"
 
 # Different aliases
 alias c="clear"
@@ -57,6 +57,7 @@ alias alacrittyrc="nvim ~/.config/alacritty/alacritty.yml"
 
 source $ZSH/oh-my-zsh.sh
 source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+source /Users/chirilterzi/.docker/init-zsh.sh || true # Added by Docker Desktop
 
 if command -v tmux &> /dev/null && [ -z "$TMUX" ]; then
         tmux attach -t default || tmux new -s default

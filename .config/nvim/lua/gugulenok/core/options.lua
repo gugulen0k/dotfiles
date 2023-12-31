@@ -41,7 +41,7 @@ opt.splitbelow = true -- split horizontal window to the bottom
 -- turn off swapfile
 opt.swapfile = false
 
-opt.colorcolumn = "120"
+opt.colorcolumn = "80"
 
 -- disable default status line
 opt.cmdheight = 0
