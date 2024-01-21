@@ -57,7 +57,6 @@ alias alacrittyrc="nvim ~/.config/alacritty/alacritty.yml"
 
 source $ZSH/oh-my-zsh.sh
 source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
-source /Users/chirilterzi/.docker/init-zsh.sh || true # Added by Docker Desktop
 
 if command -v tmux &> /dev/null && [ -z "$TMUX" ]; then
         tmux attach -t default || tmux new -s default

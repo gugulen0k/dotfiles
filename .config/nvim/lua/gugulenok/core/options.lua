@@ -41,7 +41,10 @@ opt.splitbelow = true -- split horizontal window to the bottom
 -- turn off swapfile
 opt.swapfile = false
 
-opt.colorcolumn = "80"
+-- Enable specific options for Ruby files
+vim.api.nvim_exec([[
+  autocmd FileType ruby setlocal colorcolumn=80
+]], false)
 
 -- disable default status line
 opt.cmdheight = 0
