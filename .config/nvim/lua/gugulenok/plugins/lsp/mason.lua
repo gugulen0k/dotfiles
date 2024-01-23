@@ -28,17 +28,14 @@ return {
       -- list of servers for mason to install
       ensure_installed = {
         "solargraph",
-        "quick_lint_js",
-        "yamlls",
-        "tsserver",
+        "rubocop",
         "html",
         "cssls",
-        "ruby_ls",
-        "rubocop",
         "tailwindcss",
-        "lua_ls",
-        "emmet_ls",
+        "quick_lint_js",
         "pyright",
+        "yamlls",
+        "lua_ls",
       },
       -- auto-install configured servers (with lspconfig)
       automatic_installation = true, -- not the same as ensure_installed
@@ -47,7 +44,7 @@ return {
     mason_tool_installer.setup({
       ensure_installed = {
         "pylint", -- python linter
-        "eslint_d", -- js linter
+        "quick_lint_js", -- js linter
       },
     })
   end,

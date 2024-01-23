@@ -28,12 +28,6 @@ return {
       opts.desc = "Show LSP definitions"
       keymap.set("n", "gd", "<cmd>FzfLua lsp_definitions<CR>", opts) -- show lsp definitions
 
-      opts.desc = "Show LSP implementations"
-      keymap.set("n", "gi", "<cmd>FzfLua lsp_implementations<CR>", opts) -- show lsp implementations
-
-      opts.desc = "Show LSP type definitions"
-      keymap.set("n", "gt", "<cmd>FzfLua lsp_type_definitions<CR>", opts) -- show lsp type definitions
-
       opts.desc = "Show buffer diagnostics"
       keymap.set("n", "<leader>bd", "<cmd>FzfLua diagnostics_document bufnr=0<CR>", opts) -- show  diagnostics for file
 
