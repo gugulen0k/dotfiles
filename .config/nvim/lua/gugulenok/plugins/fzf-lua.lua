@@ -2,7 +2,14 @@ return {
   "ibhagwan/fzf-lua",
   dependencies = { "nvim-tree/nvim-web-devicons" },
   config = function()
-    require("fzf-lua").setup({"borderless_full"})
+    require("fzf-lua").setup({
+      "borderless_full",
+      winopts = {
+        preview = {
+          layout = 'vertical'
+        },
+      }
+    })
 
     local keymap = vim.keymap -- for conciseness
     local opts   = { noremap = true, silent = true }

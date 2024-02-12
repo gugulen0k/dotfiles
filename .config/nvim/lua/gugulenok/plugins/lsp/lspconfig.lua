@@ -64,12 +64,6 @@ return {
       on_attach = on_attach,
     })
 
-    -- configure typescript server with plugin
-    lspconfig["tsserver"].setup({
-      capabilities = capabilities,
-      on_attach = on_attach,
-    })
-
     -- configure css server
     lspconfig["cssls"].setup({
       capabilities = capabilities,
@@ -80,12 +74,6 @@ return {
     lspconfig["tailwindcss"].setup({
       capabilities = capabilities,
       on_attach = on_attach,
-    })
-
-    -- configure ruby server
-    lspconfig["ruby_ls"].setup({
-      capabilities = capabilities,
-      on_attach = on_attach
     })
 
     -- configure quick_link_js server
@@ -110,13 +98,6 @@ return {
     lspconfig["solargraph"].setup({
       capabilities = capabilities,
       on_attach = on_attach
-    })
-
-    -- configure emmet language server
-    lspconfig["emmet_ls"].setup({
-      capabilities = capabilities,
-      on_attach = on_attach,
-      filetypes = { "html", "typescriptreact", "javascriptreact", "css", "sass", "scss", "less", "svelte" },
     })
 
     -- configure python server
