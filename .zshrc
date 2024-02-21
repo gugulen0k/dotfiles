@@ -28,7 +28,7 @@ plugins=(
 
 # Open tmux on startup, requires tmux plugin
 ZSH_TMUX_AUTOSTART=true
-ZSH_THEME="gugulenok-dark-catppuccin"
+ZSH_THEME="gugulenok-light-rose-pine"
 
 # Different aliases
 alias c="clear"
@@ -54,6 +54,7 @@ alias tmuxrc="nvim ~/.tmux.conf"
 alias alacrittyrc="nvim ~/.config/alacritty"
 alias kittyrc="nvim ~/.config/kitty"
 alias alacrittyrc="nvim ~/.config/alacritty/alacritty.yml"
+alias dots="nvim ~/Documents/DotFiles"
 
 source $ZSH/oh-my-zsh.sh
 source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh

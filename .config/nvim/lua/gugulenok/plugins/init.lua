@@ -6,6 +6,7 @@ return {
   "tpope/vim-commentary",
   "tpope/vim-endwise",
   "tpope/vim-repeat",
+  "tpope/vim-scriptease",
   "vim-ruby/vim-ruby",
-  "kchmck/vim-coffee-script"
+  "kchmck/vim-coffee-script",
 }

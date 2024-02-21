@@ -14,6 +14,7 @@ return {
       treesitter.setup({ -- enable syntax highlighting
         highlight = {
           enable = true,
+          additional_vim_regex_highlighting = false
         },
         -- enable indentation
         indent = { enable = true },
@@ -27,6 +28,7 @@ return {
           "markdown",
           "markdown_inline",
           "vue",
+          "ruby",
           "bash",
           "lua",
           "vim",

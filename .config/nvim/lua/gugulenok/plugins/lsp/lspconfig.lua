@@ -100,6 +100,12 @@ return {
       on_attach = on_attach
     })
 
+    -- configure ruby server
+    lspconfig["volar"].setup({
+      capabilities = capabilities,
+      on_attach = on_attach
+    })
+
     -- configure python server
     lspconfig["pyright"].setup({
       capabilities = capabilities,

@@ -1,55 +1,88 @@
 return {
-  "catppuccin/nvim",
-  name = "catppuccin",
-  priority = 1000, -- make sure this loads before any other plugin
+  'rose-pine/neovim',
+  name = 'rose-pine',
+  lazy = false,
+  priority = 1000,
   config = function()
-    require("catppuccin").setup({
-        flavour = "mocha", -- latte, frappe, macchiato, mocha
-        background = { -- :h background
-            light = "latte",
-            dark = "mocha",
-        },
-        transparent_background = false, -- disables setting the background color.
-        show_end_of_buffer = true, -- shows the '~' characters after the end of buffers
-        term_colors = true, -- sets terminal colors (e.g. `g:terminal_color_0`)
-        dim_inactive = {
-            enabled = false, -- dims the background color of inactive window
-            shade = "dark",
-            percentage = 0.15, -- percentage of the shade to apply to the inactive window
-        },
-        no_italic = false, -- Force no italic
-        no_bold = false, -- Force no bold
-        no_underline = false, -- Force no underline
-        styles = { -- Handles the styles of general hi groups (see `:h highlight-args`):
-            comments = { "italic" }, -- Change the style of comments
-            conditionals = { "italic" },
-            loops = {},
-            functions = {},
-            keywords = {},
-            strings = {},
-            variables = {},
-            numbers = {},
-            booleans = {},
-            properties = {},
-            types = {},
-            operators = {},
-        },
-        color_overrides = {},
-        custom_highlights = {},
-        integrations = {
-            cmp = true,
-            gitsigns = true,
-            nvimtree = true,
-            treesitter = true,
-            notify = false,
-            mini = {
-                enabled = true,
-                indentscope_color = "",
-            },
-            -- For more plugins integrations please scroll down (https://github.com/catppuccin/nvim#integrations)
-        },
+    require("rose-pine").setup({
+      variant                          = 'dawn',
+      dark_variant                     = 'main',
+      extend_background_behind_borders = true,
+
+      enable = {
+        terminal          = true,
+        legacy_highlights = true, -- Improve compatibility for previous versions of Neovim
+        migrations        = true, -- Handle deprecated options automatically
+      },
+
+      styles = {
+        bold         = true,
+        italic       = true,
+        transparency = false,
+      },
     })
 
-    vim.cmd.colorscheme "catppuccin"
-  end,
+    vim.opt.background = 'light'
+
+    vim.cmd.colorscheme 'rose-pine-dawn'
+  end
 }
+
+-- return {
+--   "catppuccin/nvim",
+--   name = "catppuccin",
+--   lazy = false,
+--   priority = 1000, -- make sure this loads before any other plugin
+--   config = function()
+--     require("catppuccin").setup({
+--       flavour = "latte", -- latte, frappe, macchiato, mocha
+--       background = { -- :h background
+--         light = "latte",
+--         dark = "mocha",
+--       },
+--       transparent_background = false, -- disables setting the background color.
+--       show_end_of_buffer = true, -- shows the '~' characters after the end of buffers
+--       term_colors = true, -- sets terminal colors (e.g. `g:terminal_color_0`)
+--       no_italic = false, -- Force no italic
+--       no_bold = false, -- Force no bold
+--       no_underline = false, -- Force no underline
+--       styles = { -- Handles the styles of general hi groups (see `:h highlight-args`):
+--           comments = { "italic" }, -- Change the style of comments
+--           conditionals = {},
+--           loops = {},
+--           functions = {},
+--           keywords = {},
+--           strings = {},
+--           variables = {},
+--           numbers = {},
+--           booleans = {},
+--           properties = {},
+--           types = {},
+--           operators = {},
+--       },
+--       integrations = {
+--         cmp = true,
+--         gitsigns = true,
+--         nvimtree = true,
+--         treesitter = true,
+--         mason = true,
+--         mini = {
+--           enabled = true,
+--         },
+--     }
+--     })
+
+--     vim.cmd.colorscheme "catppuccin"
+--   end,
+-- }
+
+-- return {
+--   'savq/melange-nvim',
+--   lazy = false,
+--   priority = 1000,
+--   config = function()
+--     vim.opt.background = 'light'
+--     vim.cmd.colorscheme 'melange'
+--   end
+-- }
+
