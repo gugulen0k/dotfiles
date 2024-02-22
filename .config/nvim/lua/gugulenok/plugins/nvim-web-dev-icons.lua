@@ -2,54 +2,68 @@ return {
   'nvim-tree/nvim-web-devicons',
   config = function()
     require'nvim-web-devicons'.setup {
-      default = true,
-      strict  = true,
+      strict = true,
 
       override_by_extension = {
         ['rb'] = {
-          icon  = '',
-          color = '#C70D3A',
-          name  = 'Ruby'
+          icon = '',
+          name = 'Ruby'
+        },
+        ['lua'] = {
+          icon = '',
+          name = 'Lua'
+        },
+        ['js'] = {
+          icon = '',
+          name = 'JavaScript'
+        },
+        ['py'] = {
+          icon = '󰌠',
+          name = 'Python'
+        },
+        ['jsx'] = {
+          icon = '󰜈',
+          name = 'React'
+        },
+        ['vue'] = {
+          icon = '󰡄',
+          name = 'Vue'
+        },
+        ['json'] = {
+          icon = '',
+          name = 'Json'
         },
         ['txt'] = {
-          icon  = '󰈔',
-          color = '#232D3F',
-          name  = 'Txt'
+          icon = '󰈔',
+          name = 'Txt'
         },
         ['.gitignore'] = {
-          icon  = '󰊢',
-          color = '#232D3F',
-          name  = 'GitIgnore'
+          icon = '󰊢',
+          name = 'GitIgnore'
         },
         ['lock'] = {
-          icon  = '',
-          color = '#232D3F',
-          name  = 'Lock'
+          icon = '',
+          name = 'Lock'
         },
         ['md'] = {
-          icon  = '',
-          color = '#232D3F',
-          name  = 'Markdown'
+          icon = '',
+          name = 'Markdown'
         },
         ['conf'] = {
-          icon  = '',
-          color = '#232D3F',
-          name  = 'Conf'
+          icon = '',
+          name = 'Conf'
         },
         ['.zshrc'] = {
           icon = '',
-          color = '#232D3F',
-          name  = 'Zshrc'
+          name = 'Zshrc'
         },
         ['yml'] = {
-          icon  = '',
-          color = '#232D3F',
-          name  = 'Yml'
+          icon = '',
+          name = 'Yml'
         },
         ['yaml'] = {
-          icon  = '',
-          color = '#232D3F',
-          name  = 'Yaml'
+          icon = '',
+          name = 'Yaml'
         },
       }
     }

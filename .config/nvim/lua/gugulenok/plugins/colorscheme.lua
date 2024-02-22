@@ -20,6 +20,10 @@ return {
         italic       = true,
         transparency = false,
       },
+
+      highlight_groups = {
+        ColorColumn = { fg = 'base', bg = "muted" },
+      },
     })
 
     vim.opt.background = 'light'
