@@ -3,7 +3,7 @@ return {
   dependencies = { "nvim-tree/nvim-web-devicons" },
   config = function()
     require("fzf-lua").setup({
-      "borderless_full",
+      "default",
       winopts = {
         preview = {
           layout = 'vertical'

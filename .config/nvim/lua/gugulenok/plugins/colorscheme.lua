@@ -22,7 +22,7 @@ return {
       },
 
       highlight_groups = {
-        ColorColumn = { fg = 'base', bg = "muted" },
+        ColorColumn = { fg = 'base', bg = 'muted' },
       },
     })
 
