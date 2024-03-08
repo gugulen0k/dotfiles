@@ -42,7 +42,7 @@ opt.swapfile = false
 
 -- Enable specific options for Ruby files
 vim.api.nvim_exec([[
-  autocmd FileType ruby setlocal colorcolumn=80
+  autocmd FileType ruby setlocal colorcolumn=120
 ]], false)
 
 -- disable default status line

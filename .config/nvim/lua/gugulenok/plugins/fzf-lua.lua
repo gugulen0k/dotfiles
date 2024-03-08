@@ -18,12 +18,12 @@ return {
     keymap.set("n", "<C-p>", "<cmd>FzfLua files<CR>", opts)
 
     opts.desc = "Search inside opened buffers"
-    keymap.set("n", "<C-b>", "<cmd>FzfLua buffers<CR>", opts)
+    keymap.set("n", "<leader>l", "<cmd>FzfLua buffers<CR>", opts)
 
     opts.desc = "Search across files by text"
-    keymap.set("n", "<C-f>", "<cmd>FzfLua live_grep_native<CR>", opts)
+    keymap.set("n", "<leader>f", "<cmd>FzfLua live_grep_native<CR>", opts)
 
     opts.desc = "Show methods in current buffer"
-    keymap.set("n", "<C-t>", "<cmd>FzfLua btags<CR>", opts)
+    keymap.set("n", "<leader>t", "<cmd>FzfLua btags<CR>", opts)
   end
 }
