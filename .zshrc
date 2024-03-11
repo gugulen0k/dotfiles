@@ -53,7 +53,7 @@ alias zshrc="nvim ~/.zshrc"
 alias tmuxrc="nvim ~/.tmux.conf"
 alias alacrittyrc="nvim ~/.config/alacritty"
 alias kittyrc="nvim ~/.config/kitty"
-alias alacrittyrc="nvim ~/.config/alacritty/alacritty.yml"
+alias alacrittyrc="nvim ~/.config/alacritty/alacritty.toml"
 alias dots="nvim ~/Documents/DotFiles"
 
 source $ZSH/oh-my-zsh.sh
