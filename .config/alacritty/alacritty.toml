@@ -1,17 +1,17 @@
-import = ["/Users/gugulenok/.config/alacritty/rose-pine/rose-pine-dawn.toml"]
+import = ["~/.config/alacritty/rose-pine/rose-pine-dawn.toml"]
 
 [env]
 TERM = "xterm-256color"
 
 [font]
-size = 19.0
+size = 16.0
 
 [font.normal]
-family = "FantasqueSansM Nerd Font"
+family = "GeistMono Nerd Font"
 
 [font.offset]
-x = 0
-y = 5
+# x = 0
+# y = 5
 
 [[keyboard.bindings]]
 chars = "\u001BF"
@@ -33,5 +33,5 @@ columns = 130
 lines = 40
 
 [window.padding]
-x = 5
-y = 2
+# x = 5
+# y = 2

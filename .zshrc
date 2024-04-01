@@ -1,10 +1,6 @@
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
 
-# Path to homebrew
-export PATH="$HOME/homebrew/bin:$PATH"
-export PATH="${PATH}:/Users/chirilterzi/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
-
 export EDITOR='nvim'
 export THOR_MERGE='nvim -d'
 
@@ -33,7 +29,6 @@ ZSH_THEME="gugulenok-light-rose-pine"
 # Different aliases
 alias c="clear"
 alias mux="tmuxinator"
-alias ctags="`brew --prefix`/bin/ctags"
 
 # Docker aliases
 alias dup="docker compose up"
@@ -53,11 +48,9 @@ alias zshrc="nvim ~/.zshrc"
 alias tmuxrc="nvim ~/.tmux.conf"
 alias alacrittyrc="nvim ~/.config/alacritty"
 alias kittyrc="nvim ~/.config/kitty"
-alias alacrittyrc="nvim ~/.config/alacritty/alacritty.toml"
 alias dots="nvim ~/Documents/DotFiles"
 
 source $ZSH/oh-my-zsh.sh
-source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 if command -v tmux &> /dev/null && [ -z "$TMUX" ]; then
         tmux attach -t default || tmux new -s default
