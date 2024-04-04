@@ -109,7 +109,14 @@ return {
     -- configure python server
     lspconfig["pyright"].setup({
       capabilities = capabilities,
+      on_attach = on_attach
+    })
+
+    -- configure rust server
+    lspconfig["rust_analyzer"].setup({
+      capabilities = capabilities,
       on_attach = on_attach,
+      cmd = { "rustup", "run", "stable", "rust-analyzer" }
     })
 
     -- configure lua server (with special settings)
