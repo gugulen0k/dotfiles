@@ -52,7 +52,10 @@ return {
               unnamed  = '[No Name]', -- Text to show for unnamed buffers.
               newfile  = '[New]',     -- Text to show for newly created file before first write
             }
-          }
+          },
+          function()
+            return require('lsp-progress').progress()
+          end,
         },
         lualine_x = {'filetype'},
         lualine_y = {
@@ -74,5 +77,12 @@ return {
       inactive_winbar = {},
       extensions      = {}
     }
+
+    vim.api.nvim_create_augroup("lualine_augroup", { clear = true })
+    vim.api.nvim_create_autocmd("User", {
+      group = "lualine_augroup",
+      pattern = "LspProgressStatusUpdated",
+      callback = require("lualine").refresh,
+    })
   end
 }
