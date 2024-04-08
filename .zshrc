@@ -58,6 +58,7 @@ alias dots="nvim ~/Documents/DotFiles"
 
 source $ZSH/oh-my-zsh.sh
 source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+source $HOME/.cargo/env
 
 if command -v tmux &> /dev/null && [ -z "$TMUX" ]; then
         tmux attach -t default || tmux new -s default

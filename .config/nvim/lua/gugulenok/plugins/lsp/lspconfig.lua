@@ -109,7 +109,7 @@ return {
     -- configure python server
     lspconfig["pyright"].setup({
       capabilities = capabilities,
-      on_attach = on_attach,
+      on_attach = on_attach
     })
 
     -- configure lua server (with special settings)
