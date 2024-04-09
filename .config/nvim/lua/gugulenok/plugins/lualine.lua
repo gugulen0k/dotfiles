@@ -4,6 +4,15 @@ return {
     "nvim-tree/nvim-web-devicons"
   },
   config = function()
+    local function show_macro_recording()
+        local recording_register = vim.fn.reg_recording()
+        if recording_register == "" then
+            return ""
+        else
+            return "Recording @" .. recording_register
+        end
+    end
+
     require('lualine').setup {
       options = {
         icons_enabled        = true,
@@ -26,32 +35,36 @@ return {
       sections = {
         lualine_a = {},
         lualine_b = {
-            {'branch', icon = ''},
-            {
-              'diff',
-              colored = true,
-              symbols = {added = '+', modified = '~', removed = '-'}
-            },
-            {
-              'diagnostics',
-              sections         = {'error', 'warn'},
-              symbols          = {error = ' ', warn = ' '},
-              colored          = true,                       -- Displays diagnostics status in color if set to true.
-              update_in_insert = false                       -- Update diagnostics in insert mode.
-            }
+          { 'branch', icon = '' },
+          {
+            'diff',
+            colored = true,
+            symbols = {added = '+', modified = '~', removed = '-'}
+          },
+          {
+            'diagnostics',
+            sections         = {'error', 'warn'},
+            symbols          = {error = ' ', warn = ' '},
+            colored          = true,                       -- Displays diagnostics status in color if set to true.
+            update_in_insert = false                       -- Update diagnostics in insert mode.
+          }
         },
         lualine_c = {
           {
             'filename',
             file_status    = true,  -- Displays file status (readonly status, modified status)
             newfile_status = false, -- Display new file status (new file means no write after created)
-            path           = 1,
+            -- path           = 1,     -- Displays full file path
             symbols = {
               modified = '',       -- Text to show when the file is modified.
               readonly = '',       -- Text to show when the file is non-modifiable or readonly.
               unnamed  = '[No Name]', -- Text to show for unnamed buffers.
               newfile  = '[New]',     -- Text to show for newly created file before first write
             }
+          },
+          {
+            'macro-recording',
+            fmt = show_macro_recording,
           },
           function()
             return require('lsp-progress').progress()

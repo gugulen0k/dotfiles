@@ -44,6 +44,7 @@ return {
         { name = "luasnip" }, -- luasnip snippets
         { name = "buffer" }, -- text within current buffer
         { name = "path" }, -- file system paths
+        { name = "crates" } -- for Rust package manager
       }),
 
       -- configure lspkind for vs-code like pictograms in completion menu

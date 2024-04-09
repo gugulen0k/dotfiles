@@ -17,6 +17,10 @@ return {
           icon = '',
           name = 'JavaScript'
         },
+        ['rs'] = {
+          icon = '󱘗',
+          name = 'Rust'
+        },
         ['py'] = {
           icon = '󰌠',
           name = 'Python'
