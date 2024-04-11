@@ -65,6 +65,10 @@ return {
           icon = '',
           name = 'Yaml'
         },
+        ['toml'] = {
+          icon = '',
+          name = 'Toml'
+        },
       }
     }
   end

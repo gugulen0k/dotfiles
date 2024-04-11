@@ -5,6 +5,7 @@ return {
     require("fzf-lua").setup({
       "default",
       winopts = {
+        border = 'single',
         preview = {
           layout = 'vertical'
         },

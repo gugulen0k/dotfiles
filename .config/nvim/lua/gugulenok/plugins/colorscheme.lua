@@ -7,7 +7,7 @@ return {
     require("rose-pine").setup({
       variant                          = 'dawn',
       dark_variant                     = 'main',
-      extend_background_behind_borders = true,
+      extend_background_behind_borders = false,
 
       enable = {
         terminal          = true,
@@ -23,12 +23,13 @@ return {
 
       highlight_groups = {
         ColorColumn = { fg = 'base', bg = 'muted' },
+        FloatBorder = { bg = 'NONE' }
       },
     })
 
     vim.opt.background = 'light'
 
-    vim.cmd.colorscheme 'rose-pine-dawn'
+    vim.cmd.colorscheme 'rose-pine'
   end
 }
 

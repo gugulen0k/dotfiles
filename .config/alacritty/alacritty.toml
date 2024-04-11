@@ -1,4 +1,4 @@
-import = ["/Users/gugulenok/.config/alacritty/rose-pine/rose-pine-dawn.toml"]
+import = ["~/.config/alacritty/rose-pine/rose-pine-dawn.toml"]
 
 [env]
 TERM = "xterm-256color"
@@ -7,11 +7,24 @@ TERM = "xterm-256color"
 size = 18.0
 
 [font.normal]
-family = "GeistMono Nerd Font"
+family = "JetBrainsMono Nerd Font"
+style = "Regular"
+
+[font.bold]
+family = "JetBrainsMono Nerd Font"
+style = "Bold"
+
+[font.italic]
+family = "JetBrainsMono Nerd Font"
+style = "Italic"
+
+[font.bold_italic]
+family = "JetBrainsMono Nerd Font"
+style = "Bold Italic"
 
 [font.offset]
 # x = 0
-# y = 5
+# y = -5
 
 [[keyboard.bindings]]
 chars = "\u001BF"
@@ -31,7 +44,3 @@ startup_mode = "Maximized"
 [window.dimensions]
 columns = 130
 lines = 40
-
-[window.padding]
-x = 5
-y = 2
