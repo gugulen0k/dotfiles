@@ -1,50 +1,31 @@
 return {
   "neovim/nvim-lspconfig",
+  lazy = false,
   event = { "BufReadPre", "BufNewFile" },
   dependencies = {
     "hrsh7th/cmp-nvim-lsp",
     { "antosha417/nvim-lsp-file-operations", config = true },
+    "williamboman/mason.nvim", -- add Mason plugin
+    "williamboman/mason-lspconfig.nvim", -- bridge between Mason and lspconfig
   },
   config = function()
-    -- import lspconfig plugin
-    local lspconfig = require("lspconfig")
-
-    -- import cmp-nvim-lsp plugin
-    local cmp_nvim_lsp = require("cmp_nvim_lsp")
-
-    local keymap = vim.keymap -- for conciseness
+    local utils        = require("gugulenok.utils")
+    local lspconfig    = require("lspconfig")    -- import lspconfig plugin
+    local cmp_nvim_lsp = require("cmp_nvim_lsp") -- import cmp-nvim-lsp plugin
 
     local opts = { noremap = true, silent = true }
     local on_attach = function(_, bufnr)
       opts.buffer = bufnr
 
       -- set keybinds
-      opts.desc = "Show LSP references"
-      keymap.set("n", "gR", "<cmd>FzfLua lsp_references<CR>", opts) -- show definition, references
-
-      opts.desc = "Go to declaration"
-      keymap.set("n", "gD", vim.lsp.buf.declaration, opts) -- go to declaration
-
-      opts.desc = "Show LSP definitions"
-      keymap.set("n", "gd", "<cmd>FzfLua lsp_definitions<CR>", opts) -- show lsp definitions
-
       opts.desc = "Show buffer diagnostics"
-      keymap.set("n", "<leader>bd", "<cmd>FzfLua diagnostics_document bufnr=0<CR>", opts) -- show  diagnostics for file
+      utils.map("n", "<leader>bd", "<cmd>FzfLua diagnostics_document bufnr=0<CR>", opts) -- show diagnostics for file
 
       opts.desc = "Show line diagnostics"
-      keymap.set("n", "<leader>d", vim.diagnostic.open_float, opts) -- show diagnostics for line
-
-      opts.desc = "Go to previous diagnostic"
-      keymap.set("n", "[d", vim.diagnostic.goto_prev, opts) -- jump to previous diagnostic in buffer
-
-      opts.desc = "Go to next diagnostic"
-      keymap.set("n", "]d", vim.diagnostic.goto_next, opts) -- jump to next diagnostic in buffer
-
-      opts.desc = "Show documentation for what is under cursor"
-      keymap.set("n", "K", vim.lsp.buf.hover, opts) -- show documentation for what is under cursor
+      utils.map("n", "<leader>d", vim.diagnostic.open_float, opts) -- show diagnostics for line
 
       opts.desc = "Restart LSP"
-      keymap.set("n", "<leader>rs", ":LspRestart<CR>", opts) -- mapping to restart lsp if necessary
+      utils.map("n", "<leader>rs", ":LspRestart<CR>", opts) -- mapping to restart lsp if necessary
     end
 
     -- used to enable autocompletion (assign to every lsp server config)
@@ -57,79 +38,45 @@ return {
       vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
     end
 
-    -- configure html server
-    lspconfig["html"].setup({
-      capabilities = capabilities,
-      on_attach = on_attach,
-    })
+    -- Change floating window border for lsp
+    local orig_util_open_floating_preview = vim.lsp.util.open_floating_preview
+    function vim.lsp.util.open_floating_preview(contents, syntax, config, ...)
+      config = config or {}
+      config.border = "single" or opts.border
+      config.bg = "NONE"
 
-    -- configure css server
-    lspconfig["cssls"].setup({
-      capabilities = capabilities,
-      on_attach = on_attach,
-    })
+      return orig_util_open_floating_preview(contents, syntax, config, ...)
+    end
 
-    -- configure tailwindcss server
-    lspconfig["tailwindcss"].setup({
-      capabilities = capabilities,
-      on_attach = on_attach,
-    })
-
-    -- configure quick_link_js server
-    lspconfig["quick_lint_js"].setup({
-      capabilities = capabilities,
-      on_attach = on_attach
-    })
-
-    -- configure yamlls server
-    lspconfig["yamlls"].setup({
-      capabilities = capabilities,
-      on_attach = on_attach
-    })
-
-    -- configure rubocop server
-    lspconfig["rubocop"].setup({
-      capabilities = capabilities,
-      on_attach = on_attach
-    })
-
-    -- configure ruby server
-    lspconfig["solargraph"].setup({
-      capabilities = capabilities,
-      on_attach = on_attach
-    })
-
-    -- configure ruby server
-    lspconfig["volar"].setup({
-      capabilities = capabilities,
-      on_attach = on_attach
-    })
-
-    -- configure python server
-    lspconfig["pyright"].setup({
-      capabilities = capabilities,
-      on_attach = on_attach
-    })
-
-    -- configure lua server (with special settings)
-    lspconfig["lua_ls"].setup({
-      capabilities = capabilities,
-      on_attach = on_attach,
-      settings = { -- custom settings for lua
-        Lua = {
-          -- make the language server recognize "vim" global
-          diagnostics = {
-            globals = { "vim" },
-          },
-          workspace = {
-            -- make language server aware of runtime files
-            library = {
-              [vim.fn.expand("$VIMRUNTIME/lua")] = true,
-              [vim.fn.stdpath("config") .. "/lua"] = true,
+    -- configure servers using Mason
+    require("mason-lspconfig").setup_handlers({
+      function(server_name)
+        lspconfig[server_name].setup({
+          capabilities = capabilities,
+          on_attach = on_attach,
+        })
+      end,
+      ["lua_ls"] = function()
+        lspconfig.lua_ls.setup({
+          capabilities = capabilities,
+          on_attach = on_attach,
+          settings = { -- custom settings for lua
+            Lua = {
+              -- make the language server recognize "vim" global
+              diagnostics = {
+                globals = { "vim" },
+              },
+              workspace = {
+                -- make language server aware of runtime files
+                library = {
+                  [vim.fn.expand("$VIMRUNTIME/lua")] = true,
+                  [vim.fn.stdpath("config") .. "/lua"] = true,
+                },
+              },
             },
           },
-        },
-      },
+        })
+      end,
     })
   end,
 }

@@ -19,8 +19,10 @@ plugins=(
   colored-man-pages
   colorize
   tmux
+  zsh-autosuggestions
 )
 
+bindkey '^ ' autosuggest-accept
 
 # Open tmux on startup, requires tmux plugin
 ZSH_TMUX_AUTOSTART=true

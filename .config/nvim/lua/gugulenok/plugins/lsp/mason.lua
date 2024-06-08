@@ -27,8 +27,6 @@ return {
     mason_lspconfig.setup({
       -- list of servers for mason to install
       ensure_installed = {
-        "solargraph",
-        "rubocop",
         "html",
         "cssls",
         "tailwindcss",
@@ -36,7 +34,8 @@ return {
         "pyright",
         "yamlls",
         "lua_ls",
-        "rust_analyzer"
+        "rust_analyzer",
+        "volar"
       },
       -- auto-install configured servers (with lspconfig)
       automatic_installation = true, -- not the same as ensure_installed

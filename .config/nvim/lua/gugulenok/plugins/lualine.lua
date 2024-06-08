@@ -33,9 +33,13 @@ return {
         }
       },
       sections = {
-        lualine_a = {},
+        lualine_a = {
+          {
+            'mode',
+            fmt = function(str) return str:sub(1,1) end
+          }
+        },
         lualine_b = {
-          { 'branch', icon = '' },
           {
             'diff',
             colored = true,
@@ -75,7 +79,9 @@ return {
           {'progress'},
           {'searchcount'}
         },
-        lualine_z = {'mode'}
+        lualine_z = {
+          { 'branch', icon = '' },
+        }
       },
       inactive_sections = {
         lualine_a = {},
