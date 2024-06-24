@@ -27,6 +27,7 @@ return {
           "css",
           "markdown",
           "markdown_inline",
+          "python",
           "vue",
           "ruby",
           "bash",

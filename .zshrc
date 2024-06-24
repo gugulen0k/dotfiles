@@ -32,8 +32,8 @@ ZSH_THEME="gugulenok-light-rose-pine"
 
 # Different aliases
 alias c="clear"
-alias mux="tmuxinator"
 alias ctags="`brew --prefix`/bin/ctags"
+alias pyactivate="source ~/venv/bin/activate"
 
 # Docker aliases
 alias dup="docker compose up"

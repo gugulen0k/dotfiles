@@ -23,7 +23,7 @@ return {
 
       highlight_groups = {
         ColorColumn = { fg = 'base', bg = 'muted' },
-        FloatBorder = { bg = 'NONE' }
+        NormalFloat = { bg= 'NONE' },
       },
     })
 

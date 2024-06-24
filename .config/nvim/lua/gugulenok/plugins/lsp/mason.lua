@@ -36,7 +36,8 @@ return {
         "pyright",
         "yamlls",
         "lua_ls",
-        "rust_analyzer"
+        "rust_analyzer",
+        "ruff"
       },
       -- auto-install configured servers (with lspconfig)
       automatic_installation = true, -- not the same as ensure_installed
@@ -44,7 +45,9 @@ return {
 
     mason_tool_installer.setup({
       ensure_installed = {
-        "pylint", -- python linter
+        "mypy",          -- python linter
+        "black",         -- python formatter
+        "isort",         -- python import formatter
         "quick_lint_js", -- js linter
       },
     })

@@ -1,4 +1,5 @@
-local opt = vim.opt -- for conciseness
+local opt = vim.opt
+local glb = vim.g
 
 -- line numbers
 opt.relativenumber = true -- show relative line numbers
@@ -47,3 +48,6 @@ vim.api.nvim_exec([[
 
 -- disable default status line
 opt.cmdheight = 0
+
+glb.ruby_host_prog = '~/.rbenv/versions/3.3.0/bin/neovim-ruby-host'
+glb.python3_host_prog = '~/venv/bin/python'
