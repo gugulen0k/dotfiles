@@ -30,8 +30,5 @@ return {
 
     opts.desc = "Show methods in current buffer"
     utils.map("n", "<leader>t", "<cmd>FzfLua btags<CR>", opts)
-
-    opts.desc = "Show code actions"
-    utils.map("n", "<leader>a", "<cmd>FzfLua lsp_code_actions<CR>", opts)
   end
 }

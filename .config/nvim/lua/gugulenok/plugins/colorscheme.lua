@@ -1,37 +1,68 @@
 return {
-  'rose-pine/neovim',
-  name = 'rose-pine',
+  'sainnhe/gruvbox-material',
   lazy = false,
   priority = 1000,
   config = function()
-    require("rose-pine").setup({
-      variant                          = 'dawn',
-      dark_variant                     = 'main',
-      extend_background_behind_borders = false,
+    local glb = vim.g
 
-      enable = {
-        terminal          = true,
-        legacy_highlights = true, -- Improve compatibility for previous versions of Neovim
-        migrations        = true, -- Handle deprecated options automatically
-      },
-
-      styles = {
-        bold         = true,
-        italic       = true,
-        transparency = false,
-      },
-
-      highlight_groups = {
-        ColorColumn = { fg = 'base', bg = 'muted' },
-        NormalFloat = { bg= 'NONE' },
-      },
-    })
+    -- vim.api.nvim_set_hl(0, 'FloatBorder', { bg = 'NONE' })
 
     vim.opt.background = 'light'
+    glb.gruvbox_material_enable_italic = true
+    glb.gruvbox_material_enable_bold = true
+    glb.gruvbox_material_ui_contrast = 'high'
 
-    vim.cmd.colorscheme 'rose-pine'
+    vim.api.nvim_create_autocmd('ColorScheme', {
+      group = vim.api.nvim_create_augroup('custom_highlights_gruvboxmaterial', {}),
+      pattern = 'gruvbox-material',
+      callback = function()
+        local config = vim.fn['gruvbox_material#get_configuration']()
+        local palette = vim.fn['gruvbox_material#get_palette'](config.background, config.foreground, config.colors_override)
+        local set_hl = vim.fn['gruvbox_material#highlight']
+
+        set_hl('FloatBorder', palette.none, palette.none)
+        set_hl('NormalFloat', palette.none, palette.none)
+      end
+    })
+
+    vim.cmd.colorscheme('gruvbox-material')
   end
 }
+
+-- return {
+--   'rose-pine/neovim',
+--   name = 'rose-pine',
+--   lazy = false,
+--   priority = 1000,
+--   config = function()
+--     require("rose-pine").setup({
+--       variant                          = 'dawn',
+--       dark_variant                     = 'main',
+--       extend_background_behind_borders = false,
+--
+--       enable = {
+--         terminal          = true,
+--         legacy_highlights = true, -- Improve compatibility for previous versions of Neovim
+--         migrations        = true, -- Handle deprecated options automatically
+--       },
+--
+--       styles = {
+--         bold         = true,
+--         italic       = true,
+--         transparency = false,
+--       },
+--
+--       highlight_groups = {
+--         ColorColumn = { fg = 'base', bg = 'muted' },
+--         NormalFloat = { bg= 'NONE' },
+--       },
+--     })
+--
+--     vim.opt.background = 'dark'
+--
+--     vim.cmd.colorscheme 'rose-pine'
+--   end
+-- }
 
 -- return {
 --   "catppuccin/nvim",

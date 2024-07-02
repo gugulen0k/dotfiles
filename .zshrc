@@ -22,11 +22,9 @@ plugins=(
   zsh-autosuggestions
 )
 
-bindkey '^ ' autosuggest-accept
-
 # Open tmux on startup, requires tmux plugin
 ZSH_TMUX_AUTOSTART=true
-ZSH_THEME="gugulenok-light-rose-pine"
+ZSH_THEME="gugulenok-light-gruvbox-material"
 
 # Different aliases
 alias c="clear"

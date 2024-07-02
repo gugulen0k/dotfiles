@@ -56,6 +56,30 @@ return {
           on_attach = on_attach,
         })
       end,
+      ["solargraph"] = function()
+        lspconfig.solargraph.setup({
+          capabilities = capabilities,
+          on_attach = on_attach,
+          cmd = { "solargraph", "stdio" },
+          filetypes = { "ruby" },
+          root_dir = lspconfig.util.root_pattern("Gemfile", ".git"),
+          settings = {
+            solargraph = {
+              diagnostics = true,
+              completion = {
+                enable = true,
+                triggerCharacters = { ".", ":", "::" },
+                debounce = 100,
+                maxItems = 100
+              },
+              hover = {
+                enable = true,
+                delay = 100
+              }
+            }
+          },
+        })
+      end,
       ["lua_ls"] = function()
         lspconfig.lua_ls.setup({
           capabilities = capabilities,

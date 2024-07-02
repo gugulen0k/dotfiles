@@ -10,20 +10,22 @@ return {
     vim.g.loaded_netrwPlugin = 1
 
     nvimtree.setup {
+      live_filter = {
+        prefix = " ",
+        always_show_folders = false,
+      },
       update_focused_file = {
         enable = true,
         update_root = true,
       },
-
       modified = {
         enable = true,
       },
-
       view = {
         side           = 'right',
         number         = true,
         relativenumber = true,
-        width          = 45
+        width          = 40
       },
       renderer = {
         full_name              = true,
@@ -41,7 +43,6 @@ return {
             none   = " ",
           },
         },
-
         icons = {
           glyphs = {
             default = '󰈔',
@@ -56,7 +57,6 @@ return {
               symlink = "",
               symlink_open = "",
             },
-
             git = {
               unstaged = "󰰨",
               staged = "󰰢",
