@@ -1,49 +1,24 @@
-# Alacritty + NeoVim + tmux config files
+# Alacritty + NeoVim + ZSH + tmux config files
 
-### Requirements
+### # Requirements
 
-* **ctags**:
-	* MacOS: `brew install ctags`
-	* Linux: *install depending on linux distributive*
 * **rubytags**:
-	1. Install **GPG** `brew install gnupg`
-	2. Install **RVM - Ruby Version Manager** ( more info [here](https://rvm.io/rvm/install) )
-	3. Select Ruby version `3.0.0`
-		* Check if current version is `3.0.0` and if it's not, use `rvm use default ruby-3.0.0`
-	4. Install **ripper-tags** ( more info [here](https://rubygems.org/gems/ripper-tags) ) `gem install ripper-tags`
-	
+	* Install **GPG**
+	* Install **RVM - Ruby Version Manager** ( more info [here](https://rvm.io/rvm/install) )
+	* Select prefered Ruby version
+	* Install **ripper-tags** ( more info [here](https://rubygems.org/gems/ripper-tags) ) `gem install ripper-tags`
 	> ripper-tags are used for better search specifically in ruby files
-* **ripgrep** ( more info [here](https://github.com/BurntSushi/ripgrep#installation) ):
-	* MacOS: `brew install ripgrep`
-* **Fantasque Sans Mono** fonts:
-	* Install different types of font from `FantsqueSansMono` folder
+* **ripgrep** ( more info  ): Find the way how to download ripgrep for each OS [here](https://github.com/BurntSushi/ripgrep#installation)
+* **Fantasque Sans Mono** fonts: Install different types of font from `FantsqueSansMono` folder
 
-After installing all requirements open neovim and run `:PlugInstall` command.
-
-### Creating symlinks(symbolic links) for configuration files
+### # Creating symlinks(symbolic links) for configuration files
 
 > ⚠️ **Warning!**
-> If you already have your configuration files and/or `.config` folder, make sure that you copied/moved your files somewhere else from home directory, because this script will overwrite all of this files.
+> If you already have your configuration files and/or `.config` folder, make sure that you copied/moved your files somewhere else from home directory, this way you won't lose your current configuration.
 
-1. To make things easier clone this repository to `Documents` folder and do not move or delete this folder otherwise nothing will work.
-2. Go inside `DotFiles` folder:
-	* run installing script (*just type this in terminal* `./install.sh`)
-	
-	>  **OR**
-	
-	* create symlinks manually for:
-		* `.config` directory - `ln -s <absolute-path-to-folder-with-config-files>/.config ~/`
-		* `.zshenv` file - `ln -s <absolute-path-to-folder-with-config-files>/.zshenv ~/.zshenv`
-		* `.zshrc` file - `ln -s <absolute-path-to-folder-with-config-files>/.zshrc ~/.zshrc`
-		* `.tmux.conf` file - `ln -s <absolute-path-to-folder-with-config-files>/.tmux.conf ~/.tmux.conf`
-	
-	> ⚠️ **Warning!**
-	>  If any of these files already exist, just add the `-f` flag in the `ln` command. It will overwrite existing files. Should look something like this: `ln -sf <path to the file/folder to be linked> <the path of the link to be created>`
+Command to create symbolic links for Linux & MacOS: `ln -s <absolute/path/to/source/file> <absolute/path/to/symbolic/link>`
 
-3. *Voila*. Your terminal is ready for work! ;)
-
-
-### Keybindings for Tmux, Neovim
+### # Keybindings for Tmux, Neovim
 
 <table>
 <thead>
@@ -82,17 +57,12 @@ After installing all requirements open neovim and run `:PlugInstall` command.
 </td>
   </tr>
   <tr>
-    <td align="center"><kbd>Space</kbd> + <kbd>c</kbd></td>
-    <td>Copies absolute path of the currently opened file to clipboard.</td>
-    <td></td>
-  </tr>
-  <tr>
     <td align="center"><kbd>Space</kbd> + <kbd>Space</kbd></td>
     <td>Jumps between two recently opened files.</td>
     <td></td>
   </tr>
    <tr>
-    <td align="center"><kbd>F5</kbd></td>
+    <td align="center"><kbd>Space</kbd> + <kbd>q</kbd></td>
     <td>Show/Hide current directory structure.</td>
     <td></td>
   </tr>
