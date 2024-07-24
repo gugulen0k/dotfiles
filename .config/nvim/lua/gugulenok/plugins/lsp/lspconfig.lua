@@ -7,7 +7,6 @@ return {
     { "antosha417/nvim-lsp-file-operations", config = true },
     "williamboman/mason.nvim", -- add Mason plugin
     "williamboman/mason-lspconfig.nvim", -- bridge between Mason and lspconfig
-    "folke/neoconf.nvim"
   },
   config = function()
     local utils        = require("gugulenok.utils")
