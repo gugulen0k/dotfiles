@@ -17,7 +17,10 @@ require("lazy").setup({
   { import = "gugulenok.plugins.lsp" },
 }, {
   install = {
-    colorscheme = { "catppuccin" },
+    colorscheme = { "gruvbox-material" },
+  },
+  ui = {
+    border = 'single',
   },
   checker = {
     enabled = true,
