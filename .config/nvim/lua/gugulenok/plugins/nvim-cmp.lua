@@ -82,6 +82,8 @@ return {
             end
           end
         },
+        { name = "nvim_lsp_signature_help" },
+        { name = "nvim_lua" },
         { name = "buffer" }, -- text within current buffer
         { name = "path" }, -- file system paths
         { name = "crates" } -- for Rust package manager

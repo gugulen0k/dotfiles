@@ -3,10 +3,10 @@ return {
   lazy = false,
   event = { "BufReadPre", "BufNewFile" },
   dependencies = {
-    "hrsh7th/cmp-nvim-lsp",
-    { "antosha417/nvim-lsp-file-operations", config = true },
     "williamboman/mason.nvim", -- add Mason plugin
     "williamboman/mason-lspconfig.nvim", -- bridge between Mason and lspconfig
+    "hrsh7th/cmp-nvim-lsp",
+    { "antosha417/nvim-lsp-file-operations", config = true },
   },
   config = function()
     local utils        = require("gugulenok.utils")
@@ -29,7 +29,10 @@ return {
     end
 
     -- used to enable autocompletion (assign to every lsp server config)
-    local capabilities = cmp_nvim_lsp.default_capabilities()
+    local capabilities = vim.tbl_deep_extend("force",
+      vim.lsp.protocol.make_client_capabilities(),
+      cmp_nvim_lsp.default_capabilities()
+    )
 
     -- Change the Diagnostic symbols in the sign column (gutter)
     local signs = { Error = " ", Warn = " ", Hint = "󰠠 ", Info = " " }
@@ -37,6 +40,19 @@ return {
       local hl = "DiagnosticSign" .. type
       vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
     end
+
+    -- Diagnostics config
+    vim.diagnostic.config({
+      virtual_text = {
+        prefix = " "
+      },
+      float = {
+        show_header = false,
+        format = function(diagnostic)
+          return string.format('%s\n%s: %s', diagnostic.message, diagnostic.source, diagnostic.code)
+        end,
+      },
+    })
 
     -- Change floating window border for lsp
     local orig_util_open_floating_preview = vim.lsp.util.open_floating_preview
@@ -47,6 +63,16 @@ return {
 
       return orig_util_open_floating_preview(contents, syntax, config, ...)
     end
+
+    vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(
+      vim.lsp.handlers.hover,
+      { border = "single" }
+    )
+
+    vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(
+      vim.lsp.handlers.signature_help,
+      { border = "single" }
+    )
 
     local function get_vue_ts_plugin_path_from_mason()
       local mason_registry = require("mason-registry")
@@ -91,13 +117,6 @@ return {
               hybridMode = false
             }
           }
-        })
-      end,
-      ["quick_lint_js"] = function ()
-        lspconfig.quick_lint_js.setup({
-          capabilities = capabilities,
-          on_attach = on_attach,
-          filetypes = { "javascript", "vue" }
         })
       end,
       ["eslint"] = function ()
