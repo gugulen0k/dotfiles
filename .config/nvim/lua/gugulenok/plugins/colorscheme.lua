@@ -5,12 +5,12 @@ return {
   config = function()
     local glb = vim.g
 
-    -- vim.api.nvim_set_hl(0, 'FloatBorder', { bg = 'NONE' })
-
     vim.opt.background = 'light'
     glb.gruvbox_material_enable_italic = true
     glb.gruvbox_material_enable_bold = true
     glb.gruvbox_material_ui_contrast = 'high'
+    glb.gruvbox_material_better_performance = true
+    glb.gruvbox_material_float_style = 'bright'
 
     vim.api.nvim_create_autocmd('ColorScheme', {
       group = vim.api.nvim_create_augroup('custom_highlights_gruvboxmaterial', {}),

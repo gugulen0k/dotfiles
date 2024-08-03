@@ -74,6 +74,8 @@ return {
       { border = "single" }
     )
 
+    require('lspconfig.ui.windows').default_options.border = 'single'
+
     local function get_vue_ts_plugin_path_from_mason()
       local mason_registry = require("mason-registry")
       local vue_language_server_path = mason_registry.get_package("vue-language-server"):get_install_path()
