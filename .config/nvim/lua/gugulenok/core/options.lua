@@ -46,3 +46,4 @@ opt.cmdheight = 0
 
 glb.ruby_host_prog = '~/.rbenv/versions/3.3.0/bin/ruby'
 glb.python3_host_prog = '/usr/bin/python3'
+glb.node_host_prog = vim.fn.expand('~/.nvm/versions/node/v22.5.1/bin/neovim-node-host')

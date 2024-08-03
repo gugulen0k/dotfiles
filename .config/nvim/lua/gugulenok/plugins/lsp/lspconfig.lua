@@ -49,7 +49,7 @@ return {
       float = {
         show_header = false,
         format = function(diagnostic)
-          return string.format('%s\n%s: %s', diagnostic.message, diagnostic.source, diagnostic.code)
+          return string.format('%s => [%s: %s]', diagnostic.message, diagnostic.source, diagnostic.code)
         end,
       },
     })
@@ -76,13 +76,13 @@ return {
 
     require('lspconfig.ui.windows').default_options.border = 'single'
 
-    local function get_vue_ts_plugin_path_from_mason()
-      local mason_registry = require("mason-registry")
-      local vue_language_server_path = mason_registry.get_package("vue-language-server"):get_install_path()
-        .. "/node_modules/@vue/language-server"
-
-      return vue_language_server_path
-    end
+    -- local function get_vue_ts_plugin_path_from_mason()
+    --   local mason_registry = require("mason-registry")
+    --   local vue_language_server_path = mason_registry.get_package("vue-language-server"):get_install_path()
+    --     .. "/node_modules/@vue/language-server"
+    --
+    --   return vue_language_server_path
+    -- end
 
     -- configure servers using Mason
     require("mason-lspconfig").setup_handlers({
@@ -98,34 +98,28 @@ return {
         lspconfig.tsserver.setup({
           capabilities = capabilities,
           on_attach = on_attach,
-          filetypes = { "typescript" },
-          init_options = {
-            plugins = {
-              {
-                name = "@vue/typescript-plugin",
-                location = get_vue_ts_plugin_path_from_mason(),
-                languages = { "vue" }
-              }
-            }
-          }
+          filetypes = { "javascript", "typescript" },
+          -- init_options = {
+          --   plugins = {
+          --     {
+          --       name = "@vue/typescript-plugin",
+          --       location = get_vue_ts_plugin_path_from_mason(),
+          --       languages = {  "javascript", "typescript" }
+          --     }
+          --   }
+          -- }
         })
       end,
       ["volar"] = function ()
         lspconfig.volar.setup({
           capabilities = capabilities,
           on_attach = on_attach,
+          filetypes = { "vue" },
           init_options = {
             vue = {
               hybridMode = false
             }
           }
-        })
-      end,
-      ["eslint"] = function ()
-        lspconfig.eslint.setup({
-          capabilities = capabilities,
-          on_attach = on_attach,
-          filetypes = { "javascript", "vue" }
         })
       end,
       ["solargraph"] = function()

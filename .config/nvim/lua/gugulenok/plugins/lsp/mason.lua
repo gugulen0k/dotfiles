@@ -12,6 +12,7 @@ return {
     -- enable mason and configure icons
     mason.setup({
       ui = {
+        border = "single",
         icons = {
           package_installed = "✓",
           package_pending = "➜",
@@ -32,7 +33,6 @@ return {
         "rust_analyzer",
         "volar",
         "tsserver",
-        "eslint"
       },
       -- auto-install configured servers (with lspconfig)
       automatic_installation = true, -- not the same as ensure_installed
