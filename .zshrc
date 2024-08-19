@@ -18,12 +18,9 @@ plugins=(
   copypath            # Copies the path of given directory or file to the system clipboard.
   colored-man-pages
   colorize
-  tmux
   zsh-autosuggestions
 )
 
-# Open tmux on startup, requires tmux plugin
-ZSH_TMUX_AUTOSTART=true
 ZSH_THEME="gugulenok-light-gruvbox-material"
 
 # Different aliases
@@ -59,7 +56,3 @@ eval "$(rbenv init - zsh)"
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-
-if command -v tmux &> /dev/null && [ -z "$TMUX" ]; then
-  tmux attach -t default || tmux new -s default
-fi
