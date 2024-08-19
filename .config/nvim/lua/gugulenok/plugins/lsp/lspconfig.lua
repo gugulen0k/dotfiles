@@ -94,6 +94,7 @@ return {
 
         lspconfig[server_name].setup(server_config)
       end,
+      ["rust_analyzer"] = function() end,
       ["tsserver"] = function ()
         lspconfig.tsserver.setup({
           capabilities = capabilities,

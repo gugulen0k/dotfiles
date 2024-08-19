@@ -28,7 +28,6 @@ ZSH_THEME="gugulenok-light-gruvbox-material"
 
 # Different aliases
 alias c="clear"
-alias mux="tmuxinator"
 
 # Docker aliases
 alias dup="docker compose up"
@@ -53,10 +52,6 @@ alias dots="nvim ~/Documents/DotFiles"
 source $ZSH/oh-my-zsh.sh
 source $HOME/.cargo/env
 
-if command -v tmux &> /dev/null && [ -z "$TMUX" ]; then
-        tmux attach -t default || tmux new -s default
-fi
-
 source <(fzf --zsh)
 
 eval "$(rbenv init - zsh)"
@@ -64,3 +59,7 @@ eval "$(rbenv init - zsh)"
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+if command -v tmux &> /dev/null && [ -z "$TMUX" ]; then
+  tmux attach -t default || tmux new -s default
+fi
