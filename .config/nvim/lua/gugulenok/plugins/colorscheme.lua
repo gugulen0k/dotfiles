@@ -1,33 +1,42 @@
 return {
-  'sainnhe/gruvbox-material',
+  'tinted-theming/base16-vim',
   lazy = false,
   priority = 1000,
   config = function()
-    local glb = vim.g
-
-    vim.opt.background = 'light'
-    glb.gruvbox_material_enable_italic = true
-    glb.gruvbox_material_enable_bold = true
-    glb.gruvbox_material_ui_contrast = 'high'
-    glb.gruvbox_material_better_performance = true
-    glb.gruvbox_material_float_style = 'bright'
-
-    vim.api.nvim_create_autocmd('ColorScheme', {
-      group = vim.api.nvim_create_augroup('custom_highlights_gruvboxmaterial', {}),
-      pattern = 'gruvbox-material',
-      callback = function()
-        local config = vim.fn['gruvbox_material#get_configuration']()
-        local palette = vim.fn['gruvbox_material#get_palette'](config.background, config.foreground, config.colors_override)
-        local set_hl = vim.fn['gruvbox_material#highlight']
-
-        set_hl('FloatBorder', palette.none, palette.none)
-        set_hl('NormalFloat', palette.none, palette.none)
-      end
-    })
-
-    vim.cmd.colorscheme('gruvbox-material')
+    vim.g.base16_colorspace = 256
+    vim.cmd.colorscheme('base16-default-dark')
   end
 }
+-- return {
+--   'sainnhe/gruvbox-material',
+--   lazy = false,
+--   priority = 1000,
+--   config = function()
+--     local glb = vim.g
+--
+--     vim.opt.background = 'light'
+--     glb.gruvbox_material_enable_italic = true
+--     glb.gruvbox_material_enable_bold = true
+--     glb.gruvbox_material_ui_contrast = 'high'
+--     glb.gruvbox_material_better_performance = true
+--     glb.gruvbox_material_float_style = 'bright'
+--
+--     vim.api.nvim_create_autocmd('ColorScheme', {
+--       group = vim.api.nvim_create_augroup('custom_highlights_gruvboxmaterial', {}),
+--       pattern = 'gruvbox-material',
+--       callback = function()
+--         local config = vim.fn['gruvbox_material#get_configuration']()
+--         local palette = vim.fn['gruvbox_material#get_palette'](config.background, config.foreground, config.colors_override)
+--         local set_hl = vim.fn['gruvbox_material#highlight']
+--
+--         set_hl('FloatBorder', palette.none, palette.none)
+--         set_hl('NormalFloat', palette.none, palette.none)
+--       end
+--     })
+--
+--     vim.cmd.colorscheme('gruvbox-material')
+--   end
+-- }
 
 -- return {
 --   'rose-pine/neovim',

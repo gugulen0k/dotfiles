@@ -21,7 +21,7 @@ plugins=(
   zsh-autosuggestions
 )
 
-ZSH_THEME="gugulenok-light-gruvbox-material"
+ZSH_THEME="gugulenok-base16-default-dark"
 
 # Different aliases
 alias c="clear"
