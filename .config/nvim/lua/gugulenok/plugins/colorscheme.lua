@@ -4,9 +4,14 @@ return {
   priority = 1000,
   config = function()
     vim.g.base16_colorspace = 256
+
     vim.cmd.colorscheme('base16-default-dark')
+
+    vim.api.nvim_set_hl(0, "FloatBorder", { bg = "none" })
+    vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
   end
 }
+
 -- return {
 --   'sainnhe/gruvbox-material',
 --   lazy = false,
