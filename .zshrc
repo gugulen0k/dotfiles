@@ -1,8 +1,4 @@
-# Path to your oh-my-zsh installation.
-export ZSH="$HOME/.oh-my-zsh"
-
-export EDITOR='nvim'
-export THOR_MERGE='nvim -d'
+ZSH_THEME="gugulenok-base16-default-dark"
 
 # Which plugins would you like to load?
 # Standard plugins can be found in $ZSH/plugins/
@@ -21,7 +17,15 @@ plugins=(
   zsh-autosuggestions
 )
 
-ZSH_THEME="gugulenok-base16-default-dark"
+# Path to your oh-my-zsh installation.
+export ZSH="$HOME/.oh-my-zsh"
+
+export EDITOR='nvim'
+export THOR_MERGE='nvim -d'
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 # Different aliases
 alias c="clear"
@@ -45,14 +49,9 @@ alias tmuxrc="nvim ~/.tmux.conf"
 alias alacrittyrc="nvim ~/.config/alacritty"
 alias kittyrc="nvim ~/.config/kitty"
 alias dots="nvim ~/Documents/DotFiles"
+alias awesomerc="nvim ~/.config/awesome/rc.lua"
 
 source $ZSH/oh-my-zsh.sh
 source $HOME/.cargo/env
 
 source <(fzf --zsh)
-
-eval "$(rbenv init - zsh)"
-
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
