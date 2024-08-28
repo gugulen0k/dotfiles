@@ -10,7 +10,7 @@ cursor = "CellForeground"
 TERM = "xterm-256color"
 
 [font]
-size = 18
+size = 16
 offset = {}
 
 [font.normal]
