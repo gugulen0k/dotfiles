@@ -1,6 +1,10 @@
 import = [
-  "~/.config/alacritty/base16-themes/colors/base16-default-dark-256.toml",
+  "~/.config/alacritty/base16-themes/colors/base16-default-light-256.toml",
 ]
+
+[colors.cursor]
+text = "CellBackground"
+cursor = "CellForeground"
 
 [env]
 TERM = "xterm-256color"

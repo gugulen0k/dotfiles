@@ -38,13 +38,12 @@ return {
       },
 
       mapping = cmp.mapping.preset.insert({
-        ["<C-k>"]     = cmp.mapping.select_prev_item(), -- previous suggestion
-        ["<C-j>"]     = cmp.mapping.select_next_item(), -- next suggestion
-        ["<C-b>"]     = cmp.mapping.scroll_docs(-4),
-        ["<C-f>"]     = cmp.mapping.scroll_docs(4),
-        ["<C-Space>"] = cmp.mapping.complete(),         -- show completion suggestions
+        ["<C-p>"]     = cmp.mapping.select_prev_item(), -- previous suggestion
+        ["<C-n>"]     = cmp.mapping.select_next_item(), -- next suggestion
+        ["<C-h>"]     = cmp.mapping.scroll_docs(-4),
+        ["<C-l>"]     = cmp.mapping.scroll_docs(4),
+        ["<C-y>"]     = cmp.mapping.complete(),         -- show completion suggestions
         ["<C-e>"]     = cmp.mapping.abort(),            -- close completion window
-        ["<CR>"]      = cmp.mapping.confirm({ select = false }),
       }),
 
       -- sources for autocompletion
@@ -85,8 +84,8 @@ return {
         { name = "nvim_lsp_signature_help" },
         { name = "nvim_lua" },
         { name = "buffer" }, -- text within current buffer
-        { name = "path" }, -- file system paths
-        { name = "crates" } -- for Rust package manager
+        { name = "path" },   -- file system paths
+        { name = "crates" }  -- for Rust package manager
       }),
 
       window = {
@@ -106,9 +105,9 @@ return {
           maxwidth = 50,
           ellipsis_char = "...",
 
-          before = function (_, vim_item)
+          before = function (entry, vim_item)
             vim_item.kind = lspkind.presets.default[vim_item.kind] or "?"
-            vim_item.menu = ''
+            vim_item.menu = "[" .. entry.source.name .. "]"
 
             return vim_item
           end

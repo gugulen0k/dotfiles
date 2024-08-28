@@ -5,7 +5,7 @@ return {
   config = function()
     vim.g.base16_colorspace = 256
 
-    vim.cmd.colorscheme('base16-default-dark')
+    vim.cmd.colorscheme('base16-default-light')
 
     vim.api.nvim_set_hl(0, "FloatBorder", { bg = "none" })
     vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
