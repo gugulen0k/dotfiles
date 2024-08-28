@@ -2,15 +2,11 @@ import = [
   "~/.config/alacritty/base16-themes/colors/base16-default-dark-256.toml",
 ]
 
-[shell]
-program = "/bin/zsh"
-args = ["-l", "-c", "tmux attach || tmux"]
-
 [env]
 TERM = "xterm-256color"
 
 [font]
-size = 20
+size = 18
 offset = {}
 
 [font.normal]
