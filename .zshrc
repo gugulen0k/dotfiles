@@ -1,4 +1,4 @@
-ZSH_THEME="gugulenok-base16-default-dark"
+ZSH_THEME="gugulenok-base16-default-light"
 
 # Which plugins would you like to load?
 # Standard plugins can be found in $ZSH/plugins/
