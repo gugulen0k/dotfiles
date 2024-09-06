@@ -1,4 +1,4 @@
-ZSH_THEME="gugulenok-base16-default-light"
+ZSH_THEME="gugulenok-base16-default-dark"
 
 # Which plugins would you like to load?
 # Standard plugins can be found in $ZSH/plugins/
@@ -47,11 +47,12 @@ alias nvimrc="nvim ~/.config/nvim"
 alias zshrc="nvim ~/.zshrc"
 alias tmuxrc="nvim ~/.tmux.conf"
 alias alacrittyrc="nvim ~/.config/alacritty"
-alias kittyrc="nvim ~/.config/kitty"
-alias dots="nvim ~/Documents/DotFiles"
-alias awesomerc="nvim ~/.config/awesome/rc.lua"
+alias dots="nvim ~/Documents/dotfiles"
 
 source $ZSH/oh-my-zsh.sh
 source $HOME/.cargo/env
 
 source <(fzf --zsh)
+
+# Keyboard bindings
+bindkey '^y' autosuggest-accept

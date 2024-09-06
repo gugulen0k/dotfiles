@@ -15,6 +15,7 @@ vim.opt.rtp:prepend(lazypath)
 require("lazy").setup({
   { import = "gugulenok.plugins" },
   { import = "gugulenok.plugins.lsp" },
+  { import = "gugulenok.plugins.nvim-cmp" },
 }, {
   install = {
     colorscheme = { "gruvbox-material" },
@@ -30,4 +31,3 @@ require("lazy").setup({
     notify = false,
   }
 })
-
