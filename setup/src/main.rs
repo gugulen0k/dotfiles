@@ -1,54 +1,80 @@
-use dialoguer::{theme::ColorfulTheme, MultiSelect};
-use dirs::home_dir;
+use clap::{Arg, Command};
+use inquire::MultiSelect;
+use std::collections::HashMap;
+use std::env;
+use std::error::Error;
 use std::fs;
-use std::os::unix::fs::symlink;
-use std::path::{Path, PathBuf};
+use std::path::Path;
+use toml::Value;
 
-fn create_symlink(src: &str, dst: &Path) -> std::io::Result<()> {
-    // Check if the destination already exists
-    if dst.exists() {
-        println!("Destination {:?} already exists. Skipping...", dst);
-        return Ok(());
+fn main() -> Result<(), Box<dyn Error>> {
+    // Set up command-line argument parsing
+    let matches = Command::new("dotfile-symlink")
+        .version("1.0")
+        .author("Your Name <your.email@example.com>")
+        .about("Creates symbolic links for dotfiles")
+        .arg(
+            Arg::new("config")
+                .short('c')
+                .long("config")
+                .value_name("FILE")
+                .about("Path to the dotfiles.toml file")
+                .takes_value(true)
+                .default_value("dotfiles.toml"),
+        )
+        .get_matches();
+
+    let toml_path = matches.value_of("config").unwrap();
+    let toml_path = Path::new(toml_path);
+
+    // Check if file exists
+    if !toml_path.exists() {
+        eprintln!("Error: File does not exist: {}", toml_path.display());
+        std::process::exit(1);
     }
 
-    // Create a symbolic link
-    symlink(src, dst)?;
-    println!("Symbolic link created: {:?} -> {}", dst, src);
-    Ok(())
-}
+    // Read the `dotfiles.toml` file
+    let toml_content = fs::read_to_string(toml_path)
+        .map_err(|e| format!("Failed to read file '{}': {}", toml_path.display(), e))?;
+    let value: Value = toml_content.parse()?;
 
-fn main() {
-    // List of dotfiles to potentially create symlinks for
-    let dotfiles_to_link = [
-        ("/path/to/source/.bashrc", ".bashrc"),
-        ("/path/to/source/.vimrc", ".vimrc"),
-        ("/path/to/source/.zshrc", ".zshrc"),
-    ];
-
-    // Get the user's home directory
-    let home_dir = home_dir().expect("Could not find home directory");
-
-    // Convert the dotfiles list into a vector of labels for the multiselect menu
-    let options: Vec<String> = dotfiles_to_link
-        .iter()
-        .map(|(src, file)| format!("{} -> ~{}", src, file))
-        .collect();
-
-    // Present a multiselect menu to the user
-    let selections = MultiSelect::with_theme(&ColorfulTheme::default())
-        .with_prompt("Select the dotfiles for which you want to create symbolic links in your home directory")
-        .items(&options)
-        .interact()
-        .unwrap();
-
-    // Process the selections
-    for i in selections {
-        let (src, filename) = &dotfiles_to_link[i];
-        let dest_path = home_dir.join(filename); // Append the filename to the home directory path
-
-        match create_symlink(src, &dest_path) {
-            Ok(_) => (),
-            Err(e) => eprintln!("Failed to create symlink: {}", e),
+    // Extract paths from the TOML file
+    let mut paths = HashMap::new();
+    if let Value::Table(table) = value {
+        for (key, section) in table {
+            if let Value::Table(section_table) = section {
+                if let Some(Value::String(src)) = section_table.get("src") {
+                    paths.insert(key, src.clone());
+                }
+            }
         }
     }
+
+    // Use inquire to select multiple dotfiles
+    let options: Vec<String> = paths.keys().cloned().collect();
+    let selected_keys = MultiSelect::new("Select dotfiles to symlink:", options).prompt()?;
+
+    // Create symbolic links in the user's `.config` directory
+    let home_dir = env::var("HOME")?;
+    let config_dir = Path::new(&home_dir).join(".config");
+
+    for key in selected_keys {
+        if let Some(src_path) = paths.get(&key) {
+            let src = Path::new(src_path);
+            let dest = config_dir.join(src.file_name().unwrap_or_default());
+
+            // Create symbolic link
+            if let Err(e) = std::os::unix::fs::symlink(src, &dest) {
+                eprintln!("Failed to create symlink for {}: {}", src.display(), e);
+            } else {
+                println!(
+                    "Symlink created for {} -> {}",
+                    src.display(),
+                    dest.display()
+                );
+            }
+        }
+    }
+
+    Ok(())
 }

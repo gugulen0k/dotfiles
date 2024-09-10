@@ -7,8 +7,8 @@ return {
     maxwidth = function()
       return math.floor(0.5 * vim.o.columns)
     end,
-    ellipsis_char = '...',    -- when popup menu exceed maxwidth, the truncated part would show ellipsis_char instead (must define maxwidth first)
-    show_labelDetails = true, -- show labelDetails in menu. Disabled by default
+    ellipsis_char = '...',     -- when popup menu exceed maxwidth, the truncated part would show ellipsis_char instead (must define maxwidth first)
+    show_labelDetails = false, -- show labelDetails in menu. Disabled by default
     menu = {
       buffer = "[buf]",
       nvim_lsp = "[LSP]",

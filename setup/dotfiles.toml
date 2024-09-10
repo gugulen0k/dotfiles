@@ -1,0 +1,25 @@
+# src - is a source for a configuration file in this repository.
+# dest - is a destination where symbolic link should be created.
+
+# !!!
+# Modify this TOML file only if you're sure you know where 
+# you want to place your symbolic links.
+# !!!
+
+[tmux]
+src = "./configs/.tmux.conf"
+
+[zsh]
+src = "./configs/.zshrc"
+
+[alacritty]
+src = "./configs/alacritty"
+
+[neovim]
+src = "./configs/neovim"
+
+[zed.keymaps]
+src = "./configs/zed/keymap.json"
+
+[zed.settings]
+src = "./configs/zed/settings.json"
