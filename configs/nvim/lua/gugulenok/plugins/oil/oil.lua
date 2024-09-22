@@ -5,6 +5,7 @@ local current_dir = utils.base_path("gugulenok.plugins.oil")
 
 return {
   'stevearc/oil.nvim',
+  lazy = false,
   dependencies = { "nvim-tree/nvim-web-devicons" },
   config = function()
     local oil = require("oil")
@@ -22,9 +23,9 @@ return {
         is_always_hidden = function(name, _)
           return name == ".." or name == ".git"
         end,
-        -- is_hidden_file = function(name, bufnr)
-        --   git_files.setup({ name = name, bufnr = bufnr })
-        -- end,
+        is_hidden_file = function(name, bufnr)
+          git_files.setup({ name = name, bufnr = bufnr })
+        end,
       },
       use_default_keymaps = false,
       keymaps_help = {
@@ -52,6 +53,6 @@ return {
       },
     })
 
-    utils.map("n", "-", function() oil.open_float() end, { desc = "Open parent directory" })
+    utils.map("n", "-", function() oil.open() end, { desc = "Open parent directory" })
   end
 }

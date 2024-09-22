@@ -1,0 +1,30 @@
+# src - is a source for a configuration file in this repository.
+# title - is a string that will be displayed when ./setup script will be executed.
+
+# !!!
+# Modify this TOML file only if you're sure where you want to place your symbolic links.
+# !!!
+
+[tmux]
+src = "./configs/.tmux.conf"
+title = "Tmux"
+
+[zsh]
+src = "./configs/.zshrc"
+title = "ZSH"
+
+[alacritty]
+src = "./configs/alacritty"
+title = "Alacritty"
+
+[neovim]
+src = "./configs/neovim"
+title = "Neovim"
+
+[zed.keymaps]
+src = "./configs/zed/keymap.json"
+title = "Zed Keymaps"
+
+[zed.settings]
+src = "./configs/zed/settings.json"
+title = "Zed Settings"

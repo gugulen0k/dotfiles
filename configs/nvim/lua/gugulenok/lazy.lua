@@ -17,6 +17,7 @@ require("lazy").setup({
   { import = "gugulenok.plugins.lsp" },
   { import = "gugulenok.plugins.nvim-cmp" },
   { import = "gugulenok.plugins.oil" },
+  { import = "gugulenok.plugins.custom" },
 }, {
   install = {
     colorscheme = { "gruvbox-material" },

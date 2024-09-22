@@ -26,6 +26,8 @@ function M.on_attach(_, bufnr)
   end
 
   require('lspconfig.ui.windows').default_options.border = 'single'
+
+  -- vim.lsp.inlay_hint.enable(true, { bufnr = bufnr })
 end
 
 return M

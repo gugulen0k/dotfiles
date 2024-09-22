@@ -8,6 +8,8 @@ local languages = {
   volar = current_dir.require("languages.volar"),
   lua_ls = current_dir.require("languages.lua_ls"),
   solargraph = current_dir.require("languages.solargraph"),
+  ts_ls = current_dir.require("languages.ts_ls"),
+  rust_analyzer = current_dir.require("languages.rust_analyzer")
 }
 ----------------------------------------------------------
 
@@ -30,12 +32,6 @@ function M.setup(options)
         handlers = options.handlers
       }
 
-      -- Temporary fix for ts_ls server
-      if server_name == "tsserver" then
-        server_name = "ts_ls"
-        default_server_config.filetypes = { "javascript", "typescript" }
-      end
-
       -- Check if a specific setup function is available for this server
       local specific_setup = languages[server_name]
       if specific_setup then
@@ -45,7 +41,6 @@ function M.setup(options)
         lspconfig[server_name].setup(default_server_config)
       end
     end,
-    ["rust_analyzer"] = function() end, -- No configuration for rust_analyzer
   })
 end
 

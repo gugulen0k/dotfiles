@@ -44,4 +44,15 @@ function M.autocmd(event, opts)
   vim.api.nvim_create_autocmd(event, opts or {})
 end
 
+-- Function to create global highlight group
+function M.set_global_hl(name, opts)
+  vim.api.nvim_set_hl(0, name, opts)
+end
+
+-- Function to get the highlight color from the colorscheme
+-- by highlight group name.
+function M.get_hl_by_name(group)
+  return vim.api.nvim_get_hl(0, { name = group })
+end
+
 return M

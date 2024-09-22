@@ -1,7 +1,7 @@
 local cmp = require("cmp")
 local utils = require("gugulenok.utils")
 
--- Disable default autocompletion using buffer words.
+-- Disable default autocompletion that uses buffer words.
 local opts = {
   silent = true,
   noremap = true

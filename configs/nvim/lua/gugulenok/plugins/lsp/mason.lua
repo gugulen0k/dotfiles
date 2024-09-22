@@ -11,6 +11,7 @@ return {
 
     -- enable mason and configure icons
     mason.setup({
+      PATH = "append",
       ui = {
         border = "single",
         icons = {
@@ -32,7 +33,7 @@ return {
         "lua_ls",
         "rust_analyzer",
         "volar",
-        "tsserver",
+        "ts_ls",
       },
       -- auto-install configured servers (with lspconfig)
       automatic_installation = true, -- not the same as ensure_installed
