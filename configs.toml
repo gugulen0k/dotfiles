@@ -1,0 +1,8 @@
+[test_1_file]
+src = "./configs/test_file_1.txt"
+
+[test_2_file]
+src = "./configs/test_file_2.txt"
+
+[test_3_dir]
+src = "./configs/test_dir_3"

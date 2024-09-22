@@ -9,4 +9,5 @@ edition = "2021"
 inquire = "0.7.5"
 dirs = "5.0.1"
 toml = "0.8.19"
+xdg = "2.5.2"
 serde = { version = "1.0", features = ['derive'] }

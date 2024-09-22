@@ -31,19 +31,19 @@ utils.map('n', '<leader>q', 'q')
 
 ------------------- [ Diagnostics ] -------------------
 -- Show buffer diagnostics in quickfix list
-utils.map('', 'dq', function()
-    vim.diagnostic.setloclist({
-      title = 'Buffer Diagnostics',
-      severity = {
-        vim.diagnostic.severity.WARN,
-        vim.diagnostic.severity.INFO,
-      }
-    })
-
-    vim.defer_fn(function()
-      vim.cmd('wincmd p')
-    end, 0)
-  end,
-  { desc = 'Open quickfix list with current buffer diagnostics' }
-)
-------------------- [ Diagnostics ] -------------------
+-- utils.map('', 'dq', function()
+--     vim.diagnostic.setloclist({
+--       title = 'Buffer Diagnostics',
+--       severity = {
+--         vim.diagnostic.severity.WARN,
+--         vim.diagnostic.severity.INFO,
+--       }
+--     })
+--
+--     vim.defer_fn(function()
+--       vim.cmd('wincmd p')
+--     end, 0)
+--   end,
+--   { desc = 'Open quickfix list with current buffer diagnostics' }
+-- )
+-------------------------------------------------------
