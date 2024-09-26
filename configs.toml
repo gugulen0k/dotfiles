@@ -1,8 +1,30 @@
-[test_1_file]
-src = "./configs/test_file_1.txt"
+# src - is a source for a configuration file in this repository.
+# title - is a string that will be displayed when ./setup script will be executed.
 
-[test_2_file]
-src = "./configs/test_file_2.txt"
+# !!!
+# Modify this TOML file only if you're sure where you want to place your symbolic links.
+# !!!
 
-[test_3_dir]
-src = "./configs/test_dir_3"
+[tmux]
+src = "./configs/tmux/.tmux.conf"
+title = "Tmux"
+
+[zsh]
+src = "./configs/zsh/.zshrc"
+title = "ZSH"
+
+[alacritty]
+src = "./configs/alacritty"
+title = "Alacritty"
+
+[neovim]
+src = "./configs/neovim"
+title = "Neovim"
+
+[zed_keymaps]
+src = "./configs/zed/keymap.json"
+title = "Zed Keymaps"
+
+[zed_settings]
+src = "./configs/zed/settings.json"
+title = "Zed Settings"
