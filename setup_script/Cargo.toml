@@ -9,4 +9,5 @@ edition = "2021"
 clap = "4.5.18"
 toml = "0.8.19"
 xdg = "2.5.2"
+shellexpand = "3.1.0"
 serde = { version = "1.0", features = ['derive'] }

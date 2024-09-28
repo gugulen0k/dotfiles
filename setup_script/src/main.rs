@@ -1,13 +1,13 @@
 mod config;
 
 use clap::{Arg, ArgGroup, Command};
+use shellexpand::tilde;
 use std::env;
 use std::io::{self, Write};
-use std::os::unix::fs::symlink; // For creating symbolic links
+use std::os::unix::fs::symlink;
 use std::path::{Component, PathBuf};
 
 fn main() {
-    // Set up command-line argument parsing with clap
     let cmd = Command::new("Setup")
         .about("Creates symbolic links for configuration files.")
         .arg(
@@ -24,20 +24,13 @@ fn main() {
                 .num_args(0)
                 .help("List all available configurations from the TOML file"),
         )
-        .group(
-            ArgGroup::new("Options")
-                .args(["list", "configs"])
-                .required(true),
-        );
+        .group(ArgGroup::new("Options").args(["list", "configs"]));
 
     let matches = cmd.get_matches();
-    let configs_list_file = "../configs.toml";
+    let configs_list_file = "./configs.toml";
 
     // Get the current working directory
     let current_dir = env::current_dir().expect("Failed to get current working directory");
-
-    // Get the XDG_CONFIG_HOME path, typically "~/.config/"
-    let xdg_config_home = xdg::BaseDirectories::new().unwrap().get_config_home();
 
     // Load the configs from the TOML file
     let configs = match config::get_configs_list(configs_list_file) {
@@ -48,9 +41,7 @@ fn main() {
         }
     };
 
-    println!("Here: {:?}", matches.contains_id("configs"));
-    // Handle --list flag: Display all available configs
-    if matches.contains_id("list") {
+    if matches.get_flag("list") {
         println!("Available configurations in the TOML file:");
 
         let mut keys: Vec<&String> = configs.keys().collect();
@@ -59,16 +50,19 @@ fn main() {
         for key in keys {
             println!(" - {}", key);
         }
+
         println!("\nTo use specific configs, run the command like this:");
         println!(" ./setup --configs <config_name> <config_name>");
+
         return;
     }
 
     // Get the selected configs or an empty vector if none are provided
-    let selected_configs: Vec<String> = matches
+    let selected_configs = matches
         .get_many::<String>("configs")
-        .map(|v| v.map(String::from).collect())
-        .unwrap_or_default();
+        .unwrap_or_default()
+        .map(|v| v.as_str())
+        .collect::<Vec<_>>();
 
     let all_configs = selected_configs.is_empty();
 
@@ -85,58 +79,52 @@ fn main() {
         }
     }
 
-    // Process each config
     for (key, config) in configs {
-        // Check if the current config should be processed
-        if !all_configs && !selected_configs.contains(&key) {
-            continue; // Skip this config if it’s not specified
+        if !all_configs && !selected_configs.iter().any(|v| v == &key) {
+            continue;
         }
 
-        // Parse `config.src` as a PathBuf and join with current directory
-        let new_path = current_dir.join(&config.src);
+        let config_src = PathBuf::from(tilde(&config.src).to_string());
+        let config_dst = PathBuf::from(tilde(&config.dst).to_string());
 
-        // Normalize the path manually, handling both `.` and `..`
-        let mut normalized_path = PathBuf::new();
-        for component in new_path.components() {
-            match component {
-                Component::CurDir => {}
-                Component::ParentDir => {
-                    normalized_path.pop();
-                }
-                _ => normalized_path.push(component),
-            }
-        }
+        let mut config_src = current_dir.join(config_src);
+        config_src = normalized_path(&config_src);
 
-        // Determine the target symlink path in XDG_CONFIG_HOME
-        let target_symlink = if normalized_path.is_file() {
-            // If it's a file, the symlink name should match the file name
-            xdg_config_home.join(normalized_path.file_name().unwrap())
-        } else {
-            // If it's a directory, the symlink name should match the directory name
-            xdg_config_home.join(key)
-        };
+        let config_dst = normalized_path(&config_dst);
 
-        // Print the resolved paths for debugging
-        println!("Normalized Path: {}", normalized_path.display());
-        println!("Target Symlink: {}", target_symlink.display());
-
-        // Create the symlink
-        match symlink(&normalized_path, &target_symlink) {
+        match symlink(&config_src, &config_dst) {
             Ok(_) => {
                 println!(
-                    "Created symlink: {} -> {}",
-                    target_symlink.display(),
-                    normalized_path.display()
+                    "Created symlink: {} -> {}\n",
+                    &config_src.display(),
+                    &config_dst.display()
                 );
             }
             Err(e) => {
                 eprintln!(
-                    "Failed to create symlink: {} -> {}: {}",
-                    target_symlink.display(),
-                    normalized_path.display(),
+                    "Failed to create symlink: {} -> {}: {}\n",
+                    &config_src.display(),
+                    &config_dst.display(),
                     e
                 );
             }
         }
     }
+}
+
+// Normalize the path manually, handling both `.` and `..`
+fn normalized_path(path: &PathBuf) -> PathBuf {
+    let mut normalized_path = PathBuf::new();
+
+    for component in path.components() {
+        match component {
+            Component::CurDir => normalized_path.push(component),
+            Component::ParentDir => {
+                normalized_path.pop();
+            }
+            _ => normalized_path.push(component),
+        }
+    }
+
+    normalized_path
 }

@@ -34,6 +34,7 @@ return {
         "rust_analyzer",
         "volar",
         "ts_ls",
+        "clangd"
       },
       -- auto-install configured servers (with lspconfig)
       automatic_installation = true, -- not the same as ensure_installed

@@ -6,6 +6,7 @@ use std::fs;
 #[derive(Deserialize, Debug)]
 pub struct Config {
     pub src: String,
+    pub dst: String,
 }
 
 // Function to get the configurations list from a TOML file

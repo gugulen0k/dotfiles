@@ -1,6 +1,4 @@
-import = [
-  "~/.config/alacritty/base16-themes/colors/base16-default-dark-256.toml",
-]
+import = ["~/.config/alacritty/themes/themes/rose-pine-dawn.toml"]
 
 [colors.cursor]
 text = "CellBackground"
@@ -14,7 +12,7 @@ args = ["-l", "-c", "tmux attach || tmux"]
 TERM = "xterm-256color"
 
 [font]
-size = 22
+size = 18
 offset = {}
 
 [font.normal]

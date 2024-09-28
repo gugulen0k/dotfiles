@@ -12,19 +12,32 @@ return {
     local git_files = current_dir.require("utils.git_files")
     local file_details = current_dir.require("utils.file_details")
 
+    function _G.get_oil_winbar()
+      local dir = oil.get_current_dir()
+      if dir then
+        return vim.fn.fnamemodify(dir, ":~")
+      else
+        -- If there is no current directory (e.g. over ssh), just show the buffer name
+        return vim.api.nvim_buf_get_name(0)
+      end
+    end
+
     oil.setup({
       default_file_explorer = true,
       delete_to_trash = true,
       skip_confirm_for_simple_edits = true,
       watch_for_changes = true,
       constraint_cursor = "name",
+      win_options = {
+        winbar = "%!v:lua.get_oil_winbar()"
+      },
       view_options = {
         show_hidden = true,
         is_always_hidden = function(name, _)
           return name == ".." or name == ".git"
         end,
         is_hidden_file = function(name, bufnr)
-          git_files.setup({ name = name, bufnr = bufnr })
+          -- git_files.setup({ name = name, bufnr = bufnr })
         end,
       },
       use_default_keymaps = false,
