@@ -1,4 +1,7 @@
 # src - is a source for a configuration file in this repository.
+# dst - is a destination where symbolic link for 'src' file should be located.
+
+# TODO (when will add interactive config selection)
 # title - is a string that will be displayed when ./setup script will be executed.
 
 # !!!
@@ -7,24 +10,30 @@
 
 [tmux]
 src = "./configs/tmux/.tmux.conf"
+dst = "~/.tmux.conf"
 title = "Tmux"
 
 [zsh]
 src = "./configs/zsh/.zshrc"
+dst = "~/.zshrc"
 title = "ZSH"
 
 [alacritty]
 src = "./configs/alacritty"
+dst = "~/.config/alacritty"
 title = "Alacritty"
 
 [neovim]
 src = "./configs/neovim"
+dst = "~/.config/nvim/"
 title = "Neovim"
 
 [zed_keymaps]
 src = "./configs/zed/keymap.json"
+dst = "~/.config/zed/keymap.json"
 title = "Zed Keymaps"
 
 [zed_settings]
 src = "./configs/zed/settings.json"
+dst = "~/.config/zed/settings.json"
 title = "Zed Settings"
