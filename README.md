@@ -103,3 +103,7 @@ Command to create symbolic links for Linux & MacOS: `ln -s <absolute/path/to/sou
 </table>
 
 
+### To Do
+Auto installing script:
+[] Installing a configuration also installs all of the related tools.
+[] Add interactive CLI.
