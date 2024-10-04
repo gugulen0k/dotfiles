@@ -45,12 +45,12 @@ return {
           {
             'diff',
             colored = true,
-            symbols = { added = '+', modified = '~', removed = '-' }
+            symbols = { added = ' ', modified = ' ', removed = ' ' }
           },
           {
             'diagnostics',
             sections         = { 'error', 'warn' },
-            symbols          = { error = ' ', warn = ' ' },
+            symbols          = { error = ' ', warn = ' ' },
             colored          = true, -- Displays diagnostics status in color if set to true.
             update_in_insert = true  -- Update diagnostics in insert mode.
           }

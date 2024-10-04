@@ -1,4 +1,4 @@
-import = ["~/.config/alacritty/themes/themes/rose-pine-dawn.toml"]
+import = ["~/.config/alacritty/themes/themes/rose-pine.toml"]
 
 [colors.cursor]
 text = "CellBackground"
@@ -40,11 +40,6 @@ mods = "Alt"
 chars = "\u001bB"
 key = "Left"
 mods = "Alt"
-
-[[keyboard.bindings]]
-key = "Q"
-mods = "Control"
-action = "Quit"
 
 [window]
 decorations = "Full"
