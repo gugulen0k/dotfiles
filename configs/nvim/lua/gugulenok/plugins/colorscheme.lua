@@ -1,3 +1,39 @@
+return {
+  'rose-pine/neovim',
+  name = 'rose-pine',
+  lazy = false,
+  priority = 1000,
+  config = function()
+    require("rose-pine").setup({
+      variant                          = 'main',
+      dark_variant                     = 'main',
+      extend_background_behind_borders = false,
+
+      enable                           = {
+        terminal          = true,
+        legacy_highlights = true, -- Improve compatibility for previous versions of Neovim
+        migrations        = true, -- Handle deprecated options automatically
+      },
+
+      styles                           = {
+        bold         = true,
+        italic       = true,
+        transparency = false,
+      },
+
+      highlight_groups                 = {
+        ColorColumn = { fg = 'base', bg = 'muted' },
+        NormalFloat = { bg = 'NONE' },
+        FloatBorder = { bg = 'NONE' },
+      },
+    })
+
+    vim.opt.background = 'dark'
+
+    vim.cmd.colorscheme 'rose-pine'
+  end
+}
+
 -- return {
 --   'tinted-theming/base16-vim',
 --   lazy = false,
@@ -43,42 +79,6 @@
 --     vim.cmd.colorscheme('gruvbox-material')
 --   end
 -- }
-
-return {
-  'rose-pine/neovim',
-  name = 'rose-pine',
-  lazy = false,
-  priority = 1000,
-  config = function()
-    require("rose-pine").setup({
-      variant                          = 'main',
-      dark_variant                     = 'main',
-      extend_background_behind_borders = false,
-
-      enable                           = {
-        terminal          = true,
-        legacy_highlights = true, -- Improve compatibility for previous versions of Neovim
-        migrations        = true, -- Handle deprecated options automatically
-      },
-
-      styles                           = {
-        bold         = true,
-        italic       = true,
-        transparency = false,
-      },
-
-      highlight_groups                 = {
-        ColorColumn = { fg = 'base', bg = 'muted' },
-        NormalFloat = { bg = 'NONE' },
-        FloatBorder = { bg = 'NONE' },
-      },
-    })
-
-    vim.opt.background = 'dark'
-
-    vim.cmd.colorscheme 'rose-pine'
-  end
-}
 
 -- return {
 --   "catppuccin/nvim",
