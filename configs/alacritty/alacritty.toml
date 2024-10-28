@@ -12,23 +12,23 @@ args = ["-l", "-c", "tmux attach || tmux"]
 TERM = "xterm-256color"
 
 [font]
-size = 18
+size = 16
 offset = {}
 
 [font.normal]
-family = "JetBrainsMono Nerd Font"
+family = "JetBrainsMono NF"
 style = "Regular"
 
 [font.italic]
-family = "JetBrainsMono Nerd Font"
+family = "JetBrainsMono NF"
 style = "Italic"
 
 [font.bold]
-family = "JetBrainsMono Nerd Font"
+family = "JetBrainsMono NF"
 style = "Bold"
 
 [font.bold_italic]
-family = "JetBrainsMono Nerd Font"
+family = "JetBrainsMono NF"
 style = "BoldItalic"
 
 [[keyboard.bindings]]

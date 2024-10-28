@@ -1,4 +1,4 @@
-ZSH_THEME="gugulenok-light-rose-pine"
+ZSH_THEME="gugulenok-dark-rose-pine"
 
 # Which plugins would you like to load?
 # Standard plugins can be found in $ZSH/plugins/
@@ -53,6 +53,8 @@ source $ZSH/oh-my-zsh.sh
 source $HOME/.cargo/env
 
 source <(fzf --zsh)
+
+eval "$(rbenv init - zsh)"
 
 # Keyboard bindings
 bindkey '^y' autosuggest-accept
