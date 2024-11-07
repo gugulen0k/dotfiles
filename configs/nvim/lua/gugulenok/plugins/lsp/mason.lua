@@ -1,5 +1,6 @@
 return {
   "williamboman/mason.nvim",
+  lazy = "false",
   dependencies = {
     "williamboman/mason-lspconfig.nvim",
     "WhoIsSethDaniel/mason-tool-installer.nvim",
@@ -11,7 +12,7 @@ return {
 
     -- enable mason and configure icons
     mason.setup({
-      PATH = "append",
+      PATH = "prepend",
       ui = {
         border = "single",
         icons = {

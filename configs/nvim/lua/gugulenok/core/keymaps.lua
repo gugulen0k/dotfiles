@@ -11,10 +11,18 @@ utils.autocmd('BufEnter', {
   end,
 })
 
+-- Remap Ctrl+c to behave like Esc
+vim.keymap.set({ 'n', 'i' }, '<C-c>', '<Esc>')
+
+-- Ctrl+s writes the buffer.
 utils.map('n', '<C-s>', ':w<CR>')
 utils.map('n', 'Q', '<nop>')
+
+-- Ctrl+d or Ctrl+u will do what it suppose to do and also align the view.
 utils.map('n', '<C-d>', '<C-d>zz')
 utils.map('n', '<C-u>', '<C-u>zz')
+
+-- Previous or Next search item will be centered.
 utils.map('n', 'n', 'nzz')
 utils.map('n', 'N', 'Nzz')
 

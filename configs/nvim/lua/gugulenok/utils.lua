@@ -37,7 +37,7 @@ function M.set_keymap(mode, shortcut, command, opts)
 end
 
 function M.map(mode, lhs, rhs, opts)
-  vim.keymap.set(mode, lhs, rhs, opts or {})
+  vim.keymap.set(mode, lhs, rhs, opts or { noremap = true, silent = true })
 end
 
 function M.autocmd(event, opts)
