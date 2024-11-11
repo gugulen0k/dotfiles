@@ -26,9 +26,6 @@ export ZSH="$HOME/.oh-my-zsh"
 export EDITOR='nvim'
 export THOR_MERGE='nvim -d'
 
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 # Different aliases
 alias c="clear"
@@ -55,8 +52,8 @@ alias i3rc="nvim ~/.config/i3/config"
 
 source $ZSH/oh-my-zsh.sh
 source $HOME/.cargo/env
-
 source <(fzf --zsh)
+source /usr/share/nvm/init-nvm.sh
 
 eval "$(rbenv init - zsh)"
 
