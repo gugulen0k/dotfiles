@@ -1,10 +1,8 @@
-import = ["~/.config/alacritty/themes/themes/rose-pine.toml"]
-
 [colors.cursor]
 text = "CellBackground"
 cursor = "CellForeground"
 
-[shell]
+[terminal.shell]
 program = "/bin/zsh"
 args = ["-l", "-c", "tmux attach || tmux"]
 
@@ -16,19 +14,19 @@ size = 18
 offset = {}
 
 [font.normal]
-family = "JetBrainsMono Nerd Font"
+family = "JetBrainsMono NF"
 style = "Regular"
 
 [font.italic]
-family = "JetBrainsMono Nerd Font"
+family = "JetBrainsMono NF"
 style = "Italic"
 
 [font.bold]
-family = "JetBrainsMono Nerd Font"
+family = "JetBrainsMono NF"
 style = "Bold"
 
 [font.bold_italic]
-family = "JetBrainsMono Nerd Font"
+family = "JetBrainsMono NF"
 style = "BoldItalic"
 
 [[keyboard.bindings]]
@@ -49,3 +47,8 @@ startup_mode = "Maximized"
 [window.dimensions]
 columns = 130
 lines = 40
+
+[general]
+import = ["~/.config/alacritty/themes/themes/gruvbox_material_medium_dark.toml"]
+
+[terminal]

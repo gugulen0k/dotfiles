@@ -1,5 +1,6 @@
 return {
   "williamboman/mason.nvim",
+  lazy = "false",
   dependencies = {
     "williamboman/mason-lspconfig.nvim",
     "WhoIsSethDaniel/mason-tool-installer.nvim",
@@ -11,7 +12,7 @@ return {
 
     -- enable mason and configure icons
     mason.setup({
-      PATH = "append",
+      PATH = "prepend",
       ui = {
         border = "single",
         icons = {
@@ -34,7 +35,8 @@ return {
         "rust_analyzer",
         "volar",
         "ts_ls",
-        "clangd"
+        "clangd",
+        "solargraph"
       },
       -- auto-install configured servers (with lspconfig)
       automatic_installation = true, -- not the same as ensure_installed
@@ -42,7 +44,9 @@ return {
 
     mason_tool_installer.setup({
       ensure_installed = {
-        "pylint", -- Python linter
+        "pylint",   -- Python linter
+        "eslint_d", -- JavaScript linter
+        "prettierd" -- Formatter
       },
     })
   end,

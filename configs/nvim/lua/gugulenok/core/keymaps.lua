@@ -11,10 +11,18 @@ utils.autocmd('BufEnter', {
   end,
 })
 
+-- Remap Ctrl+c to behave like Esc
+vim.keymap.set({ 'n', 'i' }, '<C-c>', '<Esc>')
+
+-- Ctrl+s writes the buffer.
 utils.map('n', '<C-s>', ':w<CR>')
 utils.map('n', 'Q', '<nop>')
+
+-- Ctrl+d or Ctrl+u will do what it suppose to do and also align the view.
 utils.map('n', '<C-d>', '<C-d>zz')
 utils.map('n', '<C-u>', '<C-u>zz')
+
+-- Previous or Next search item will be centered.
 utils.map('n', 'n', 'nzz')
 utils.map('n', 'N', 'Nzz')
 
@@ -27,23 +35,11 @@ utils.map('n', '<leader>i',
 
 -- Disable default macro record on 'q' button and remap it to '<leader>q'.
 utils.map('n', 'q', '<nop>')
-utils.map('n', '<leader>q', 'q')
+utils.map('n', '<leader>q', 'q', { desc = 'Start recording a macro' })
 
-------------------- [ Diagnostics ] -------------------
--- Show buffer diagnostics in quickfix list
--- utils.map('', 'dq', function()
---     vim.diagnostic.setloclist({
---       title = 'Buffer Diagnostics',
---       severity = {
---         vim.diagnostic.severity.WARN,
---         vim.diagnostic.severity.INFO,
---       }
---     })
---
---     vim.defer_fn(function()
---       vim.cmd('wincmd p')
---     end, 0)
---   end,
---   { desc = 'Open quickfix list with current buffer diagnostics' }
--- )
--------------------------------------------------------
+------------------- [ Quickfix List ] -------------------
+utils.map('n', ']q', '<cmd>cnext<CR>', { desc = 'Next quickfix list item' })
+utils.map('n', '[q', '<cmd>cprevious<CR>', { desc = 'Previous quickfix list item' })
+utils.map('n', 'qff', '<cmd>cfirst<CR>', { desc = 'First quickfix list item' })
+utils.map('n', 'qfl', '<cmd>clast<CR>', { desc = 'Last quickfix list item' })
+---------------------------------------------------------
