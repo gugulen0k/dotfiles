@@ -7,7 +7,7 @@ return {
 
     local statusline_hl_group = utils.get_hl_by_name("StatusLine")
     utils.set_global_hl("WinBar", {
-      fg = statusline_hl_group.fg,
+      -- fg = statusline_hl_group.fg,
       bg = statusline_hl_group.bg,
       bold = true
     })

@@ -1,3 +1,49 @@
+return {
+  'AlexvZyl/nordic.nvim',
+  lazy = false,
+  priority = 1000,
+  config = function()
+    require('nordic').setup({
+      -- This callback can be used to override highlights before they are applied.
+      on_highlight = function(highlights, palette)
+        highlights.NormalFloat = { bg = 'none' }
+        highlights.FloatBorder = { bg = 'none', fg = palette.black0 }
+      end,
+
+      -- Enable bold keywords.
+      bold_keywords = true,
+      -- Enable italic comments.
+      italic_comments = true,
+      -- Enable editor background transparency.
+      transparent = {
+        -- Enable transparent background.
+        bg = false,
+        -- Enable transparent background for floating windows.
+        float = false,
+      },
+      -- Enable brighter float border.
+      bright_border = true,
+      -- Reduce the overall amount of blue in the theme (diverges from base Nord).
+      reduced_blue = true,
+      -- Swap the dark background with the normal one.
+      swap_backgrounds = false,
+      -- Cursorline options.  Also includes visual/selection.
+      cursorline = {
+        -- Bold font in cursorline.
+        bold = false,
+        -- Bold cursorline number.
+        bold_number = true,
+        -- Available styles: 'dark', 'light'.
+        theme = 'dark',
+        -- Blending the cursorline bg with the buffer bg.
+        blend = 0.85,
+      },
+    })
+
+    vim.cmd.colorscheme('nordic')
+  end
+}
+
 -- return {
 --   'rose-pine/neovim',
 --   name = 'rose-pine',
@@ -48,37 +94,37 @@
 --   end
 -- }
 
-return {
-  'sainnhe/gruvbox-material',
-  lazy = false,
-  priority = 1000,
-  config = function()
-    local glb = vim.g
-
-    vim.opt.background = 'dark'
-    glb.gruvbox_material_enable_italic = true
-    glb.gruvbox_material_enable_bold = true
-    glb.gruvbox_material_ui_contrast = 'high'
-    glb.gruvbox_material_better_performance = true
-    glb.gruvbox_material_float_style = 'bright'
-
-    vim.api.nvim_create_autocmd('ColorScheme', {
-      group = vim.api.nvim_create_augroup('custom_highlights_gruvboxmaterial', {}),
-      pattern = 'gruvbox-material',
-      callback = function()
-        local config = vim.fn['gruvbox_material#get_configuration']()
-        local palette = vim.fn['gruvbox_material#get_palette'](config.background, config.foreground,
-          config.colors_override)
-        local set_hl = vim.fn['gruvbox_material#highlight']
-
-        set_hl('FloatBorder', palette.none, palette.none)
-        set_hl('NormalFloat', palette.none, palette.none)
-      end
-    })
-
-    vim.cmd.colorscheme('gruvbox-material')
-  end
-}
+-- return {
+--   'sainnhe/gruvbox-material',
+--   lazy = false,
+--   priority = 1000,
+--   config = function()
+--     local glb = vim.g
+--
+--     vim.opt.background = 'dark'
+--     glb.gruvbox_material_enable_italic = true
+--     glb.gruvbox_material_enable_bold = true
+--     glb.gruvbox_material_ui_contrast = 'high'
+--     glb.gruvbox_material_better_performance = true
+--     glb.gruvbox_material_float_style = 'bright'
+--
+--     vim.api.nvim_create_autocmd('ColorScheme', {
+--       group = vim.api.nvim_create_augroup('custom_highlights_gruvboxmaterial', {}),
+--       pattern = 'gruvbox-material',
+--       callback = function()
+--         local config = vim.fn['gruvbox_material#get_configuration']()
+--         local palette = vim.fn['gruvbox_material#get_palette'](config.background, config.foreground,
+--           config.colors_override)
+--         local set_hl = vim.fn['gruvbox_material#highlight']
+--
+--         set_hl('FloatBorder', palette.none, palette.none)
+--         set_hl('NormalFloat', palette.none, palette.none)
+--       end
+--     })
+--
+--     vim.cmd.colorscheme('gruvbox-material')
+--   end
+-- }
 
 -- return {
 --   'rose-pine/neovim',

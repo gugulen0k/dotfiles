@@ -49,6 +49,6 @@ columns = 130
 lines = 40
 
 [general]
-import = ["~/.config/alacritty/themes/themes/gruvbox_material_medium_dark.toml"]
+import = ["~/.config/alacritty/themes/themes/nordic.toml"]
 
 [terminal]
