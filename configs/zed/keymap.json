@@ -1,4 +1,11 @@
 [
+  {
+    "context": "vim_mode == insert",
+    "bindings": {
+      "ctrl-x ctrl-o": "editor::ShowCompletions",
+      "ctrl-x ctrl-a": "assistant::InlineAssist"
+    }
+  },
   // {
   //   "context": "Editor && (vim_mode == normal || vim_mode == visual) && !VimWaiting && !menu",
   //   "bindings": {
@@ -28,6 +35,10 @@
   {
     "context": "Editor && vim_mode == normal && !VimWaiting && !menu",
     "bindings": {
+      "ctrl-p": "file_finder::Toggle",
+      "space l": "tab_switcher::Toggle",
+      "space f": "editor::Format",
+      "-": "pane::RevealInProjectPanel"
       //     // put key-bindings here if you want them to work only in normal mode
       //     // Window movement bindings
       //     // Ctrl jklk to move between panes
@@ -74,10 +85,8 @@
       //     // Save file
       //     "ctrl-s": "workspace::Save",
       //     // File finder
-      //     "ctrl-p": "file_finder::Toggle",
       //     // TODO: Open other files
       //     // Show project panel with current file
-      "-": "pane::RevealInProjectPanel"
     }
   },
   // // Empty pane, set of keybindings that are available when there is no active editor
@@ -135,7 +144,7 @@
     "bindings": {
       "cmd-t": "workspace::ToggleBottomDock",
       "ctrl-n": "workspace::NewTerminal",
-      "ctrl-[": "pane::ActivatePrevItem",
+      "ctrl-[": "pane::ActivatePreviousItem",
       "ctrl-]": "pane::ActivateNextItem"
     }
   },
@@ -154,7 +163,7 @@
       "q": "workspace::ToggleRightDock",
       "-": "workspace::ToggleRightDock"
     }
-  }
+  },
   // // Panel nagivation
   // {
   //   "context": "Dock",
@@ -175,4 +184,12 @@
   // //     "g e": "vim::PreviousSubwordEnd"
   // //   }
   // // }
+  {
+    "context": "VimControl && !menu",
+    "bindings": {
+      "space t": "outline::Toggle",
+      "space i": "editor::ToggleCodeActions",
+      "space g": "editor::OpenExcerpts"
+    }
+  }
 ]

@@ -7,23 +7,41 @@
 // custom settings, run the `open default settings` command
 // from the command palette or from `Zed` application menu.
 {
-  "theme": "Base16 Default Light",
-  "telemetry": {
-    "diagnostics": false,
-    "metrics": false
+  // ===== [ AI & Agent Settings ] =====
+  "agent": {
+    "default_model": {
+      "provider": "zed.dev",
+      "model": "claude-sonnet-4-latest"
+    },
+    "dock": "left",
+    "version": "2"
   },
-  "indent_guides": {
-    "enabled": true,
-    "coloring": "fixed"
+
+  "features": {
+    "edit_prediction_provider": "zed",
+    "copilot": false
   },
-  "vim_mode": true,
-  "relative_line_numbers": true,
-  "tab_size": 2,
-  "tab_bar": {
-    "show": true
+
+  "show_edit_predictions": false,
+
+  "inlay_hints": {
+    "enabled": false
   },
+
+  // ===== [ Appearance & Theme ] =====
+  "theme": "Nordic",
+
   "ui_font_size": 18,
 
+  "cursor_blink": false,
+
+  "hide_mouse": "on_typing_and_movement",
+
+  "scrollbar": {
+    "show": "never"
+  },
+
+  // ===== [ Editor & Text Settings ] =====
   "buffer_font_family": "JetBrainsMono Nerd Font",
   "buffer_font_size": 18,
   "buffer_line_height": "standard",
@@ -31,14 +49,51 @@
     "calt": false
   },
 
+  "relative_line_numbers": true,
+  "tab_size": 2,
+
+  "indent_guides": {
+    "enabled": true,
+    "coloring": "indent_aware"
+  },
+
+  "wrap_guides": [80],
+  "show_wrap_guides": true,
+
+  // ===== [ Interface Layout ] =====
+  "tab_bar": {
+    "show": true
+  },
+
   "project_panel": {
-    "button": true,
     "dock": "right",
+    "button": true,
     "git_status": true
   },
 
-  "features": {
-    "inline_completion_provider": "none",
-    "copilot": false
+  "toolbar": {
+    "breadcrumbs": false,
+    "quick_actions": false,
+    "selections_menu": false
+  },
+
+  // ===== [ Vim Configuration ] =====
+  "vim_mode": true,
+  "vim": {
+    "use_system_clipboard": "never"
+  },
+
+  // ===== [ Git Integration ] =====
+  "git": {
+    "git_gutter": "tracked_files",
+    "inline_blame": {
+      "enabled": true
+    }
+  },
+
+  // ===== [ Privacy & Telemetry ] =====
+  "telemetry": {
+    "diagnostics": false,
+    "metrics": false
   }
 }
