@@ -1,6 +1,6 @@
 return {
   "tpope/vim-fugitive",
-  config = function ()
+  config = function()
     local utils = require('gugulenok.utils')
 
     -- Function to toggle :G in a vertical split
@@ -19,6 +19,6 @@ return {
     end
 
     -- Map <space>G to toggle_git_status
-    utils.map('n', '<space>G', toggle_git_status, { noremap = true, silent = true })
+    utils.map('n', '<space>G', toggle_git_status, { desc = 'Toggle Fugitive plugin' })
   end
 }

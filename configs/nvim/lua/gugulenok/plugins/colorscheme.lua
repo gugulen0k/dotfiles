@@ -6,10 +6,9 @@ return {
     require('nordic').setup({
       -- This callback can be used to override highlights before they are applied.
       on_highlight = function(highlights, palette)
-        highlights.NormalFloat = { bg = 'none' }
-        highlights.FloatBorder = { bg = 'none', fg = palette.black0 }
+        highlights.NormalFloat = { bg = 'NONE' }
+        highlights.FloatBorder = { bg = 'NONE', fg = palette.black0 }
       end,
-
       -- Enable bold keywords.
       bold_keywords = true,
       -- Enable italic comments.
@@ -34,10 +33,14 @@ return {
         -- Bold cursorline number.
         bold_number = true,
         -- Available styles: 'dark', 'light'.
-        theme = 'dark',
+        theme = 'light',
         -- Blending the cursorline bg with the buffer bg.
         blend = 0.85,
       },
+      ts_context = {
+        -- Enables dark background for treesitter-context window
+        dark_background = true,
+      }
     })
 
     vim.cmd.colorscheme('nordic')
@@ -101,7 +104,7 @@ return {
 --   config = function()
 --     local glb = vim.g
 --
---     vim.opt.background = 'dark'
+--     vim.opt.background = 'light'
 --     glb.gruvbox_material_enable_italic = true
 --     glb.gruvbox_material_enable_bold = true
 --     glb.gruvbox_material_ui_contrast = 'high'
@@ -169,7 +172,7 @@ return {
 --   priority = 1000, -- make sure this loads before any other plugin
 --   config = function()
 --     require("catppuccin").setup({
---       flavour = "latte", -- latte, frappe, macchiato, mocha
+--       flavour = "mocha", -- latte, frappe, macchiato, mocha
 --       background = {     -- :h background
 --         light = "latte",
 --         dark = "mocha",
@@ -182,16 +185,16 @@ return {
 --       no_underline = false,           -- Force no underline
 --       styles = {                      -- Handles the styles of general hi groups (see `:h highlight-args`):
 --         comments = { "italic" },      -- Change the style of comments
---         conditionals = {},
---         loops = {},
---         functions = {},
+--         conditionals = { "bold" },
+--         loops = { "bold" },
+--         functions = { "bold" },
 --         keywords = {},
 --         strings = {},
 --         variables = {},
 --         numbers = {},
---         booleans = {},
---         properties = {},
---         types = {},
+--         booleans = { "bold" },
+--         properties = { "italic" },
+--         types = { "bold" },
 --         operators = {},
 --       },
 --       integrations = {
@@ -203,6 +206,16 @@ return {
 --         mini = {
 --           enabled = true,
 --         },
+--       },
+--       color_overrides = {
+--         all = {
+--           text = "#ffffff",
+--         },
+--         mocha = {
+--           base = "#303446",
+--           crust = "#242634",
+--           mantle = "#242634",
+--         }
 --       }
 --     })
 --

@@ -4,8 +4,8 @@ local current_dir = utils.base_path("gugulenok.plugins.nvim-cmp")
 ----------------------------------------------------
 
 return {
-  "yioneko/nvim-cmp",
-  branch = "perf-up",
+  "hrsh7th/nvim-cmp",
+  branch = "main",
   event = "InsertEnter",
   dependencies = {
     "hrsh7th/cmp-buffer",   -- source for text in buffer

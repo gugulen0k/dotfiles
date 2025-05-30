@@ -41,6 +41,12 @@
     "show": "never"
   },
 
+  "experimental.theme_overrides": {
+    // Workaround to disable highlight of all occurences of word under the cursor
+    "editor.document_highlight.read_background": "#00000000",
+    "editor.document_highlight.write_background": "#00000000"
+  },
+
   // ===== [ Editor & Text Settings ] =====
   "buffer_font_family": "JetBrainsMono Nerd Font",
   "buffer_font_size": 18,
@@ -54,15 +60,19 @@
 
   "indent_guides": {
     "enabled": true,
-    "coloring": "indent_aware"
+    "coloring": "fixed"
   },
 
   "wrap_guides": [80],
   "show_wrap_guides": true,
 
+  "autosave": "on_focus_change",
+  "always_treat_brackets_as_autoclosed": true,
+  "use_smartcase_search": true,
+
   // ===== [ Interface Layout ] =====
   "tab_bar": {
-    "show": true
+    "show": false
   },
 
   "project_panel": {
@@ -72,22 +82,27 @@
   },
 
   "toolbar": {
-    "breadcrumbs": false,
+    "breadcrumbs": true,
     "quick_actions": false,
     "selections_menu": false
+  },
+
+  "file_finder": {
+    "modal_max_width": "large"
   },
 
   // ===== [ Vim Configuration ] =====
   "vim_mode": true,
   "vim": {
-    "use_system_clipboard": "never"
+    "use_system_clipboard": "always"
   },
 
   // ===== [ Git Integration ] =====
   "git": {
     "git_gutter": "tracked_files",
     "inline_blame": {
-      "enabled": true
+      "enabled": true,
+      "show_commit_summary": true
     }
   },
 
@@ -95,5 +110,40 @@
   "telemetry": {
     "diagnostics": false,
     "metrics": false
+  },
+
+  // ===== [ Languages ] =====
+  "languages": {
+    "Ruby": {
+      "language_servers": ["solargraph", "rubocop"],
+      "format_on_save": "off"
+    }
+  },
+  "lsp": {
+    "solargraph": {
+      "initialization_options": {
+        "diagnostics": true,
+        "formatting": true
+      }
+    }
+  },
+
+  "diagnostics": {
+    "button": true,
+    "include_warnings": true,
+    "inline": {
+      "enabled": true
+    },
+    "cargo": null
+  },
+
+  // ===== [ Terminal ] =====
+  "terminal": {
+    "copy_on_select": true,
+    "line_height": "standard",
+    "alternate_scroll": "on",
+    "toolbar": {
+      "breadcrumbs": false
+    }
   }
 }

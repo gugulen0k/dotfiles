@@ -10,7 +10,8 @@ local languages = {
   solargraph = current_dir.require("languages.solargraph"),
   ts_ls = current_dir.require("languages.ts_ls"),
   rust_analyzer = current_dir.require("languages.rust_analyzer"),
-  clangd = current_dir.require("languages.clangd")
+  clangd = current_dir.require("languages.clangd"),
+  -- basedpyright = current_dir.require("languages.basedpyright")
 }
 ----------------------------------------------------------
 

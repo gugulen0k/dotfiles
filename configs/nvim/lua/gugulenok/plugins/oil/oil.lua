@@ -29,7 +29,7 @@ return {
       watch_for_changes = true,
       constraint_cursor = "name",
       win_options = {
-        winbar = "%!v:lua.get_oil_winbar()"
+        -- winbar = "%!v:lua.get_oil_winbar()"
       },
       view_options = {
         show_hidden = true,
@@ -37,7 +37,7 @@ return {
           return name == ".." or name == ".git"
         end,
         is_hidden_file = function(name, bufnr)
-          -- git_files.setup({ name = name, bufnr = bufnr })
+          git_files.setup({ name = name, bufnr = bufnr })
         end,
       },
       use_default_keymaps = false,
@@ -47,9 +47,9 @@ return {
       keymaps = {
         ["g?"] = "actions.show_help",
         ["<CR>"] = "actions.select",
-        -- ["<C-p>"] = "actions.preview",
+        ["<C-p>"] = "actions.preview",
         ["<C-c>"] = "actions.close",
-        ["<C-l>"] = "actions.refresh",
+        ["<C-u>"] = "actions.refresh",
         ["g."] = "actions.toggle_hidden",
         ["gd"] = { desc = "Toggle file detail view", callback = function() file_details.setup() end },
         ["-"] = "actions.parent",
@@ -62,10 +62,12 @@ return {
       -- Configuration for the floating window in oil.open_float
       float = {
         border = "single",
-        padding = 0
+        padding = 2,
+        max_width = 0.7,
+        max_height = 0.7
       },
     })
 
-    utils.map("n", "-", function() oil.open() end, { desc = "Open parent directory" })
+    utils.map("n", "-", function() oil.open_float() end, { desc = "Open parent directory" })
   end
 }

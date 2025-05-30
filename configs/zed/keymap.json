@@ -3,42 +3,18 @@
     "context": "vim_mode == insert",
     "bindings": {
       "ctrl-x ctrl-o": "editor::ShowCompletions",
-      "ctrl-x ctrl-a": "assistant::InlineAssist"
+      "ctrl-x ctrl-a": "assistant::InlineAssist",
+      "ctrl-y": "editor::ConfirmCompletion"
     }
   },
-  // {
-  //   "context": "Editor && (vim_mode == normal || vim_mode == visual) && !VimWaiting && !menu",
-  //   "bindings": {
-  //     // put key-bindings here if you want them to work in normal & visual mode
-  //     // Git
-  //     "space g h d": "editor::ToggleHunkDiff",
-  //     "space g h r": "editor::RevertSelectedHunks",
-  //     // Toggle inlay hints
-  //     "space t i": "editor::ToggleInlayHints",
-  //     // Toggle soft wrap
-  //     "space u w": "editor::ToggleSoftWrap",
-  //     // NOTE: Toggle Zen mode, not fully working yet
-  //     "space c z": "workspace::ToggleCenteredLayout",
-  //     // Open markdown preview
-  //     "space m p": "markdown::OpenPreview",
-  //     "space m P": "markdown::OpenPreviewToTheSide",
-  //     // Open recent project
-  //     "space f p": "projects::OpenRecent",
-  //     // Search word under cursor
-  //     "space s w": "pane::DeploySearch",
-  //     // Chat with AI
-  //     "space a c": "assistant::ToggleFocus",
-  //     // Go to file with `gf`
-  //     "g f": "editor::OpenExcerpts"
-  //   }
-  // },
   {
     "context": "Editor && vim_mode == normal && !VimWaiting && !menu",
     "bindings": {
-      "ctrl-p": "file_finder::Toggle",
-      "space l": "tab_switcher::Toggle",
+      "space l": ["workspace::SendKeystrokes", "cmd-shift-p ls enter"],
       "space f": "editor::Format",
-      "-": "pane::RevealInProjectPanel"
+      "-": "pane::RevealInProjectPanel",
+      "space space": ["workspace::SendKeystrokes", "ctrl-tab enter"] // Toggle between last two open buffers
+
       //     // put key-bindings here if you want them to work only in normal mode
       //     // Window movement bindings
       //     // Ctrl jklk to move between panes
@@ -142,7 +118,6 @@
   {
     "context": "Terminal",
     "bindings": {
-      "cmd-t": "workspace::ToggleBottomDock",
       "ctrl-n": "workspace::NewTerminal",
       "ctrl-[": "pane::ActivatePreviousItem",
       "ctrl-]": "pane::ActivateNextItem"

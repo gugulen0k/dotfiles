@@ -108,11 +108,11 @@ return {
     end
 
     local function set_winbar()
-      if is_oil_buffer() then
-        return oil_buffer()
-      elseif is_simple_buffer() then
-        return buffer_winbar()
-      end
+      -- if is_oil_buffer() then
+      --   return oil_buffer()
+      -- elseif is_simple_buffer() then
+      return buffer_winbar()
+      -- end
     end
 
     -- Set the winbar dynamically on buffer enter
