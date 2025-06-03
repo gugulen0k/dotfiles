@@ -8,111 +8,19 @@
     }
   },
   {
+    // Put key-bindings here if you want them to work only in normal mode
     "context": "Editor && vim_mode == normal && !VimWaiting && !menu",
     "bindings": {
       "space l": ["workspace::SendKeystrokes", "cmd-shift-p ls enter"],
       "space f": "editor::Format",
       "-": "pane::RevealInProjectPanel",
       "space space": ["workspace::SendKeystrokes", "ctrl-tab enter"] // Toggle between last two open buffers
-
-      //     // put key-bindings here if you want them to work only in normal mode
-      //     // Window movement bindings
-      //     // Ctrl jklk to move between panes
-      //     "ctrl-h": ["workspace::ActivatePaneInDirection", "Left"],
-      //     "ctrl-l": ["workspace::ActivatePaneInDirection", "Right"],
-      //     "ctrl-k": ["workspace::ActivatePaneInDirection", "Up"],
-      //     "ctrl-j": ["workspace::ActivatePaneInDirection", "Down"],
-      //     // +LSP
-      //     "space c a": "editor::ToggleCodeActions",
-      //     "space .": "editor::ToggleCodeActions",
-      //     "space c r": "editor::Rename",
-      //     "g d": "editor::GoToDefinition",
-      //     "g D": "editor::GoToDefinitionSplit",
-      //     "g i": "editor::GoToImplementation",
-      //     "g I": "editor::GoToImplementationSplit",
-      //     "g t": "editor::GoToTypeDefinition",
-      //     "g T": "editor::GoToTypeDefinitionSplit",
-      //     "g r": "editor::FindAllReferences",
-      //     "] d": "editor::GoToDiagnostic",
-      //     "[ d": "editor::GoToPrevDiagnostic",
-      //     // TODO: Go to next/prev error
-      //     "] e": "editor::GoToDiagnostic",
-      //     "[ e": "editor::GoToPrevDiagnostic",
-      //     // Symbol search
-      //     "s s": "outline::Toggle",
-      //     "s S": "project_symbols::Toggle",
-      //     // Diagnostic
-      //     // "space x x": "diagnostics::Deploy",
-      //     // +Git
-      //     // Git prev/next hunk
-      //     "] h": "editor::GoToHunk",
-      //     "[ h": "editor::GoToPrevHunk",
-      //     // TODO: git diff is not ready yet, refer https://github.com/zed-industries/zed/issues/8665#issuecomment-2194000497
-      //     // + Buffers
-      //     // Switch between buffers
-      //     "shift-h": "pane::ActivatePrevItem",
-      //     "shift-l": "pane::ActivateNextItem",
-      //     // Close active panel
-      //     "shift-q": "pane::CloseActiveItem",
-      //     "ctrl-q": "pane::CloseActiveItem",
-      //     "space b d": "pane::CloseActiveItem",
-      //     // Close other items
-      //     "space b o": "pane::CloseInactiveItems",
-      //     // Save file
-      //     "ctrl-s": "workspace::Save",
-      //     // File finder
-      //     // TODO: Open other files
-      //     // Show project panel with current file
     }
   },
-  // // Empty pane, set of keybindings that are available when there is no active editor
-  // {
-  //   "context": "EmptyPane || SharedScreen",
-  //   "bindings": {
-  //     // Open file finder
-  //     "ctrl-p": "file_finder::Toggle",
-  //     // Open recent project
-  //     "space f p": "projects::OpenRecent"
-  //   }
-  // },
-  // // Comment code
-  // {
-  //   "context": "Editor && vim_mode == visual && !VimWaiting && !menu",
-  //   "bindings": {
-  //     // visual, visual line & visual block modes
-  //     "g c": "editor::ToggleComments"
-  //   }
-  // },
-  // // Better escape
-  // {
-  //   "context": "Editor && vim_mode == insert && !menu",
-  //   "bindings": {
-  //     // "j j": "vim::NormalBefore", // remap jj in insert mode to escape
-  //     // "j k": "vim::NormalBefore" // remap jk in insert mode to escape
-  //   }
-  // },
-  // // Rename
-  // {
-  //   "context": "Editor && vim_operator == c",
-  //   "bindings": {
-  //     "c": "vim::CurrentLine",
-  //     "r": "editor::Rename" // zed specific
-  //   }
-  // },
-  // // Code Action
-  // {
-  //   "context": "Editor && vim_operator == c",
-  //   "bindings": {
-  //     "c": "vim::CurrentLine",
-  //     "a": "editor::ToggleCodeActions" // zed specific
-  //   }
-  // },
-  // Toggle terminal
   {
     "context": "Workspace",
     "bindings": {
-      "ctrl-a f": "workspace::ToggleZoom",
-      "cmd-t": "terminal_panel::ToggleFocus"
+      "ctrl-a f": "workspace::ToggleZoom"
     }
   },
   {
@@ -139,7 +47,25 @@
       "-": "workspace::ToggleRightDock"
     }
   },
-  // // Panel nagivation
+  {
+    "context": "VimControl && !menu",
+    "bindings": {
+      "space t": "outline::Toggle",
+      "space i": "editor::ToggleCodeActions",
+      "space g": "editor::OpenExcerpts"
+    }
+  }
+  // Empty pane, set of keybindings that are available when there is no active editor
+  // {
+  //   "context": "EmptyPane || SharedScreen",
+  //   "bindings": {
+  //     // Open file finder
+  //     "ctrl-p": "file_finder::Toggle",
+  //     // Open recent project
+  //     "space f p": "projects::OpenRecent"
+  //   }
+  // },
+  // Panel nagivation
   // {
   //   "context": "Dock",
   //   "bindings": {
@@ -149,22 +75,4 @@
   //     "ctrl-a j": ["workspace::ActivatePaneInDirection", "Down"]
   //   }
   // }
-  // // Subword motion is not working really nice with `ciw`, disable for now
-  // // {
-  // //   "context": "VimControl && !menu",
-  // //   "bindings": {
-  // //     "w": "vim::NextSubwordStart",
-  // //     "b": "vim::PreviousSubwordStart",
-  // //     "e": "vim::NextSubwordEnd",
-  // //     "g e": "vim::PreviousSubwordEnd"
-  // //   }
-  // // }
-  {
-    "context": "VimControl && !menu",
-    "bindings": {
-      "space t": "outline::Toggle",
-      "space i": "editor::ToggleCodeActions",
-      "space g": "editor::OpenExcerpts"
-    }
-  }
 ]

@@ -29,7 +29,11 @@
   },
 
   // ===== [ Appearance & Theme ] =====
-  "theme": "Nordic",
+  "theme": {
+    "mode": "light",
+    "dark": "Nordic",
+    "light": "Nordic"
+  },
 
   "ui_font_size": 18,
 
