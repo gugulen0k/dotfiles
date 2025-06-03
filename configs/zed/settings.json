@@ -74,6 +74,10 @@
   "always_treat_brackets_as_autoclosed": true,
   "use_smartcase_search": true,
 
+  "gutter": {
+    "folds": false
+  },
+
   // ===== [ Interface Layout ] =====
   "tab_bar": {
     "show": false
@@ -121,13 +125,46 @@
     "Ruby": {
       "language_servers": ["solargraph", "rubocop"],
       "format_on_save": "off"
+    },
+    "Python": {
+      "language_servers": ["pyright", "ruff"],
+      "format_on_save": "on",
+      "formatter": [
+        {
+          "code_actions": {
+            // Fix all auto-fixable lint violations
+            "source.fixAll.ruff": true,
+            "source.organizeImports.ruff": true
+          }
+        },
+        {
+          "language_server": { "name": "ruff" }
+        }
+      ]
+    },
+    "JavaScript": {
+      "language_servers": ["eslint", "prettier"],
+      "format_on_save": "on",
+      "formatter": "auto"
     }
   },
+
   "lsp": {
     "solargraph": {
       "initialization_options": {
         "diagnostics": true,
         "formatting": true
+      }
+    },
+    "eslint": {
+      "settings": {
+        "workingDirectories": ["."],
+        "experimental": {
+          "useFlatConfig": true
+        },
+        "codeActionsOnSave": {
+          "source.fixAll.eslint": true
+        }
       }
     }
   },
@@ -146,6 +183,7 @@
     "copy_on_select": true,
     "line_height": "standard",
     "alternate_scroll": "on",
+    "font_size": 16,
     "toolbar": {
       "breadcrumbs": false
     }
