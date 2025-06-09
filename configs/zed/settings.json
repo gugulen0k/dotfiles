@@ -9,9 +9,12 @@
 {
   // ===== [ AI & Agent Settings ] =====
   "agent": {
+    "default_profile": "ask",
+    "single_file_review": false,
+    "always_allow_tool_actions": false,
     "default_model": {
       "provider": "zed.dev",
-      "model": "claude-sonnet-4-latest"
+      "model": "claude-sonnet-4"
     },
     "dock": "left",
     "version": "2"
@@ -73,6 +76,7 @@
   "autosave": "on_focus_change",
   "always_treat_brackets_as_autoclosed": true,
   "use_smartcase_search": true,
+  "show_signature_help_after_edits": true,
 
   "gutter": {
     "folds": false
