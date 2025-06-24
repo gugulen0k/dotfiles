@@ -1,4 +1,4 @@
-ZSH_THEME="gugulenok-dark-nordic"
+ZSH_THEME="gugulenok-dark-rose-pine"
 
 # Which plugins would you like to load?
 # Standard plugins can be found in $ZSH/plugins/
@@ -15,11 +15,15 @@ plugins=(
   copypath            # Copies the path of given directory or file to the system clipboard.
   colored-man-pages
   colorize
+  tmux
   zsh-syntax-highlighting
   zsh-autosuggestions
 )
 
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=grey'
+
+# Tmux plugin setup
+ZSH_TMUX_AUTOSTART=true
 
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
@@ -44,6 +48,7 @@ alias gs="git status"
 
 # Configuration files aliases
 alias nvimrc="nvim ~/.config/nvim"
+alias ghostrc="nvim ~/.config/ghostty/config"
 alias zshrc="nvim ~/.zshrc"
 alias tmuxrc="nvim ~/.tmux.conf"
 alias alacrittyrc="nvim ~/.config/alacritty"

@@ -1,87 +1,87 @@
-return {
-  'AlexvZyl/nordic.nvim',
-  lazy = false,
-  priority = 1000,
-  config = function()
-    require('nordic').setup({
-      -- This callback can be used to override highlights before they are applied.
-      on_highlight = function(highlights, palette)
-        highlights.NormalFloat = { bg = 'NONE' }
-        highlights.FloatBorder = { bg = 'NONE', fg = palette.black0 }
-      end,
-      -- Enable bold keywords.
-      bold_keywords = true,
-      -- Enable italic comments.
-      italic_comments = true,
-      -- Enable editor background transparency.
-      transparent = {
-        -- Enable transparent background.
-        bg = false,
-        -- Enable transparent background for floating windows.
-        float = false,
-      },
-      -- Enable brighter float border.
-      bright_border = true,
-      -- Reduce the overall amount of blue in the theme (diverges from base Nord).
-      reduced_blue = true,
-      -- Swap the dark background with the normal one.
-      swap_backgrounds = false,
-      -- Cursorline options.  Also includes visual/selection.
-      cursorline = {
-        -- Bold font in cursorline.
-        bold = false,
-        -- Bold cursorline number.
-        bold_number = true,
-        -- Available styles: 'dark', 'light'.
-        theme = 'light',
-        -- Blending the cursorline bg with the buffer bg.
-        blend = 0.85,
-      },
-      ts_context = {
-        -- Enables dark background for treesitter-context window
-        dark_background = true,
-      }
-    })
-
-    vim.cmd.colorscheme('nordic')
-  end
-}
-
 -- return {
---   'rose-pine/neovim',
---   name = 'rose-pine',
+--   'AlexvZyl/nordic.nvim',
 --   lazy = false,
 --   priority = 1000,
 --   config = function()
---     require("rose-pine").setup({
---       variant                          = 'main',
---       dark_variant                     = 'main',
---       extend_background_behind_borders = false,
---
---       enable                           = {
---         terminal          = true,
---         legacy_highlights = true, -- Improve compatibility for previous versions of Neovim
---         migrations        = true, -- Handle deprecated options automatically
+--     require('nordic').setup({
+--       -- This callback can be used to override highlights before they are applied.
+--       on_highlight = function(highlights, palette)
+--         highlights.NormalFloat = { bg = 'NONE' }
+--         highlights.FloatBorder = { bg = 'NONE', fg = palette.black0 }
+--       end,
+--       -- Enable bold keywords.
+--       bold_keywords = true,
+--       -- Enable italic comments.
+--       italic_comments = true,
+--       -- Enable editor background transparency.
+--       transparent = {
+--         -- Enable transparent background.
+--         bg = true,
+--         -- Enable transparent background for floating windows.
+--         float = true,
 --       },
---
---       styles                           = {
---         bold         = true,
---         italic       = true,
---         transparency = false,
+--       -- Enable brighter float border.
+--       bright_border = true,
+--       -- Reduce the overall amount of blue in the theme (diverges from base Nord).
+--       reduced_blue = true,
+--       -- Swap the dark background with the normal one.
+--       swap_backgrounds = false,
+--       -- Cursorline options.  Also includes visual/selection.
+--       cursorline = {
+--         -- Bold font in cursorline.
+--         bold = false,
+--         -- Bold cursorline number.
+--         bold_number = true,
+--         -- Available styles: 'dark', 'light'.
+--         theme = 'light',
+--         -- Blending the cursorline bg with the buffer bg.
+--         blend = 0.85,
 --       },
---
---       highlight_groups                 = {
---         ColorColumn = { fg = 'base', bg = 'muted' },
---         NormalFloat = { bg = 'NONE' },
---         FloatBorder = { bg = 'NONE' },
---       },
+--       ts_context = {
+--         -- Enables dark background for treesitter-context window
+--         dark_background = true,
+--       }
 --     })
 --
---     vim.opt.background = 'dark'
---
---     vim.cmd.colorscheme 'rose-pine'
+--     vim.cmd.colorscheme('nordic')
 --   end
 -- }
+
+return {
+  'rose-pine/neovim',
+  name = 'rose-pine',
+  lazy = false,
+  priority = 1000,
+  config = function()
+    require("rose-pine").setup({
+      variant                          = 'main',
+      dark_variant                     = 'main',
+      extend_background_behind_borders = false,
+
+      enable                           = {
+        terminal          = true,
+        legacy_highlights = true, -- Improve compatibility for previous versions of Neovim
+        migrations        = true, -- Handle deprecated options automatically
+      },
+
+      styles                           = {
+        bold         = true,
+        italic       = true,
+        transparency = true,
+      },
+
+      highlight_groups                 = {
+        ColorColumn = { fg = 'base', bg = 'muted' },
+        NormalFloat = { bg = 'NONE' },
+        FloatBorder = { bg = 'NONE' },
+      },
+    })
+
+    vim.opt.background = 'dark'
+
+    vim.cmd.colorscheme 'rose-pine'
+  end
+}
 
 -- return {
 --   'tinted-theming/base16-vim',

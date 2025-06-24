@@ -127,7 +127,7 @@
   // ===== [ Languages ] =====
   "languages": {
     "Ruby": {
-      "language_servers": ["solargraph", "rubocop"],
+      "language_servers": ["solargraph", "rubocop", "!ruby-lsp"],
       "format_on_save": "off"
     },
     "Python": {

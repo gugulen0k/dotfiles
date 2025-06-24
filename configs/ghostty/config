@@ -1,0 +1,21 @@
+shell-integration = zsh
+scrollback-limit = 1000000
+theme = rose-pine
+mouse-hide-while-typing = true
+link-url = true
+clipboard-trim-trailing-spaces = true
+cursor-style-blink = false
+cursor-style = block
+
+# Font settings
+font-size = 18
+font-thicken = true
+
+# Background settings
+background = #171717
+# background-blur = true
+# background-opacity = 0.95
+
+fullscreen = true
+keybind = super+r=reload_config
+
