@@ -54,7 +54,7 @@ return {
   priority = 1000,
   config = function()
     require("rose-pine").setup({
-      variant                          = 'main',
+      variant                          = 'dawn',
       dark_variant                     = 'main',
       extend_background_behind_borders = false,
 
@@ -77,7 +77,7 @@ return {
       },
     })
 
-    vim.opt.background = 'dark'
+    vim.opt.background = 'light'
 
     vim.cmd.colorscheme 'rose-pine'
   end

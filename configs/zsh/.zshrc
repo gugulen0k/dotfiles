@@ -1,4 +1,4 @@
-ZSH_THEME="gugulenok-dark-rose-pine"
+ZSH_THEME="gugulenok-light-rose-pine"
 
 # Which plugins would you like to load?
 # Standard plugins can be found in $ZSH/plugins/
