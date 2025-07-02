@@ -4,27 +4,34 @@ local current_dir = utils.base_path("gugulenok.plugins.lsp")
 ----------------------------------------------------
 
 return {
-  "neovim/nvim-lspconfig",
-  lazy = false,
-  event = { "BufReadPre", "BufNewFile" },
-  dependencies = {
-    "williamboman/mason.nvim",           -- add Mason plugin
-    "williamboman/mason-lspconfig.nvim", -- bridge between Mason and lspconfig
-    "hrsh7th/cmp-nvim-lsp",
-    { "antosha417/nvim-lsp-file-operations", config = true },
-  },
-  config = function()
-    -- Load LSP configurations dynamically
-    local diagnostics = current_dir.require("configs.lsp-diagnostics")     -- Load diagnostics configuration
-    local handlers    = current_dir.require("configs.lsp-handlers")        -- Load handlers (e.g., floating window)
-    local servers     = current_dir.require("configs.lsp-servers")         -- Load server configurations
-    local on_attach   = current_dir.require("configs.lsp-utils").on_attach -- Keybindings and on_attach function
+	"neovim/nvim-lspconfig",
+	lazy = false,
+	event = { "BufReadPre", "BufNewFile" },
+	dependencies = {
+		"mason-org/mason.nvim",
+		"mason-org/mason-lspconfig.nvim",
+	},
+	config = function()
+		-- Load LSP configurations
+		local diagnostics = current_dir.require("configs.lsp-diagnostics")
+		local on_attach = current_dir.require("configs.lsp-utils").on_attach
+		local servers = current_dir.require("configs.lsp-servers")
 
-    -- Configure diagnostics, handlers, and LSP servers
-    diagnostics.setup()
-    servers.setup({
-      on_attach = on_attach,
-      handlers = handlers
-    })
-  end,
+		-- Configure diagnostics first
+		diagnostics.setup()
+
+		-- Setup LspAttach autocommand for keybindings
+		vim.api.nvim_create_autocmd("LspAttach", {
+			group = vim.api.nvim_create_augroup("UserLspConfig", { clear = true }),
+			callback = function(event)
+				local client = vim.lsp.get_client_by_id(event.data.client_id)
+				if client then
+					on_attach(client, event.buf)
+				end
+			end,
+		})
+
+		-- Setup all LSP servers
+		servers.setup()
+	end,
 }

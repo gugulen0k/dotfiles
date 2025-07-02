@@ -1,29 +1,26 @@
 local M = {}
 
-function M.setup(config)
-  local lspconfig = require("lspconfig")
+M.config = {
+	cmd = { "lua-language-server" },
+	filetypes = { "lua" },
+	root_markers = { ".luarc.json", ".luarc.jsonc", "stylua.toml", ".git" },
+	settings = {
+		Lua = {
+			runtime = { version = "LuaJIT" },
+			diagnostics = { globals = { "vim" } },
+			workspace = {
+				library = {
+					vim.fn.expand("$VIMRUNTIME/lua"),
+					vim.fn.expand("$XDG_CONFIG_HOME") .. "/nvim/lua",
+				},
+				checkThirdParty = false,
+			},
+			telemetry = { enable = false },
+			hint = { enable = true },
+		},
+	},
+}
 
-  lspconfig.lua_ls.setup({
-    capabilities = config.capabilities,
-    on_attach = config.on_attach,
-    settings = {
-      Lua = {
-        -- make the language server recognize "vim" global
-        diagnostics = {
-          globals = {
-            "vim",
-          },
-        },
-        workspace = {
-          -- make language server aware of runtime files
-          library = {
-            vim.fn.expand("$VIMRUNTIME/lua"),
-            vim.fn.expand("$XDG_CONFIG_HOME") .. "/nvim/lua",
-          },
-        },
-      },
-    },
-  })
-end
+M.enable = true
 
 return M

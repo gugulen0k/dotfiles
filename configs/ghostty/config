@@ -1,21 +1,29 @@
+# ------------- [ Miscellaneous ] -------------
 shell-integration = zsh
 scrollback-limit = 1000000
-theme = rose-pine-dawn
+theme = light:rose-pine-dawn,dark:rose-pine
 mouse-hide-while-typing = true
+mouse-scroll-multiplier = .5
 link-url = true
 clipboard-trim-trailing-spaces = true
-cursor-style-blink = false
-cursor-style = block
 maximize = true
 
-# Font settings
-font-size = 18
+# ------------- [ Font Settings ] -------------
+font-size = 20
 font-thicken = true
+font-feature = "-calt, -liga, -dlig"
 
-# Background settings
+# ------------- [ Cursor Settings ] -------------
+cursor-style = block
+cursor-style-blink = false
+
+# ------------- [ Background Settings ] -------------
 # background = #171717
 # background-blur = true
-# background-opacity = 0.95
+# background-opacity = 0.90
+# background-blur-radius = 50
 
+
+# ------------- [ Keybinds ] -------------
 keybind = super+r=reload_config
 
