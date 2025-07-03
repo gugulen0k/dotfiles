@@ -14,7 +14,7 @@ return {
 		mason.setup({
 			PATH = "prepend",
 			ui = {
-				border = "single",
+				border = "rounded",
 				icons = {
 					package_installed = "✓",
 					package_pending = "➜",

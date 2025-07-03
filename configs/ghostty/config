@@ -1,7 +1,7 @@
 # ------------- [ Miscellaneous ] -------------
 shell-integration = zsh
 scrollback-limit = 1000000
-theme = light:rose-pine-dawn,dark:rose-pine
+theme = light:rose-pine-dawn,dark:rose-pine-moon
 mouse-hide-while-typing = true
 mouse-scroll-multiplier = .5
 link-url = true

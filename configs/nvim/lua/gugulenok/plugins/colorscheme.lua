@@ -48,39 +48,39 @@
 -- }
 
 return {
-  'rose-pine/neovim',
-  name = 'rose-pine',
-  lazy = false,
-  priority = 1000,
-  config = function()
-    require("rose-pine").setup({
-      variant                          = 'dawn',
-      dark_variant                     = 'main',
-      extend_background_behind_borders = false,
+	"rose-pine/neovim",
+	name = "rose-pine",
+	lazy = false,
+	priority = 1000,
+	config = function()
+		require("rose-pine").setup({
+			variant = "dawn",
+			dark_variant = "main",
+			extend_background_behind_borders = false,
 
-      enable                           = {
-        terminal          = true,
-        legacy_highlights = true, -- Improve compatibility for previous versions of Neovim
-        migrations        = true, -- Handle deprecated options automatically
-      },
+			enable = {
+				terminal = true,
+				legacy_highlights = true, -- Improve compatibility for previous versions of Neovim
+				migrations = true, -- Handle deprecated options automatically
+			},
 
-      styles                           = {
-        bold         = true,
-        italic       = true,
-        transparency = true,
-      },
+			styles = {
+				bold = true,
+				italic = true,
+				transparency = true,
+			},
 
-      highlight_groups                 = {
-        ColorColumn = { fg = 'base', bg = 'muted' },
-        NormalFloat = { bg = 'NONE' },
-        FloatBorder = { bg = 'NONE' },
-      },
-    })
+			highlight_groups = {
+				ColorColumn = { fg = "base", bg = "muted" },
+				NormalFloat = { bg = "NONE" },
+				FloatBorder = { bg = "NONE" },
+			},
+		})
 
-    vim.opt.background = 'light'
+		vim.opt.background = "light"
 
-    vim.cmd.colorscheme 'rose-pine'
-  end
+		vim.cmd.colorscheme("rose-pine")
+	end,
 }
 
 -- return {
