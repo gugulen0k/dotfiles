@@ -1,27 +1,38 @@
 local M = {}
 
-function M.setup(config)
-  local lspconfig = require("lspconfig")
+M.config = {
+	cmd = { "basedpyright-langserver", "--stdio" },
+	filetypes = { "python" },
+	root_markers = { "pyproject.toml", "setup.py", "setup.cfg", "requirements.txt", "Pipfile", ".git" },
+	settings = {
+		basedpyright = {
+			disableOrganizeImports = true,
+			disableTaggedHints = false,
+			analysis = {
+				typeCheckingMode = "standard",
+				useLibraryCodeForTypes = true,
+				autoImportCompletions = true,
+				autoSearchPaths = true,
+				diagnosticSeverityOverrides = {
+					reportIgnoreCommentWithoutRule = true,
+				},
+			},
+		},
+	},
+}
 
-  lspconfig.clangd.setup({
-    capabilities = config.capabilities,
-    on_attach = config.on_attach,
-    settings = {
-      basedpyright = {
-        disableOrganizeImports = true,
-        disableTaggedHints = false,
-        analysis = {
-          typeCheckingMode = "standard",
-          useLibraryCodeForTypes = true, -- Analyze library code for type information
-          autoImportCompletions = true,
-          autoSearchPaths = true,
-          diagnosticSeverityOverrides = {
-            reportIgnoreCommentWithoutRule = true,
-          },
-        },
-      },
-    }
-  })
-end
+-- Disabled by default, enable when needed
+M.enable = false
+
+-- For servers not yet supported by vim.lsp.config, provide fallback
+M.fallback = {
+	capabilities = vim.lsp.protocol.make_client_capabilities(),
+	settings = M.config.settings,
+	filetypes = M.config.filetypes,
+	root_dir = function(fname)
+		local util = require("lspconfig.util")
+		return util.root_pattern(unpack(M.config.root_markers))(fname)
+	end,
+}
 
 return M
