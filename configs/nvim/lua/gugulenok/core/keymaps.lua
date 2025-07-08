@@ -25,10 +25,6 @@ utils.map("n", "<C-u>", "<C-u>zz")
 utils.map("n", "n", "nzz")
 utils.map("n", "N", "Nzz")
 
-utils.map("n", "<leader>i", function()
-	vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({ 0 }), { 0 })
-end, { desc = "Toggle inlay hints" })
-
 -- Disable default macro record on 'q' button and remap it to '<leader>q'.
 vim.keymap.set("n", "q", "<nop>", { noremap = true })
 vim.keymap.set("n", "Q", "q", { noremap = true, desc = "Record macro" })

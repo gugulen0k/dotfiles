@@ -16,6 +16,7 @@ font-feature = "-calt, -liga, -dlig"
 # ------------- [ Cursor Settings ] -------------
 cursor-style = block
 cursor-style-blink = false
+cursor-invert-fg-bg = true
 
 # ------------- [ Background Settings ] -------------
 background = #080808
