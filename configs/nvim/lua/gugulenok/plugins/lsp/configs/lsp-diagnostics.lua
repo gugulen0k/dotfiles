@@ -58,7 +58,7 @@ function M.setup()
 			prefix = "",
 		},
 		severity_sort = true,
-		update_in_insert = false, -- Better performance
+		update_in_insert = true, -- Better performance
 	})
 
 	-- Configure LSP handlers for floating windows
