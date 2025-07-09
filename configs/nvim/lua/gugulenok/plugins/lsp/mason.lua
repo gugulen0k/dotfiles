@@ -14,12 +14,12 @@ return {
 		mason.setup({
 			PATH = "prepend",
 			ui = {
-				border = "rounded",
 				icons = {
 					package_installed = "✓",
 					package_pending = "➜",
 					package_uninstalled = "✗",
 				},
+				backdrop = 100,
 			},
 		})
 

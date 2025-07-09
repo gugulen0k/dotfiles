@@ -1,7 +1,7 @@
 # ------------- [ Miscellaneous ] -------------
 shell-integration = zsh
 scrollback-limit = 1000000
-theme = nord-wave
+theme = melange_light
 mouse-hide-while-typing = true
 mouse-scroll-multiplier = .5
 link-url = true
@@ -19,7 +19,7 @@ cursor-style-blink = false
 cursor-invert-fg-bg = true
 
 # ------------- [ Background Settings ] -------------
-background = #080808
+# background = #080808
 # background-blur = true
 # background-opacity = 0.70
 # background-blur-radius = 40
