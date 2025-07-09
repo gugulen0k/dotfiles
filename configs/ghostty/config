@@ -1,7 +1,7 @@
 # ------------- [ Miscellaneous ] -------------
 shell-integration = zsh
 scrollback-limit = 1000000
-theme = light:rose-pine-dawn,dark:rose-pine-moon
+theme = nord-wave
 mouse-hide-while-typing = true
 mouse-scroll-multiplier = .5
 link-url = true
@@ -16,12 +16,13 @@ font-feature = "-calt, -liga, -dlig"
 # ------------- [ Cursor Settings ] -------------
 cursor-style = block
 cursor-style-blink = false
+cursor-invert-fg-bg = true
 
 # ------------- [ Background Settings ] -------------
-# background = #171717
+background = #080808
 # background-blur = true
-# background-opacity = 0.90
-# background-blur-radius = 50
+# background-opacity = 0.70
+# background-blur-radius = 40
 
 
 # ------------- [ Keybinds ] -------------

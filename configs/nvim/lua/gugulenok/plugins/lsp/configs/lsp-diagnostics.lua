@@ -58,22 +58,7 @@ function M.setup()
 			prefix = "",
 		},
 		severity_sort = true,
-		update_in_insert = false, -- Better performance
-	})
-
-	-- Configure LSP handlers for floating windows
-	vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
-		border = "single",
-		title = "Documentation",
-		focusable = true,
-		max_width = math.floor(vim.o.columns * 0.7),
-		max_height = math.floor(vim.o.lines * 0.4),
-	})
-
-	vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, {
-		border = "single",
-		title = "Signature Help",
-		focusable = false,
+		update_in_insert = true, -- Better performance
 	})
 
 	-- Optional: Virtual lines support (new 0.11 feature)
