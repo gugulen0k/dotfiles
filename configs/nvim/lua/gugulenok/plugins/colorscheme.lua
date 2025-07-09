@@ -1,49 +1,15 @@
 return {
-	"AlexvZyl/nordic.nvim",
+	"savq/melange-nvim",
 	lazy = false,
 	priority = 1000,
+	opts = {},
 	config = function()
-		require("nordic").setup({
-			-- This callback can be used to override highlights before they are applied.
-			on_highlight = function(highlights, _palette)
-				highlights.NormalFloat = { bg = "NONE" }
-				highlights.FloatBorder = { bg = "NONE" }
-			end,
-			-- Enable bold keywords.
-			bold_keywords = true,
-			-- Enable italic comments.
-			italic_comments = true,
-			-- Enable editor background transparency.
-			transparent = {
-				-- Enable transparent background.
-				bg = true,
-				-- Enable transparent background for floating windows.
-				float = true,
-			},
-			-- Enable brighter float border.
-			bright_border = true,
-			-- Reduce the overall amount of blue in the theme (diverges from base Nord).
-			reduced_blue = true,
-			-- Swap the dark background with the normal one.
-			swap_backgrounds = false,
-			-- Cursorline options.  Also includes visual/selection.
-			cursorline = {
-				-- Bold font in cursorline.
-				bold = false,
-				-- Bold cursorline number.
-				bold_number = true,
-				-- Available styles: 'dark', 'light'.
-				theme = "light",
-				-- Blending the cursorline bg with the buffer bg.
-				blend = 0.85,
-			},
-			ts_context = {
-				-- Enables dark background for treesitter-context window
-				dark_background = true,
-			},
-		})
+		vim.o.background = "light"
 
-		vim.cmd.colorscheme("nordic")
+		vim.cmd.colorscheme("melange")
+
+		vim.api.nvim_set_hl(0, "FloatBorder", { bg = "none" })
+		vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
 	end,
 }
 
