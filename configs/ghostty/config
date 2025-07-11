@@ -1,7 +1,7 @@
 # ------------- [ Miscellaneous ] -------------
 shell-integration = zsh
 scrollback-limit = 1000000
-theme = melange_light
+theme = melange_dark
 mouse-hide-while-typing = true
 mouse-scroll-multiplier = .5
 link-url = true

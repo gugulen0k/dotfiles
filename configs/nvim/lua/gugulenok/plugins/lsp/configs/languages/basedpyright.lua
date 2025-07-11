@@ -13,6 +13,7 @@ M.config = {
 				useLibraryCodeForTypes = true,
 				autoImportCompletions = true,
 				autoSearchPaths = true,
+				diagnosticMode = "workspace",
 				diagnosticSeverityOverrides = {
 					reportIgnoreCommentWithoutRule = true,
 				},
@@ -22,7 +23,7 @@ M.config = {
 }
 
 -- Disabled by default, enable when needed
-M.enable = false
+M.enable = true
 
 -- For servers not yet supported by vim.lsp.config, provide fallback
 M.fallback = {

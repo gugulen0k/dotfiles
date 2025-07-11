@@ -1,0 +1,241 @@
+# Theme Switcher Configuration
+# Define your themes here with their respective configurations
+
+[themes.rose-pine-dawn]
+mode = "light"
+description = "Rose Pine Dawn - Warm light theme"
+
+[themes.rose-pine-dawn.nvim]
+variant = "dawn"
+background = "light"
+colorscheme = "rose-pine"
+
+[themes.rose-pine-dawn.tmux]
+yellow_bg = "#ea9d34"
+yellow_fg = "#faf4ed"
+
+[themes.rose-pine-dawn.zsh]
+theme = "gugulenok-light-rose-pine"
+
+[themes.rose-pine-dawn.ghostty]
+theme = "rose-pine-dawn"
+
+[themes.rose-pine-dawn.alacritty]
+import_path = "~/.config/alacritty/theme/rose-pine/rose-pine-dawn.toml"
+
+# ============================================================================
+
+[themes.rose-pine]
+mode = "dark"
+description = "Rose Pine Main - Cozy dark theme"
+
+[themes.rose-pine.nvim]
+variant = "main"
+background = "dark"
+colorscheme = "rose-pine"
+
+[themes.rose-pine.tmux]
+yellow_bg = "#f6c177"
+yellow_fg = "#191724"
+
+[themes.rose-pine.zsh]
+theme = "gugulenok-dark-rose-pine"
+
+[themes.rose-pine.ghostty]
+theme = "rose-pine"
+
+[themes.rose-pine.alacritty]
+import_path = "~/.config/alacritty/theme/rose-pine/rose-pine.toml"
+
+# ============================================================================
+
+[themes.rose-pine-moon]
+mode = "dark"
+description = "Rose Pine Moon - Elegant dark theme"
+
+[themes.rose-pine-moon.nvim]
+variant = "moon"
+background = "dark"
+colorscheme = "rose-pine"
+
+[themes.rose-pine-moon.tmux]
+yellow_bg = "#f6c177"
+yellow_fg = "#232136"
+
+[themes.rose-pine-moon.zsh]
+theme = "gugulenok-dark-rose-pine"
+
+[themes.rose-pine-moon.ghostty]
+theme = "rose-pine-moon"
+
+[themes.rose-pine-moon.alacritty]
+import_path = "~/.config/alacritty/theme/rose-pine/rose-pine-moon.toml"
+
+# ============================================================================
+
+[themes.nordic]
+mode = "dark"
+description = "Nordic - Cool blue dark theme"
+
+[themes.nordic.nvim]
+variant = "main"
+background = "dark"
+colorscheme = "nordic"
+
+[themes.nordic.tmux]
+yellow_bg = "#ebcb8b"
+yellow_fg = "#242933"
+
+[themes.nordic.zsh]
+theme = "gugulenok-dark-nordic"
+
+[themes.nordic.ghostty]
+theme = "nordic"
+
+[themes.nordic.alacritty]
+import_path = "~/.config/alacritty/themes/themes/nordic.toml"
+
+# ============================================================================
+
+[themes.catppuccin-mocha]
+mode = "dark"
+description = "Catppuccin Mocha - Warm dark theme"
+
+[themes.catppuccin-mocha.nvim]
+variant = "mocha"
+background = "dark"
+colorscheme = "catppuccin"
+
+[themes.catppuccin-mocha.tmux]
+yellow_bg = "#f9e2af"
+yellow_fg = "#1e1e2e"
+
+[themes.catppuccin-mocha.zsh]
+theme = "gugulenok-dark-catppuccin"
+
+[themes.catppuccin-mocha.ghostty]
+theme = "catppuccin-mocha"
+
+[themes.catppuccin-mocha.alacritty]
+import_path = "~/.config/alacritty/theme/catppuccin/catppuccin-mocha.yml"
+
+# ============================================================================
+
+[themes.gruvbox-material-light]
+mode = "light"
+description = "Gruvbox Material Light - Retro light theme"
+
+[themes.gruvbox-material-light.nvim]
+variant = "light"
+background = "light"
+colorscheme = "gruvbox-material"
+
+[themes.gruvbox-material-light.tmux]
+yellow_bg = "#a96b2c"
+yellow_fg = "#fbf1c7"
+
+[themes.gruvbox-material-light.zsh]
+theme = "gugulenok-light-gruvbox"
+
+[themes.gruvbox-material-light.ghostty]
+theme = "gruvbox-light"
+
+[themes.gruvbox-material-light.alacritty]
+import_path = "~/.config/alacritty/theme/gruvbox/gruvbox-light.toml"
+
+# ============================================================================
+
+[themes.gruvbox-material-dark]
+mode = "dark"
+description = "Gruvbox Material Dark - Retro dark theme"
+
+[themes.gruvbox-material-dark.nvim]
+variant = "dark"
+background = "dark"
+colorscheme = "gruvbox-material"
+
+[themes.gruvbox-material-dark.tmux]
+yellow_bg = "#d8a657"
+yellow_fg = "#282828"
+
+[themes.gruvbox-material-dark.zsh]
+theme = "gugulenok-dark-gruvbox"
+
+[themes.gruvbox-material-dark.ghostty]
+theme = "gruvbox-dark"
+
+[themes.gruvbox-material-dark.alacritty]
+import_path = "~/.config/alacritty/theme/gruvbox/gruvbox-dark.toml"
+
+# ============================================================================
+
+[themes.melange-dark]
+mode = "dark"
+description = "Melange Dark"
+
+[themes.melange-dark.nvim]
+variant = "main"
+background = "dark"
+colorscheme = "melange"
+
+[themes.melange-dark.tmux]
+yellow_bg = "#E49B5D"
+yellow_fg = "#292522"
+
+[themes.melange-dark.zsh]
+theme = "gugulenok-dark-melange"
+
+[themes.melange-dark.ghostty]
+theme = "melange_dark"
+
+[themes.melange-dark.alacritty]
+import_path = "~/.config/alacritty/theme/melange_dark.toml"
+
+# ============================================================================
+
+[themes.melange-light]
+mode = "light"
+description = "Melange Light"
+
+[themes.melange-light.nvim]
+variant = "main"
+background = "light"
+colorscheme = "melange"
+
+[themes.melange-light.tmux]
+yellow_bg = "#BC5C00"
+yellow_fg = "#f1f1f1"
+
+[themes.melange-light.zsh]
+theme = "gugulenok-light-melange"
+
+[themes.melange-light.ghostty]
+theme = "melange_dark"
+
+[themes.melange-light.alacritty]
+import_path = "~/.config/alacritty/theme/melange_dark.toml"
+# ============================================================================
+# Add your custom themes below
+# ============================================================================
+
+# [themes.my-custom-theme]
+# mode = "dark"
+# description = "My custom theme"
+# 
+# [themes.my-custom-theme.nvim]
+# variant = "main"
+# background = "dark"
+# colorscheme = "my-colorscheme"
+# 
+# [themes.my-custom-theme.tmux]
+# yellow_bg = "#color1"
+# yellow_fg = "#color2"
+# 
+# [themes.my-custom-theme.zsh]
+# theme = "my-zsh-theme"
+# 
+# [themes.my-custom-theme.ghostty]
+# theme = "my-ghostty-theme"
+# 
+# [themes.my-custom-theme.alacritty]
+# import_path = "~/.config/alacritty/theme/my-theme.toml"

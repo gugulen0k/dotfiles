@@ -29,7 +29,7 @@ return {
 				"html",
 				"cssls",
 				"tailwindcss",
-				"pyright",
+				-- "pyright",
 				"yamlls",
 				"lua_ls",
 				"rust_analyzer",

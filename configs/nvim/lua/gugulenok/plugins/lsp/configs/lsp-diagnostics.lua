@@ -1,7 +1,6 @@
 local M = {}
 
 function M.setup()
-	-- Enhanced diagnostic signs
 	local signs = {
 		Error = " ",
 		Warn = " ",
@@ -9,31 +8,18 @@ function M.setup()
 		Info = " ",
 	}
 
-	-- Legacy sign definition (still works in 0.11+)
-	for type, icon in pairs(signs) do
-		local hl = "DiagnosticSign" .. type
-		vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
-	end
-
-	-- Modern diagnostic configuration for Neovim 0.11+
 	vim.diagnostic.config({
 		underline = true,
-		-- IMPORTANT: Virtual text is now opt-in by default in 0.11+
+		severity_sort = true,
+		update_in_insert = false,
 		virtual_text = {
-			enabled = true, -- Must explicitly enable since it's disabled by default
+			enabled = true,
 			spacing = 2,
 			prefix = "",
 			format = function(diagnostic)
-				local message = diagnostic.message
-				if diagnostic.source then
-					message = string.format("%s [%s]", message, diagnostic.source)
-				end
-				return message
+				return string.format("%s => [%s: %s]", diagnostic.message, diagnostic.source, diagnostic.code)
 			end,
-			-- NEW: Only show virtual text on current line (uncomment if desired)
-			-- current_line = true,
 		},
-		-- NEW: Modern signs configuration format
 		signs = {
 			text = {
 				[vim.diagnostic.severity.ERROR] = signs.Error,
@@ -48,24 +34,14 @@ function M.setup()
 				[vim.diagnostic.severity.INFO] = "DiagnosticSignInfo",
 			},
 		},
-		-- Enhanced floating window configuration
 		float = {
 			focusable = true,
 			style = "minimal",
-			border = "single",
 			source = true,
 			header = "",
 			prefix = "",
 		},
-		severity_sort = true,
-		update_in_insert = true, -- Better performance
 	})
-
-	-- Optional: Virtual lines support (new 0.11 feature)
-	-- Uncomment to enable:
-	-- vim.diagnostic.config({
-	--   virtual_lines = { only_current_line = true }
-	-- })
 end
 
 return M
