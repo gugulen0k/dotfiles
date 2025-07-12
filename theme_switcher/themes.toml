@@ -133,6 +133,7 @@ colorscheme = "gruvbox-material"
 [themes.gruvbox-material-light.tmux]
 yellow_bg = "#a96b2c"
 yellow_fg = "#fbf1c7"
+text_fg = "#282828"
 
 [themes.gruvbox-material-light.zsh]
 theme = "gugulenok-light-gruvbox"
@@ -157,6 +158,7 @@ colorscheme = "gruvbox-material"
 [themes.gruvbox-material-dark.tmux]
 yellow_bg = "#d8a657"
 yellow_fg = "#282828"
+text_fg = "#fbf1c7"
 
 [themes.gruvbox-material-dark.zsh]
 theme = "gugulenok-dark-gruvbox"
@@ -181,6 +183,7 @@ colorscheme = "melange"
 [themes.melange-dark.tmux]
 yellow_bg = "#E49B5D"
 yellow_fg = "#292522"
+text_fg = "#f1f1f1"
 
 [themes.melange-dark.zsh]
 theme = "gugulenok-dark-melange"
@@ -205,6 +208,7 @@ colorscheme = "melange"
 [themes.melange-light.tmux]
 yellow_bg = "#BC5C00"
 yellow_fg = "#f1f1f1"
+text_fg = "#292522"
 
 [themes.melange-light.zsh]
 theme = "gugulenok-light-melange"
