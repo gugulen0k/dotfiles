@@ -214,7 +214,7 @@ text_fg = "#292522"
 theme = "gugulenok-light-melange"
 
 [themes.melange-light.ghostty]
-theme = "melange_dark"
+theme = "melange_light"
 
 [themes.melange-light.alacritty]
 import_path = "~/.config/alacritty/theme/melange_dark.toml"

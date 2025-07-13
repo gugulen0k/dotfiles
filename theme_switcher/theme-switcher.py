@@ -3,17 +3,14 @@
 Universal Theme Switcher for dotfiles
 Supports switching themes across nvim, tmux, zsh, ghostty, and alacritty
 Uses TOML configuration for theme definitions
-Automatically reloads configuration files after successful theme changes
 """
 
 import sys
 import re
 import argparse
 import tomllib
-import subprocess
-import time
 from pathlib import Path
-from typing import Dict, List, Optional, Tuple
+from typing import List, Optional
 
 
 class ThemeSwitcher:
@@ -21,13 +18,14 @@ class ThemeSwitcher:
         self.home = Path.home()
         self.config_dir = self.home / ".config"
 
-        # Default config file locations
+        # Default config file locations - define this outside the conditional
         possible_configs = [
             self.config_dir / "theme-switcher" / "themes.toml",
             self.home / ".config" / "themes.toml",
             Path(__file__).parent / "themes.toml",
         ]
 
+        # Default config file locations
         if config_file:
             self.config_file = Path(config_file)
         else:
@@ -51,7 +49,6 @@ class ThemeSwitcher:
             with open(self.config_file, "rb") as f:
                 self.config = tomllib.load(f)
                 self.themes = self.config.get("themes", {})
-                self.reload_config = self.config.get("reload", {})
         except Exception as e:
             print(f"Error loading config file {self.config_file}: {e}")
             sys.exit(1)
@@ -61,52 +58,6 @@ class ThemeSwitcher:
         sample_config = """# Theme Switcher Configuration
 # Define your themes here with their respective configurations
 
-# Reload configuration - defines how to reload each application
-[reload]
-# Set to true to enable automatic reloading after theme changes
-enabled = true
-
-# Reload timeout in seconds (how long to wait before reloading)
-delay = 1.0
-
-# Per-application reload settings
-[reload.tmux]
-enabled = true
-# Commands to run for tmux reload
-commands = [
-    "tmux source-file ~/.tmux.conf",
-    "tmux display-message 'Theme reloaded!'"
-]
-# Alternative: kill and restart tmux sessions
-# commands = ["tmux kill-server"]
-
-[reload.zsh]
-enabled = true
-# Note: ZSH reload requires sourcing in current shell
-# The script will provide instructions since it can't directly reload the current shell
-commands = []
-
-[reload.nvim]
-enabled = true
-# Reload nvim by sending commands to running instances
-commands = [
-    "nvim --server-name VIM --remote-send '<Esc>:source ~/.config/nvim/init.lua<CR>'",
-    "nvim --headless -c 'colorscheme rose-pine' -c 'qa'"
-]
-
-[reload.ghostty]
-enabled = true
-# Ghostty automatically reloads config, but we can send a signal
-commands = [
-    "pkill -USR1 ghostty"
-]
-
-[reload.alacritty]
-enabled = true
-# Alacritty automatically reloads config when file changes
-commands = []
-
-# Theme definitions
 [themes.rose-pine-dawn]
 mode = "light"
 description = "Rose Pine Dawn - Warm light theme"
@@ -282,83 +233,8 @@ import_path = "~/.config/alacritty/theme/gruvbox/gruvbox-dark.toml"
 
         print(f"✓ Created sample configuration at: {output_file}")
         print(
-            "Edit this file to customize your themes and reload settings, then run the theme switcher again."
+            "Edit this file to customize your themes and then run the theme switcher again."
         )
-
-    def run_command(self, command: str, ignore_errors: bool = True) -> Tuple[bool, str]:
-        """Execute a shell command and return success status and output"""
-        try:
-            result = subprocess.run(
-                command, shell=True, capture_output=True, text=True, timeout=30
-            )
-            if result.returncode == 0:
-                return True, result.stdout.strip()
-            else:
-                if not ignore_errors:
-                    print(f"  Command failed: {command}")
-                    print(f"  Error: {result.stderr.strip()}")
-                return False, result.stderr.strip()
-        except subprocess.TimeoutExpired:
-            print(f"  Command timed out: {command}")
-            return False, "Command timed out"
-        except Exception as e:
-            if not ignore_errors:
-                print(f"  Error running command '{command}': {e}")
-            return False, str(e)
-
-    def reload_application(self, app_name: str) -> bool:
-        """Reload configuration for a specific application"""
-        if not self.reload_config.get("enabled", False):
-            return False
-
-        app_reload_config = self.reload_config.get(app_name, {})
-        if not app_reload_config.get("enabled", False):
-            return False
-
-        commands = app_reload_config.get("commands", [])
-        if not commands:
-            # Some applications reload automatically
-            return True
-
-        print(f"  Reloading {app_name}...")
-
-        success_count = 0
-        for command in commands:
-            success, output = self.run_command(command)
-            if success:
-                success_count += 1
-                if output:
-                    print(f"    {output}")
-            else:
-                print(f"    Failed to execute: {command}")
-
-        return success_count == len(commands)
-
-    def reload_all_applications(self, updated_apps: List[str]) -> Dict[str, bool]:
-        """Reload all applications that were successfully updated"""
-        if not self.reload_config.get("enabled", False):
-            print("⚠ Auto-reload is disabled in configuration")
-            return {}
-
-        delay = self.reload_config.get("delay", 1.0)
-        if delay > 0:
-            print(f"Waiting {delay} seconds before reloading...")
-            time.sleep(delay)
-
-        print("Reloading configurations...")
-        print("-" * 30)
-
-        reload_results = {}
-        for app in updated_apps:
-            success = self.reload_application(app)
-            reload_results[app] = success
-
-            if success:
-                print(f"  ✓ {app} reloaded successfully")
-            else:
-                print(f"  ⚠ {app} reload skipped or failed")
-
-        return reload_results
 
     def list_themes(self):
         """List all available themes"""
@@ -398,6 +274,14 @@ import_path = "~/.config/alacritty/theme/gruvbox/gruvbox-dark.toml"
             with open(nvim_config, "r") as f:
                 content = f.read()
 
+            # Update background setting
+            content = re.sub(
+                r"vim\.opt\.background\s*=\s*['\"][^'\"]*['\"]",
+                f"vim.opt.background = '{background}'",
+                content,
+            )
+
+            # Add more colorscheme-specific logic here as needed
             # Update Rose Pine variant
             if colorscheme == "rose-pine":
                 content = re.sub(
@@ -405,15 +289,6 @@ import_path = "~/.config/alacritty/theme/gruvbox/gruvbox-dark.toml"
                     f"variant = '{variant}'",
                     content,
                 )
-
-                # Update background setting
-                content = re.sub(
-                    r"vim\.opt\.background\s*=\s*['\"][^'\"]*['\"]",
-                    f"vim.opt.background = '{background}'",
-                    content,
-                )
-
-            # Add more colorscheme-specific logic here as needed
 
             with open(nvim_config, "w") as f:
                 f.write(content)
@@ -547,9 +422,7 @@ import_path = "~/.config/alacritty/theme/gruvbox/gruvbox-dark.toml"
             print(f"✗ Failed to update Alacritty theme: {e}")
             return False
 
-    def switch_theme(
-        self, theme_name: str, apps: Optional[List[str]] = None, no_reload: bool = False
-    ):
+    def switch_theme(self, theme_name: str, apps: Optional[List[str]] = None):
         """Switch theme across all or specified applications"""
         if theme_name not in self.themes:
             print(f"✗ Theme '{theme_name}' not found!")
@@ -561,7 +434,6 @@ import_path = "~/.config/alacritty/theme/gruvbox/gruvbox-dark.toml"
 
         success_count = 0
         total_count = len(apps)
-        updated_apps = []
 
         theme_info = self.themes[theme_name]
         print(f"Switching to theme: {theme_name}")
@@ -573,23 +445,18 @@ import_path = "~/.config/alacritty/theme/gruvbox/gruvbox-dark.toml"
             if app == "nvim" and "nvim" in theme_info:
                 if self.update_nvim_theme(theme_name):
                     success_count += 1
-                    updated_apps.append(app)
             elif app == "tmux" and "tmux" in theme_info:
                 if self.update_tmux_theme(theme_name):
                     success_count += 1
-                    updated_apps.append(app)
             elif app == "zsh" and "zsh" in theme_info:
                 if self.update_zsh_theme(theme_name):
                     success_count += 1
-                    updated_apps.append(app)
             elif app == "ghostty" and "ghostty" in theme_info:
                 if self.update_ghostty_theme(theme_name):
                     success_count += 1
-                    updated_apps.append(app)
             elif app == "alacritty" and "alacritty" in theme_info:
                 if self.update_alacritty_theme(theme_name):
                     success_count += 1
-                    updated_apps.append(app)
             elif app not in theme_info:
                 print(f"⚠ Theme '{theme_name}' has no configuration for {app}")
             else:
@@ -598,50 +465,18 @@ import_path = "~/.config/alacritty/theme/gruvbox/gruvbox-dark.toml"
         print("-" * 50)
         print(f"Updated {success_count}/{total_count} applications successfully")
 
-        # Reload configurations if successful and not disabled
-        if success_count > 0 and not no_reload:
-            print()
-            reload_results = self.reload_all_applications(updated_apps)
-
-            # Show manual reload instructions for failed/skipped reloads
-            manual_reload_needed = []
-            for app in updated_apps:
-                if not reload_results.get(app, False):
-                    manual_reload_needed.append(app)
-
-            if manual_reload_needed:
-                print()
-                print("Manual reload required for:")
-                for app in manual_reload_needed:
-                    if app == "tmux":
-                        print(
-                            "  • Tmux: Run 'tmux source ~/.tmux.conf' or restart tmux"
-                        )
-                    elif app == "zsh":
-                        print("  • Zsh: Run 'source ~/.zshrc' or restart your shell")
-                    elif app == "nvim":
-                        print(
-                            "  • Nvim: Restart nvim or run ':source ~/.config/nvim/init.lua'"
-                        )
-                    elif app == "ghostty":
-                        print(
-                            "  • Ghostty: Restart ghostty (auto-reload may be disabled)"
-                        )
-                    elif app == "alacritty":
-                        print("  • Alacritty: Should auto-reload, restart if needed")
-        elif success_count > 0 and no_reload:
-            print("\nReload was skipped. To apply changes:")
-            for app in updated_apps:
-                if app == "tmux":
-                    print("  • Tmux: Run 'tmux source ~/.tmux.conf' or restart tmux")
-                elif app == "zsh":
-                    print("  • Zsh: Run 'source ~/.zshrc' or restart your shell")
-                elif app == "nvim":
-                    print("  • Nvim: Restart nvim")
-                elif app == "ghostty":
-                    print("  • Ghostty: Restart ghostty")
-                elif app == "alacritty":
-                    print("  • Alacritty: Restart alacritty")
+        if success_count > 0:
+            print("\nTo apply changes:")
+            if "tmux" in apps and success_count > 0:
+                print("  • Tmux: Run 'tmux source ~/.tmux.conf' or restart tmux")
+            if "zsh" in apps and success_count > 0:
+                print("  • Zsh: Run 'source ~/.zshrc' or restart your shell")
+            if "nvim" in apps and success_count > 0:
+                print("  • Nvim: Restart nvim")
+            if "ghostty" in apps and success_count > 0:
+                print("  • Ghostty: Restart ghostty")
+            if "alacritty" in apps and success_count > 0:
+                print("  • Alacritty: Restart alacritty")
 
         return success_count == total_count
 
@@ -664,12 +499,6 @@ def main():
         nargs="+",
         choices=["nvim", "tmux", "zsh", "ghostty", "alacritty"],
         help="Specify which applications to update (default: all)",
-    )
-    parser.add_argument(
-        "--no-reload",
-        "-n",
-        action="store_true",
-        help="Skip automatic configuration reload",
     )
 
     args = parser.parse_args()
@@ -694,7 +523,7 @@ def main():
         parser.print_help()
         return
 
-    switcher.switch_theme(args.theme, args.apps, args.no_reload)
+    switcher.switch_theme(args.theme, args.apps)
 
 
 if __name__ == "__main__":
