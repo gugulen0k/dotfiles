@@ -13,6 +13,7 @@ M.config = {
 				useLibraryCodeForTypes = true,
 				autoImportCompletions = true,
 				autoSearchPaths = true,
+				diagnosticMode = "workspace",
 				diagnosticSeverityOverrides = {
 					reportIgnoreCommentWithoutRule = true,
 				},

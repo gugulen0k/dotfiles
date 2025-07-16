@@ -11,27 +11,36 @@ utils.autocmd("BufEnter", {
 	end,
 })
 
+-- Better J behavior
+vim.keymap.set("n", "J", "mzJ`z", { desc = "Join lines and keep cursor position" })
+
 -- Remap Ctrl+c to behave like Esc
-vim.keymap.set({ "n", "i" }, "<C-c>", "<Esc>")
+utils.map({ "i", "c" }, "<C-c>", "<Esc>")
 
 -- Ctrl+s writes the buffer.
-utils.map("n", "<C-s>", ":w<CR>")
+utils.map("n", "<C-s>", ":w<CR>", { desc = "Write buffer changes" })
 
--- Ctrl+d or Ctrl+u will do what it suppose to do and also align the view.
-utils.map("n", "<C-d>", "<C-d>zz")
-utils.map("n", "<C-u>", "<C-u>zz")
-
--- Previous or Next search item will be centered.
-utils.map("n", "n", "nzz")
-utils.map("n", "N", "Nzz")
+-- Center screen when jumping
+utils.map("n", "<C-d>", "<C-d>zz", { desc = "Half page down (centered)" })
+utils.map("n", "<C-u>", "<C-u>zz", { desc = "Half page up (centered)" })
+utils.map("n", "n", "nzzzv", { desc = "Next search result (centered)" })
+utils.map("n", "N", "Nzzzv", { desc = "Previous search result (centered)" })
 
 -- Disable default macro record on 'q' button and remap it to '<leader>q'.
-vim.keymap.set("n", "q", "<nop>", { noremap = true })
-vim.keymap.set("n", "Q", "q", { noremap = true, desc = "Record macro" })
+utils.map("n", "q", "<nop>", { noremap = true })
+utils.map("n", "Q", "q", { noremap = true, desc = "Record macro" })
+
+-- Better paste behavior
+utils.map("x", "<leader>p", '"_dP', { desc = "Paste without yanking" })
+
+-- Delete without yanking
+utils.map({ "n", "v" }, "<leader>d", '"_d', { desc = "Delete without yanking" })
+
+-- Better indenting in visual mode
+utils.map("v", "<", "<gv", { desc = "Indent left and reselect" })
+utils.map("n", ">", ">gv", { desc = "Indent right and reselect" })
 
 ------------------- [ Quickfix List ] -------------------
 utils.map("n", "]q", "<cmd>cnext<CR>", { desc = "Next quickfix list item" })
 utils.map("n", "[q", "<cmd>cprevious<CR>", { desc = "Previous quickfix list item" })
--- utils.map("n", "qff", "<cmd>cfirst<CR>", { desc = "First quickfix list item" })
--- utils.map("n", "qfl", "<cmd>clast<CR>", { desc = "Last quickfix list item" })
 ---------------------------------------------------------
