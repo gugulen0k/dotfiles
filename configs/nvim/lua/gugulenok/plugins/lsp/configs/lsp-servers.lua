@@ -39,7 +39,7 @@ function M.setup()
 				local server_config = languages[server_name]
 				if server_config then
 					-- If enabled, enable it (vim.lsp.config was already called above)
-					if server_config.enable ~= false then
+					if server_config.enable == true then
 						vim.lsp.enable(server_name)
 					end
 				else
@@ -55,7 +55,7 @@ function M.setup()
 
 	-- Enable our configured servers
 	for server_name, server_config in pairs(languages) do
-		if server_config.enable ~= false then
+		if server_config.enable == true then
 			vim.lsp.enable(server_name)
 		end
 	end

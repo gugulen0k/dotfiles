@@ -23,7 +23,7 @@ M.config = {
 }
 
 -- Disabled by default, enable when needed
-M.enable = true
+M.enable = false
 
 -- For servers not yet supported by vim.lsp.config, provide fallback
 M.fallback = {
