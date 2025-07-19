@@ -1,2 +1,1 @@
-require('gugulenok.core')
-require('gugulenok.lazy')
+require("config.lazy")
