@@ -7,6 +7,7 @@ mouse-scroll-multiplier = .5
 link-url = true
 clipboard-trim-trailing-spaces = true
 maximize = true
+macos-option-as-alt = true
 
 # ------------- [ Font Settings ] -------------
 font-size = 20

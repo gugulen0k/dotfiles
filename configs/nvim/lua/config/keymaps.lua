@@ -39,6 +39,10 @@ map("n", "Q", "q", { noremap = true, desc = "Record macro" })
 map("v", "<", "<gv", { desc = "Indent left and reselect" })
 map("v", ">", ">gv", { desc = "Indent right and reselect" })
 
+-- Execute lua code under the cursor
+map("n", "<leader>x", ":.lua<CR>", { desc = "Execute lua code under the cursor" })
+map("v", "<leader>x", ":lua<CR>", { desc = "Execute lua code under the cursor" })
+
 ------------------- [ Quickfix List ] -------------------
 map("n", "]q", "<cmd>cnext<CR>", { desc = "Next quickfix list item" })
 map("n", "[q", "<cmd>cprevious<CR>", { desc = "Previous quickfix list item" })
