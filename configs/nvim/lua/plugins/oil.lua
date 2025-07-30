@@ -4,16 +4,7 @@ return {
 	dependencies = { "nvim-tree/nvim-web-devicons" },
 	config = function()
 		local oil = require("oil")
-
-		function _G.get_oil_winbar()
-			local dir = oil.get_current_dir()
-			if dir then
-				return vim.fn.fnamemodify(dir, ":~")
-			else
-				-- If there is no current directory (e.g. over ssh), just show the buffer name
-				return vim.api.nvim_buf_get_name(0)
-			end
-		end
+		local detail = false
 
 		oil.setup({
 			default_file_explorer = true,
@@ -21,16 +12,10 @@ return {
 			skip_confirm_for_simple_edits = true,
 			watch_for_changes = true,
 			constraint_cursor = "name",
-			win_options = {
-				-- winbar = "%!v:lua.get_oil_winbar()"
-			},
 			view_options = {
 				show_hidden = true,
 				is_always_hidden = function(name, _)
 					return name == ".." or name == ".git"
-				end,
-				is_hidden_file = function(name, bufnr)
-					-- git_files.setup({ name = name, bufnr = bufnr })
 				end,
 			},
 			use_default_keymaps = false,
@@ -45,11 +30,31 @@ return {
 				["gd"] = {
 					desc = "Toggle file detail view",
 					callback = function()
-						file_details.setup()
+						detail = not detail
+						if detail then
+							require("oil").set_columns({ "icon", "permissions", "size", "mtime" })
+						else
+							require("oil").set_columns({ "icon" })
+						end
 					end,
 				},
 				["-"] = "actions.parent",
 				["_"] = "actions.open_cwd",
+				["yp"] = {
+					desc = "Copy relative path",
+					callback = function()
+						local entry = oil.get_cursor_entry()
+						local dir = oil.get_current_dir()
+
+						if not entry or not dir then
+							return
+						end
+
+						local relpath = vim.fn.fnamemodify(dir, ":.")
+
+						vim.fn.setreg("+", relpath .. entry.name)
+					end,
+				},
 			},
 			-- Configuration for the floating window in oil.open_float
 			float = {

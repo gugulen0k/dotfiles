@@ -13,13 +13,9 @@ return {
 				statusline = {},
 				winbar = {},
 			},
+			always_divide_middle = false,
 			ignore_focus = {},
 			globalstatus = true,
-			refresh = {
-				statusline = 1000,
-				tabline = 1000,
-				winbar = 1000,
-			},
 		},
 		sections = {
 			lualine_a = {
@@ -77,10 +73,24 @@ return {
 		},
 		tabline = {},
 		winbar = {
-			lualine_b = { "filename" },
+			lualine_c = {
+				"%=",
+				{
+					"filename",
+					color = { gui = "bold" },
+				},
+				"%=",
+			},
 		},
 		inactive_winbar = {
-			lualine_b = { "filename" },
+			lualine_c = {
+				"%=",
+				{
+					"filename",
+					color = { gui = "bold" },
+				},
+				"%=",
+			},
 		},
 		extensions = {},
 	},
