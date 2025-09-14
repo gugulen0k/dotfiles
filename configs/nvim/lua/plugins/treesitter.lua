@@ -26,6 +26,7 @@ return {
 				"dockerfile",
 				"gitignore",
 				"python",
+				"zig",
 			},
 
 			-- Automatically install missing parsers when entering buffer
