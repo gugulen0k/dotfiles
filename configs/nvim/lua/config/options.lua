@@ -61,6 +61,7 @@ opt.mouse = "a" -- Enable mouse support
 opt.clipboard:append("unnamedplus") -- Use system clipboard as default register
 opt.modifiable = true -- Allow buffer modifications
 opt.encoding = "UTF-8" -- Set encoding
+opt.omnifunc = "" -- Disable native autocompletion
 
 -- split windows
 opt.splitright = true -- split vertical window to the right

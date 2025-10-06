@@ -1,0 +1,100 @@
+#!/bin/bash
+# Symlink Manager Wrapper Script
+# Finds Python and executes the symlink manager
+
+set -euo pipefail
+
+# Function to display error messages
+error() {
+    echo "❌ Error: $1" >&2
+    exit 1
+}
+
+# Function to display warnings
+warning() {
+    echo "⚠️  Warning: $1" >&2
+}
+
+# Function to find Python interpreter
+find_python() {
+    # Try python3 first (most common)
+    if command -v python3 >/dev/null 2>&1; then
+        echo "python3"
+        return 0
+    fi
+    
+    # Try python next
+    if command -v python >/dev/null 2>&1; then
+        # Check if it's Python 3
+        if python -c "import sys; sys.exit(0 if sys.version_info >= (3, 11) else 1)"; then
+            echo "python"
+            return 0
+        fi
+    fi
+    
+    return 1
+}
+
+# Function to check Python version
+check_python_version() {
+    local python_cmd="$1"
+    if ! "$python_cmd" -c "import sys; sys.exit(0 if sys.version_info >= (3, 11) else 1)"; then
+        error "Python 3.11 or newer is required. Found $("$python_cmd" --version 2>&1)"
+    fi
+}
+
+# Function to check if TOML support is available
+check_toml_support() {
+    local python_cmd="$1"
+    if ! "$python_cmd" -c "import tomllib" 2>/dev/null; then
+        error "Python 3.11+ is required for TOML support. Found $("$python_cmd" --version 2>&1)"
+    fi
+}
+
+# Function to find the script directory
+find_script_dir() {
+    # Try to get the directory of this script
+    local source="${BASH_SOURCE[0]}"
+    while [ -h "$source" ]; do
+        local dir="$(cd -P "$(dirname "$source")" && pwd)"
+        source="$(readlink "$source")"
+        [[ $source != /* ]] && source="$dir/$source"
+    done
+    echo "$(cd -P "$(dirname "$source")" && pwd)"
+}
+
+# Main execution
+main() {
+    local SCRIPT_DIR
+    SCRIPT_DIR=$(find_script_dir)
+    
+    # Find Python interpreter
+    local PYTHON_CMD
+    if ! PYTHON_CMD=$(find_python); then
+        error "Python 3.11 or newer is required but not found. Please install Python 3.11+"
+    fi
+    
+    # Check Python version
+    check_python_version "$PYTHON_CMD"
+    
+    # Check TOML support
+    check_toml_support "$PYTHON_CMD"
+    
+    # Check if the symlink_manager package exists
+    local PACKAGE_DIR="$SCRIPT_DIR/symlink_manager"
+    if [ ! -d "$PACKAGE_DIR" ]; then
+        error "symlink_manager package not found in $PACKAGE_DIR"
+    fi
+    
+    # Check if __main__.py exists
+    local MAIN_SCRIPT="$PACKAGE_DIR/__main__.py"
+    if [ ! -f "$MAIN_SCRIPT" ]; then
+        error "Main script not found: $MAIN_SCRIPT"
+    fi
+    
+    # Execute the Python script with all arguments
+    exec "$PYTHON_CMD" "$MAIN_SCRIPT" "$@"
+}
+
+# Run main function with all arguments
+main "$@"

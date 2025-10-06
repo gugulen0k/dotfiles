@@ -1,16 +1,19 @@
 # ------------- [ Miscellaneous ] -------------
 shell-integration = zsh
 scrollback-limit = 1000000
-theme = melange_dark
+theme = "Melange Dark"
 mouse-hide-while-typing = true
 mouse-scroll-multiplier = .5
 link-url = true
 clipboard-trim-trailing-spaces = true
 maximize = true
 macos-option-as-alt = true
+adjust-cell-height = -1
+custom-shader = ./shaders/cursor_smear.glsl
 
 # ------------- [ Font Settings ] -------------
-font-size = 20
+font-size = 16
+font-family = "JetBrainsMono Nerd Font"
 font-thicken = true
 font-feature = "-calt, -liga, -dlig"
 
@@ -24,7 +27,6 @@ cursor-invert-fg-bg = true
 # background-blur = true
 # background-opacity = 0.70
 # background-blur-radius = 40
-
 
 # ------------- [ Keybinds ] -------------
 keybind = super+r=reload_config
