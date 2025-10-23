@@ -10,6 +10,7 @@ maximize = true
 macos-option-as-alt = true
 adjust-cell-height = -1
 custom-shader = ./shaders/cursor_smear.glsl
+window-padding-color = extend-always
 
 # ------------- [ Font Settings ] -------------
 font-size = 16
