@@ -1,15 +1,27 @@
+local parser_config = require("nvim-treesitter.parsers").get_parser_configs()
+parser_config.chalk = {
+	install_info = {
+		url = "https://github.com/gugulen0k/tree-sitter-chalk",
+		files = { "src/parser.c" },
+		branch = "main",
+	},
+	filetype = "ch",
+}
+
 return {
 	"nvim-treesitter/nvim-treesitter",
 	event = { "BufReadPre", "BufNewFile" },
 	build = ":TSUpdate",
 	dependencies = {
 		"nvim-treesitter/nvim-treesitter-textobjects",
+		"gugulen0k/tree-sitter-chalk",
 	},
 	lazy = false,
 	config = function()
 		require("nvim-treesitter.configs").setup({
 			-- A list of parser names, or "all" (the listed parsers MUST always be installed)
 			ensure_installed = {
+				"chalk",
 				"json",
 				"javascript",
 				"yaml",
