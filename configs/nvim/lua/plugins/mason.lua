@@ -9,5 +9,9 @@ return {
 			},
 			backdrop = 100,
 		},
+		registries = {
+			"github:mason-org/mason-registry",
+			"github:Crashdummyy/mason-registry",
+		},
 	},
 }
