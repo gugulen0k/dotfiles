@@ -1,6 +1,3 @@
-return {
-	"brenoprata10/nvim-highlight-colors",
-	config = function()
-		require("nvim-highlight-colors").setup({})
-	end,
-}
+vim.pack.add({ "brenoprata10/nvim-highlight-colors" })
+
+require("nvim-highlight-colors").setup({})

@@ -1,53 +1,46 @@
-local parser_config = require("nvim-treesitter.parsers").get_parser_configs()
-parser_config.sheft = {
-	install_info = {
-		url = "https://github.com/gugulen0k/tree-sitter-sheft",
-		files = { "src/parser.c" },
-		branch = "main",
-	},
-	filetype = "sf",
-}
-
-return {
+vim.pack.add({
 	"nvim-treesitter/nvim-treesitter",
-	event = { "BufReadPre", "BufNewFile" },
-	build = ":TSUpdate",
-	dependencies = {
-		"nvim-treesitter/nvim-treesitter-textobjects",
-		"gugulen0k/tree-sitter-sheft",
-	},
-	lazy = false,
-	config = function()
-		require("nvim-treesitter.configs").setup({
-			-- A list of parser names, or "all" (the listed parsers MUST always be installed)
-			ensure_installed = {
-				"sheft",
-				"json",
-				"javascript",
-				"yaml",
-				"html",
-				"css",
-				"markdown",
-				"markdown_inline",
-				"vue",
-				"ruby",
-				"bash",
-				"lua",
-				"vim",
-				"vimdoc",
-				"dockerfile",
-				"gitignore",
-				"python",
-				"zig",
-			},
+	"nvim-treesitter/nvim-treesitter-textobjects",
+})
 
-			-- Automatically install missing parsers when entering buffer
-			-- Recommendation: set to false if you don't have `tree-sitter` CLI installed locally
-			auto_install = true,
+-- nvim-treesitter in this version only manages parser installation.
+-- Highlight, indent, and other integrations are configured via vim.treesitter
+-- and filetype autocmds (Neovim 0.10+ built-in treesitter support).
 
-			indent = { enable = true },
-			highlight = { enable = true },
-			matchup = { enable = true }, -- enable vim-matchup plugin
-		})
-	end,
+require("nvim-treesitter.config").setup({
+	-- install_dir = nil, -- defaults to stdpath("data")/nvim-treesitter
+})
+
+-- Install parsers
+local parsers = {
+	"bash",
+	"css",
+	"dockerfile",
+	"gitignore",
+	"html",
+	"javascript",
+	"json",
+	"lua",
+	"markdown",
+	"markdown_inline",
+	"python",
+	"ruby",
+	"typescript",
+	"vim",
+	"vimdoc",
+	"vue",
+	"yaml",
+	"zig",
 }
+
+require("nvim-treesitter.install").install(parsers)
+
+-- Enable built-in treesitter highlighting for all buffers
+vim.api.nvim_create_autocmd("FileType", {
+	callback = function(ev)
+		local ok = pcall(vim.treesitter.start, ev.buf)
+		if not ok then
+			-- parser not available for this filetype, silently skip
+		end
+	end,
+})
