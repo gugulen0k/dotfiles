@@ -1,10 +1,9 @@
-return {
-  "christoomey/vim-tmux-navigator", -- Navigate inside neovim like in tmux
-  "nvim-lua/plenary.nvim",          -- Useful lua functions used by lots of plugins
-  "tpope/vim-surround",
-  "tpope/vim-endwise",
-  "tpope/vim-repeat",
-  "tpope/vim-sleuth",
-  "vim-ruby/vim-ruby",
-  "kchmck/vim-coffee-script",
-}
+-- No setup needed for these plugins — they work on load
+-- christoomey/vim-tmux-navigator
+-- nvim-lua/plenary.nvim
+-- tpope/vim-surround
+-- tpope/vim-endwise
+-- tpope/vim-repeat
+-- tpope/vim-sleuth
+-- vim-ruby/vim-ruby
+-- kchmck/vim-coffee-script
