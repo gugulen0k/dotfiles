@@ -1,11 +1,11 @@
 local parser_config = require("nvim-treesitter.parsers").get_parser_configs()
-parser_config.chalk = {
+parser_config.sheft = {
 	install_info = {
-		url = "https://github.com/gugulen0k/tree-sitter-chalk",
+		url = "https://github.com/gugulen0k/tree-sitter-sheft",
 		files = { "src/parser.c" },
 		branch = "main",
 	},
-	filetype = "ch",
+	filetype = "sf",
 }
 
 return {
@@ -14,14 +14,14 @@ return {
 	build = ":TSUpdate",
 	dependencies = {
 		"nvim-treesitter/nvim-treesitter-textobjects",
-		"gugulen0k/tree-sitter-chalk",
+		"gugulen0k/tree-sitter-sheft",
 	},
 	lazy = false,
 	config = function()
 		require("nvim-treesitter.configs").setup({
 			-- A list of parser names, or "all" (the listed parsers MUST always be installed)
 			ensure_installed = {
-				"chalk",
+				"sheft",
 				"json",
 				"javascript",
 				"yaml",

@@ -1,5 +1,5 @@
 -- Needed to detect my programming language
-vim.filetype.add({ extension = { ch = "chalk" } })
+vim.filetype.add({ extension = { sf = "sheft" } })
 
 local autocmd = vim.api.nvim_create_autocmd
 local function augroup(name)
