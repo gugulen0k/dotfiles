@@ -1,3 +1,5 @@
+vim.pack.add({ "williamboman/mason.nvim" })
+
 require("mason").setup({
 	ui = {
 		icons = {

@@ -1,3 +1,8 @@
+vim.pack.add({
+	"nvim-treesitter/nvim-treesitter",
+	"nvim-treesitter/nvim-treesitter-textobjects",
+})
+
 -- nvim-treesitter in this version only manages parser installation.
 -- Highlight, indent, and other integrations are configured via vim.treesitter
 -- and filetype autocmds (Neovim 0.10+ built-in treesitter support).

@@ -1,3 +1,9 @@
+vim.pack.add({
+	"Saghen/blink.cmp",
+	"onsails/lspkind.nvim",
+	"rafamadriz/friendly-snippets",
+})
+
 require("blink.cmp").setup({
 	keymap = {
 		["<C-space>"] = { "show", "show_documentation", "hide_documentation" },
@@ -113,7 +119,7 @@ require("blink.cmp").setup({
 	},
 
 	fuzzy = {
-		implementation = "prefer_rust_with_warning",
+		implementation = "prefer_rust",
 		sorts = {
 			"exact",
 			"score",

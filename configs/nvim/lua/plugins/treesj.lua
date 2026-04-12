@@ -1,3 +1,5 @@
+vim.pack.add({ "Wansmer/treesj" })
+
 require("treesj").setup({})
 
 vim.keymap.set("n", "<space>m", "<cmd>TSJToggle<CR>", { desc = "Toggle split/join" })

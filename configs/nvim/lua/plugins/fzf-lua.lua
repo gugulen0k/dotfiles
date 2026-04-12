@@ -1,3 +1,8 @@
+vim.pack.add({
+	"junegunn/fzf",
+	"ibhagwan/fzf-lua",
+})
+
 require("fzf-lua").setup({
 	"default",
 	winopts = {

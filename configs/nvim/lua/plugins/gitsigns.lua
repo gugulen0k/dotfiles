@@ -1,3 +1,5 @@
+vim.pack.add({ "lewis6991/gitsigns.nvim" })
+
 require("gitsigns").setup({
 	signs = {
 		untracked = { text = "┇" },

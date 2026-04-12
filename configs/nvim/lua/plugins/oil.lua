@@ -1,3 +1,5 @@
+vim.pack.add({ "stevearc/oil.nvim" })
+
 local oil = require("oil")
 local detail = false
 

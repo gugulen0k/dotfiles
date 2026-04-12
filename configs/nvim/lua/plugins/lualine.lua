@@ -1,3 +1,5 @@
+vim.pack.add({ "nvim-lualine/lualine.nvim" })
+
 require("lualine").setup({
 	options = {
 		icons_enabled = true,
@@ -25,12 +27,12 @@ require("lualine").setup({
 			{
 				"diff",
 				colored = true,
-				symbols = { added = " ", modified = " ", removed = " " },
+				symbols = { added = "󰐕 ", modified = "󰏫 ", removed = "󰍴 " },
 			},
 			{
 				"diagnostics",
 				sections = { "error", "warn" },
-				symbols = { error = " ", warn = " " },
+				symbols = { error = " ", warn = " " },
 				colored = true,
 				update_in_insert = true,
 			},
