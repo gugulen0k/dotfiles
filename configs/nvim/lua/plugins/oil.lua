@@ -1,5 +1,10 @@
 vim.pack.add({ "stevearc/oil.nvim" })
 
+local ok, devicons = pcall(require, "nvim-web-devicons")
+if ok then
+	devicons.set_icon({ sf = { icon = "", color = "#f78157", name = "Sheft" } })
+end
+
 local oil = require("oil")
 local detail = false
 
