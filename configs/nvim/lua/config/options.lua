@@ -34,7 +34,6 @@ opt.matchtime = 2 -- How long to show matching bracket
 opt.cmdheight = 0 -- Command line height
 opt.conceallevel = 0 -- Don't hide markup
 opt.concealcursor = "" -- Don't hide cursor line markup
-opt.lazyredraw = true -- Don't redraw during macros
 opt.synmaxcol = 300 -- Syntax highlighting limit
 
 -- File handling
