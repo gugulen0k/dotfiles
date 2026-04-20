@@ -1,8 +1,8 @@
 vim.pack.add({
-	"Saghen/blink.cmp",
+	{ src = "Saghen/blink.cmp", version = vim.version.range("*") },
 	"onsails/lspkind.nvim",
 	"rafamadriz/friendly-snippets",
-})
+}, { confirm = false })
 
 require("blink.cmp").setup({
 	keymap = {
@@ -114,6 +114,9 @@ require("blink.cmp").setup({
 	},
 
 	fuzzy = {
+		prebuilt_binaries = {
+			force_version = "v*",
+		},
 		implementation = "prefer_rust",
 		sorts = {
 			"exact",

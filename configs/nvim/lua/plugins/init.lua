@@ -6,6 +6,8 @@ vim.pack.add = function(specs, opts)
 		:map(function(s)
 			if type(s) == "string" and not s:find("://") then
 				return "https://github.com/" .. s
+			elseif type(s) == "table" and s.src and not s.src:find("://") then
+				s.src = "https://github.com/" .. s.src
 			end
 			return s
 		end)
