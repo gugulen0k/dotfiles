@@ -1,3 +1,6 @@
+-- Needed to detect my programming language
+vim.filetype.add({ extension = { sf = "sheft" } })
+
 local autocmd = vim.api.nvim_create_autocmd
 local function augroup(name)
 	return vim.api.nvim_create_augroup(name, { clear = true })
@@ -24,9 +27,6 @@ vim.api.nvim_create_autocmd("FileType", {
 		"grug-far",
 		"help",
 		"lspinfo",
-		"neotest-output",
-		"neotest-output-panel",
-		"neotest-summary",
 		"notify",
 		"qf",
 		"spectre_panel",

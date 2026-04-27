@@ -1,18 +1,36 @@
-return {
-	"savq/melange-nvim",
-	lazy = false,
-	priority = 1000,
-	opts = {},
-	config = function()
-		vim.o.background = "light"
+-- vim.pack.add({ "savq/melange-nvim" })
+-- vim.pack.add({ "rose-pine/neovim" })
+vim.pack.add({ "dgox16/oldworld.nvim" })
 
-		vim.cmd.colorscheme("melange")
+-- require("rose-pine").setup({
+-- 	variant = "main", -- auto, main, moon, or dawn
+-- 	dark_variant = "main", -- main, moon, or dawn
+-- 	dim_inactive_windows = false,
+-- 	extend_background_behind_borders = true,
+--
+-- 	styles = {
+-- 		bold = true,
+-- 		italic = true,
+-- 		transparency = true,
+-- 	},
+-- })
 
-		vim.api.nvim_set_hl(0, "FloatBorder", { bg = "none" })
-		vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
+require("oldworld").setup({
+	variant = "default", -- default, oled, cooler
+	styles = {
+		-- You can pass the style using the format: style = true
+		comments = { italic = true, bold = true },
+		keywords = { italic = true },
+		identifiers = { italic = true },
+		functions = { italic = true },
+		variables = {},
+		booleans = { italic = true },
+	},
+})
 
-		vim.api.nvim_set_hl(0, "NeotestFailed", { fg = "#C77B8B" })
-		vim.api.nvim_set_hl(0, "NeotestPassed", { fg = "#6E9B72" })
-		vim.api.nvim_set_hl(0, "NeotestRunning", { fg = "#BC5C00" })
-	end,
-}
+vim.o.background = "dark"
+vim.cmd.colorscheme("oldworld")
+
+vim.api.nvim_set_hl(0, "FloatBorder", { bg = "none" })
+vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
+vim.api.nvim_set_hl(0, "FzfLuaBorder", { bg = "none" })
