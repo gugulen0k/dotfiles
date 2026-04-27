@@ -31,7 +31,7 @@ local ts_ls_config = {
 
 vim.lsp.config("vue_ls", {})
 vim.lsp.config("ts_ls", ts_ls_config)
-vim.lsp.enable({ "ts_ls", "vue_ls" })
+vim.lsp.enable({ "ts_ls", "vue_ls", "ocamllsp" })
 
 require("mason-lspconfig").setup({
 	ensure_installed = {
@@ -48,5 +48,6 @@ require("mason-lspconfig").setup({
 		"lua_ls",
 		"clangd",
 		"ruff",
+		"ocamllsp",
 	},
 })

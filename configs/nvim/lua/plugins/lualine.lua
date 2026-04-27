@@ -27,12 +27,12 @@ require("lualine").setup({
 			{
 				"diff",
 				colored = true,
-				symbols = { added = "󰐕 ", modified = "󰏫 ", removed = "󰍴 " },
+				symbols = { added = "+", modified = "~", removed = "-" },
 			},
 			{
 				"diagnostics",
 				sections = { "error", "warn" },
-				symbols = { error = " ", warn = " " },
+				symbols = { error = "E:", warn = "W:" },
 				colored = true,
 				update_in_insert = true,
 			},
@@ -46,7 +46,7 @@ require("lualine").setup({
 					if recording_register == "" then
 						return ""
 					else
-						return "Recording @" .. recording_register
+						return "recording @" .. recording_register
 					end
 				end,
 			},
