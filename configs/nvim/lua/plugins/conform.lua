@@ -5,6 +5,7 @@ require("conform").setup({
 		lua = { "stylua" },
 		javascript = { "prettierd", "eslint_d" },
 		vue = { "prettierd", "eslint_d" },
+		ocaml = { "ocamlformat" },
 		ruby = {},
 		python = {
 			"ruff_fix",

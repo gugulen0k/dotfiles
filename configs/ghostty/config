@@ -1,16 +1,17 @@
 # ------------- [ Miscellaneous ] -------------
 shell-integration = zsh
 scrollback-limit = 1000000
-theme = "Melange Dark"
+theme = "Mellow"
 mouse-hide-while-typing = true
 mouse-scroll-multiplier = .5
 link-url = true
 clipboard-trim-trailing-spaces = true
 maximize = true
 macos-option-as-alt = true
-adjust-cell-height = -1
+adjust-cell-height = 0
 custom-shader = ./shaders/cursor_smear.glsl
 window-padding-color = extend-always
+confirm-close-surface = false
 
 # ------------- [ Font Settings ] -------------
 font-size = 16
