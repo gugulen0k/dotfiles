@@ -21,7 +21,7 @@ require("tree-sitter-manager").setup({
 		sheft = {
 			install_info = {
 				url = "https://github.com/gugulen0k/tree-sitter-sheft",
-				use_repo_queries = true,
+					use_repo_queries = true,
 			},
 		},
 	},

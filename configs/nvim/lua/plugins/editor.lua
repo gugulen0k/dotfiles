@@ -9,7 +9,6 @@ vim.pack.add({
 	"tpope/vim-endwise",
 	"tpope/vim-repeat",
 	"tpope/vim-sleuth",
-	"christoomey/vim-tmux-navigator",
 
 	-- Language syntax support
 	"vim-ruby/vim-ruby",

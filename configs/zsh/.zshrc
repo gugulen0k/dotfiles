@@ -20,7 +20,7 @@ plugins=(
   zsh-autosuggestions
 )
 
-ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=grey'
+ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=8,bold'
 
 # Tmux plugin setup
 ZSH_TMUX_AUTOSTART=true
