@@ -1,21 +1,51 @@
-vim.pack.add({ "dgox16/oldworld.nvim" })
+-- vim.pack.add({ "dgox16/oldworld.nvim" })
 
-require("oldworld").setup({
-	variant = "default", -- default, oled, cooler
-	styles = {
-		-- You can pass the style using the format: style = true
-		comments = { italic = true, bold = true },
-		keywords = { italic = true },
-		identifiers = { italic = true },
-		functions = { italic = true },
-		variables = {},
-		booleans = { italic = true },
+-- require("oldworld").setup({
+-- 	variant = "default", -- default, oled, cooler
+-- 	styles = {
+-- 		-- You can pass the style using the format: style = true
+-- 		comments = { italic = true, bold = true },
+-- 		keywords = { italic = true },
+-- 		identifiers = { italic = true },
+-- 		functions = { italic = true },
+-- 		variables = {},
+-- 		booleans = { italic = true },
+-- 	},
+-- })
+
+vim.pack.add({ { src = "codeberg:evergarden/nvim.git", name = "evergarden" } })
+
+require("evergarden").setup({
+	theme = {
+		variant = "summer",
+		accent = "green",
 	},
+	editor = {
+		-- same background as the main window instead of the default "mantle"
+		completion = { color = "base" },
+	},
+	overrides = function(colors)
+		return {
+			-- default border colour (surface0) is almost invisible on the menu background
+			PmenuBorder = { fg = colors.overlay1, bg = colors.base },
+		}
+	end,
 })
 
-vim.o.background = "dark"
-vim.cmd.colorscheme("oldworld")
+-- Highlight groups that should have a transparent background, whatever the colorscheme
+local transparent_groups = { "FloatBorder", "NormalFloat", "FzfLuaBorder" }
 
-vim.api.nvim_set_hl(0, "FloatBorder", { bg = "none" })
-vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
-vim.api.nvim_set_hl(0, "FzfLuaBorder", { bg = "none" })
+-- Re-applied on every colorscheme load. Existing attributes (fg, style) are kept,
+-- only the background is cleared, so it works with any colorscheme.
+vim.api.nvim_create_autocmd("ColorScheme", {
+	group = vim.api.nvim_create_augroup("TransparentFloats", { clear = true }),
+	callback = function()
+		for _, name in ipairs(transparent_groups) do
+			vim.api.nvim_set_hl(0, name, { bg = "none", update = true })
+		end
+	end,
+})
+
+-- Must come after the autocmd above, otherwise it won't fire for this colorscheme
+vim.o.background = "light"
+vim.cmd.colorscheme("evergarden")

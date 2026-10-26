@@ -1,7 +1,7 @@
 local opt = vim.opt -- for conciseness
 local glb = vim.g
 
-vim.o.winborder = "rounded"
+vim.o.winborder = "single"
 
 -- Basic settings
 opt.number = true -- Line numbers

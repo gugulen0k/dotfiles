@@ -158,7 +158,7 @@ vim.api.nvim_create_user_command("Pacman", function()
 		row = r,
 		col = c,
 		style = "minimal",
-		border = "rounded",
+		border = "single",
 		title = " Pacman ",
 		title_pos = "center",
 	})

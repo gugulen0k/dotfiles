@@ -7,7 +7,9 @@ require("fzf-lua").setup({
 	"default",
 	winopts = {
 		backdrop = 100,
+		border = "single",
 		preview = {
+			border = "single",
 			title = true,
 			layout = "vertical",
 		},

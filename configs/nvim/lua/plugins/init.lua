@@ -48,6 +48,12 @@ local _add = vim.pack.add
 
 ---@diagnostic disable-next-line: duplicate-set-field
 vim.pack.add = function(specs, opts)
+	-- A single spec table ({ src = ..., name = ... }) isn't a list; wrap it so
+	-- its fields aren't iterated as separate plugins
+	if type(specs) == "string" or (type(specs) == "table" and specs.src) then
+		specs = { specs }
+	end
+
 	specs = vim.iter(specs)
 		:map(function(s)
 			if type(s) == "string" then
@@ -90,3 +96,5 @@ require("plugins.mason-lspconfig")
 require("plugins.matchup")
 require("plugins.treesj")
 require("plugins.mini-align")
+require("plugins.lazydev")
+-- require("plugins.zatupnote")

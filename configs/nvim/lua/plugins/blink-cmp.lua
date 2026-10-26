@@ -22,8 +22,13 @@ require("blink.cmp").setup({
 	},
 
 	sources = {
-		default = { "lsp", "path", "snippets", "buffer" },
+		default = { "lazydev", "lsp", "path", "snippets", "buffer" },
 		providers = {
+			lazydev = {
+				name = "LazyDev",
+				module = "lazydev.integrations.blink",
+				score_offset = 100,
+			},
 			snippets = {
 				opts = {
 					extended_filetypes = {
@@ -57,6 +62,7 @@ require("blink.cmp").setup({
 			},
 		},
 		menu = {
+			border = "single",
 			draw = {
 				columns = {
 					{ "kind_icon", "kind", gap = 1 },
@@ -100,7 +106,7 @@ require("blink.cmp").setup({
 			auto_show = true,
 			auto_show_delay_ms = 200,
 			window = {
-				border = "rounded",
+				border = "single",
 				winhighlight = "Normal:NormalFloat,FloatBorder:FloatBorder,BlinkCmpDocSeparator:FloatBorder",
 			},
 		},
@@ -109,7 +115,7 @@ require("blink.cmp").setup({
 	signature = {
 		enabled = true,
 		window = {
-			border = "rounded",
+			border = "single",
 		},
 	},
 

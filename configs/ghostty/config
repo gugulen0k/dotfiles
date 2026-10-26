@@ -1,7 +1,7 @@
 # ------------- [ Miscellaneous ] -------------
 shell-integration = zsh
 scrollback-limit = 1000000
-theme = "Mellow"
+theme = "evergarden-summer-green"
 mouse-hide-while-typing = true
 mouse-scroll-multiplier = .5
 link-url = true
@@ -14,7 +14,7 @@ window-padding-color = extend-always
 confirm-close-surface = false
 
 # ------------- [ Font Settings ] -------------
-font-size = 16
+font-size = 18
 font-family = "JetBrainsMono Nerd Font"
 font-thicken = true
 font-feature = "-calt, -liga, -dlig"
