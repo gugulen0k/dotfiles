@@ -10,19 +10,18 @@ maximize = true
 macos-option-as-alt = true
 adjust-cell-height = 0
 custom-shader = ./shaders/cursor_smear.glsl
-window-padding-color = extend-always
+window-padding-color = background
+window-padding-balance = true
 confirm-close-surface = false
 
 # ------------- [ Font Settings ] -------------
-font-size = 18
+font-size = 16
 font-family = "JetBrainsMono Nerd Font"
 font-thicken = true
 font-feature = "-calt, -liga, -dlig"
 
 # ------------- [ Cursor Settings ] -------------
 cursor-style = block
-cursor-style-blink = false
-cursor-invert-fg-bg = true
 
 # ------------- [ Background Settings ] -------------
 # background = #080808

@@ -22,6 +22,12 @@ local function expand(src)
 		return src
 	end
 
+	local expanded_path = vim.fn.expand(src)
+	if vim.fn.isdirectory(expanded_path) == 1 then
+		local abs_path = vim.fn.fnamemodify(expanded_path, ":p")
+		return "file://" .. abs_path
+	end
+
 	local alias, repo = src:match("^([%w_-]+):(.+)$")
 	if alias then
 		local base = sources[alias]
@@ -57,9 +63,22 @@ vim.pack.add = function(specs, opts)
 	specs = vim.iter(specs)
 		:map(function(s)
 			if type(s) == "string" then
-				return expand(s)
+				local expanded = expand(s)
+				if expanded:match("^file://") then
+					local path = expanded:gsub("^file://", "")
+					path = path:gsub("/$", "")
+					local name = path:match("([^/]+)$")
+					return { src = expanded, name = name }
+				end
+				return expanded
 			elseif type(s) == "table" and s.src then
-				return vim.tbl_extend("force", s, { src = expand(s.src) })
+				local expanded = expand(s.src)
+				if (not s.name or s.name == "") and expanded:match("^file://") then
+					local path = expanded:gsub("^file://", "")
+					path = path:gsub("/$", "")
+					s = vim.tbl_extend("force", { name = path:match("([^/]+)$") }, s)
+				end
+				return vim.tbl_extend("force", s, { src = expanded })
 			end
 			return s
 		end)
@@ -97,4 +116,4 @@ require("plugins.matchup")
 require("plugins.treesj")
 require("plugins.mini-align")
 require("plugins.lazydev")
--- require("plugins.zatupnote")
+require("plugins.zatupnote")

@@ -1,4 +1,4 @@
-ZSH_THEME="gugulenok-dark-melange"
+ZSH_THEME="gugulenok"
 
 # Which plugins would you like to load?
 # Standard plugins can be found in $ZSH/plugins/
@@ -56,7 +56,6 @@ alias dots="nvim ~/Documents/dotfiles"
 alias i3rc="nvim ~/.config/i3/config"
 
 source $ZSH/oh-my-zsh.sh
-source $HOME/.cargo/env
 source <(fzf --zsh)
 
 eval "$(rbenv init - zsh)"
