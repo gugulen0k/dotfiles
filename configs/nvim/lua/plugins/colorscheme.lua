@@ -17,12 +17,13 @@ vim.pack.add({ { src = "codeberg:evergarden/nvim.git", name = "evergarden" } })
 
 require("evergarden").setup({
 	theme = {
-		variant = "summer",
+		variant = "winter",
 		accent = "green",
 	},
 	editor = {
 		-- same background as the main window instead of the default "mantle"
 		completion = { color = "base" },
+		cursor = { color = "green" },
 	},
 	overrides = function(colors)
 		return {
