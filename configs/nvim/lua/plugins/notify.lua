@@ -1,10 +1,14 @@
-vim.pack.add({ "rcarriga/nvim-notify" })
-
-require("notify").setup({
-	render = "wrapped-compact",
-	level = 0,
-	stages = "static",
-	fps = 1,
-})
-
-vim.notify = require("notify")
+return {
+	"rcarriga/nvim-notify",
+	opts = {
+		render = "wrapped-compact",
+		level = 0,
+		stages = "static",
+		fps = 1,
+	},
+	config = function(_, opts)
+		local notify = require("notify")
+		notify.setup(opts)
+		vim.notify = notify
+	end,
+}

@@ -1,5 +1,5 @@
 -- Shared dependencies and no-config editor plugins
-vim.pack.add({
+return {
 	-- Shared dependencies used by multiple plugins
 	"nvim-lua/plenary.nvim",
 	"nvim-tree/nvim-web-devicons",
@@ -12,4 +12,4 @@ vim.pack.add({
 
 	-- Language syntax support
 	"vim-ruby/vim-ruby",
-})
+}
